@@ -8,7 +8,6 @@
 #include "../../adt/array/array.h"
 #include "../../ADT/playlist/listlinier.h"
 
-
 void CREATEPlaylist();
 /* I.S. Sembarang*/
 /* F.S. Membuat playlist baru kosong*/
