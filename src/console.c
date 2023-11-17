@@ -47,12 +47,3 @@ void help(boolean startcheck)
         printf("18. QUIT -> Untuk keluar dari aplikasi WayangWave\n");
     }
 }
-
-int main ()
-{
-    boolean start = false;
-    help(start);
-    start = true;
-    help(start);
-    return 0;
-}

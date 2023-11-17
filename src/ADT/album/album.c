@@ -40,9 +40,19 @@ void InsertInAlbum(Album *M, keytype k, valuetype v)
 {
     if (!IsMemberInAlbum(*M, k))
     {
-        (*M).Elements[(*M).Count].Key = (char *)malloc((strlen(k)) * sizeof(char));
+        // Allocate memory for the key
+        (*M).Elements[(*M).Count].Key = (char *)malloc((strlen(k) + 1) * sizeof(char));
         strcpy((*M).Elements[(*M).Count].Key, k);
-        CopySet(&((*M).Elements[(*M).Count].Value), v);
+
+        // Create a new set for each album
+        CreateEmptySet(&((*M).Elements[(*M).Count].Value));
+
+        // Insert the songs into the new set
+        for (int i = 0; i < v.Count; i++)
+        {
+            InsertSet(&((*M).Elements[(*M).Count].Value), v.Elements[i]);
+        }
+
         (*M).Count++;
     }
 }
