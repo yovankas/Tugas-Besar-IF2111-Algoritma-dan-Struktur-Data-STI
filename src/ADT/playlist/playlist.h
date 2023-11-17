@@ -6,7 +6,6 @@
 #include "../../adt/mesin/mesinkata.h"
 #include "../../adt/array/array.h"
 #include "../../ADT/set/set.h"
-#include "../../ADT/map/map.h"
 
 // #define false 0
 // #define true 1
