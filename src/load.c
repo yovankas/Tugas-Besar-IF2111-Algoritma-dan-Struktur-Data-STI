@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "./boolean.h"
-#include "./ADT/array/array.h"
-#include "./ADT/word/word.h"
-#include "./ADT/mesin/mesinkata.h"
-#include "./ADT/mesin/mesinkarakter.h"
-#include "./ADT/set/set.h"
-#include "./ADT/album/album.h"
-#include "./ADT/penyanyi/penyanyi.h"
-#include "./ADT/string/string.h"
+#include "boolean.h"
+#include "./adt/array/array.h"
+#include "./adt/word/word.h"
+#include "./adt/mesin/mesinkata.h"
+#include "./adt/mesin/mesinkarakter.h"
+#include "./adt/set/set.h"
+#include "./adt/album/album.h"
+#include "./adt/penyanyi/penyanyi.h"
+#include "./adt/string/string.h"
 
 int main()
 {
@@ -21,7 +21,6 @@ int main()
     CreateArray(&arrPenyanyi);
     CreateArray(&arrAlbum);
     CreateEmptyAlbum(&laguAlbum);
-    CreateEmptySet(&lagu);
 
     STARTWORD("data/default.txt");
 
@@ -53,6 +52,7 @@ int main()
                 // Bikin set buat semua lagu dalam satu album
                 //printf("Jumlah Lagu: ");
                 //printf("%d\n", countLagu);
+                CreateEmptySet(&lagu);
                 for (int k = 0; k < countLagu; k++)
                 {
                     ADVWORD();
@@ -67,6 +67,8 @@ int main()
         ADVWORD();
     }
 
-    PrintArrayPenyanyi(arrPenyanyi);
+    //PrintArrayPenyanyi(arrPenyanyi);
+    //PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    PrintAlbumLagu(laguAlbum, "THE ALBUM");
     return 0;
 }

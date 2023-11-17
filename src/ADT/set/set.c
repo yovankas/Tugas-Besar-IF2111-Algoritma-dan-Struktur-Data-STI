@@ -32,11 +32,23 @@ void InsertSet(Set *S, infotype Elmt)
 {
     if (!IsMemberSet(*S, Elmt))
     {
-        S->Elements[S->Count] = (char*) malloc((strlen(Elmt)) * sizeof(char));
-        strcpy((S->Elements[S->Count]), Elmt);
-        S->Count +=1;
+        // Allocate memory for the content of the string
+        S->Elements[S->Count] = (char*) malloc((strlen(Elmt) + 1) * sizeof(char));
+
+        // Check if memory allocation was successful
+        if (S->Elements[S->Count] == NULL) {
+            printf("Memory allocation failed\n");
+            return;
+        }
+
+        // Copy the content of the string
+        strcpy(S->Elements[S->Count], Elmt);
+        S->Count += 1;
     }
+
 }
+
+
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
@@ -79,7 +91,7 @@ boolean IsMemberSet(Set S, infotype Elmt)
     address idx = 0, iterator;
     while (!found && idx < S.Count)
     {
-        if (strcmp(S.Elements[idx], Elmt) == 1)
+        if (strcmp(S.Elements[idx], Elmt) == 0)
         {
             found = true;
         }
@@ -165,19 +177,18 @@ Set SetSubtract(Set s1, Set s2)
 
 void CopySet(Set *s1, Set s2)
 {
-    for (int i = 0; i < (*s1).Count; i++)
+    for (int i = 0; i < s2.Count; i++)
     {
         (*s1).Elements[i] = s2.Elements[i];
-        strcpy(((*s1).Elements[i]), s2.Elements[i]);
     }
+    (*s1).Count = s2.Count;
 }
-
-void PrintSet(Set s)
+void PrintSet(Set S)
 {
     int i = 0;
-    while (i != s.Count)
+    while (i < S.Count)
     {
-        printf("%d. %s\n", i+1, s.Elements[i]);
+        printf("%d. %s\n", i + 1, S.Elements[i]);
         i += 1;
     }
 }
