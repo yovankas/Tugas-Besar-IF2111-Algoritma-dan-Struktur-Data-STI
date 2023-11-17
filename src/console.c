@@ -50,21 +50,106 @@ void help(boolean startcheck)
 
 void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
 {
-    printf("Data Penyanyi:\n");
+    printf("Daftar Penyanyi:\n");
     PrintArrayPenyanyi(arrPenyanyi);
 
+    printf("Ingin melihat album yang ada?(Y/N): ");
     startInputWord();
     Word command;
     akuisisiCommandWord(&command, currentWord, 1);
     char *com;
     com = wordToString(command);
+    boolean wrong = false;
 
-    if (com == "BLACKPINK")
+    if (strcmp(com, "Y") == 0)
     {
-        PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+        printf("Pilih penyanyi untuk melihat album mereka: ");
+        startInputWord();
+        Word namePenyanyi;
+        akuisisiCommandWord(&namePenyanyi, currentWord, 1);
+        char* com = wordToString(namePenyanyi);
+        akuisisiCommandWord(&namePenyanyi, currentWord, 2);
+        char* penyanyi2 = wordToString(namePenyanyi);
+        char* spasi = " ";
+
+        if (strcmp(penyanyi2, "") != 0)
+        {
+            com = concat(com, spasi);
+            com = concat(com, penyanyi2);
+        }
+
+        printf("Daftar Album oleh %s :\n", com);
+        if (strcmp(com, "BLACKPINK") == 0)
+        {
+            PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+        }
+        else if (strcmp(com, "Arctic Monkeys") == 0)
+        {
+            PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+        }
+        else 
+        {
+            wrong = true;
+        }
+
+        if (!wrong)
+        {
+            printf("Ingin melihat lagu yang ada?(Y/N): ");
+            startInputWord();
+            akuisisiCommandWord(&command, currentWord, 1);
+            com = wordToString(command);
+
+            if (strcmp(com, "Y") == 0)
+            {
+                printf("Pilih album untuk melihat lagu yang ada di album: ");
+                startInputWord();
+                Word nameAlbum;
+                akuisisiCommandWord(&nameAlbum, currentWord, 1);
+                char* com = wordToString(nameAlbum);
+                akuisisiCommandWord(&nameAlbum, currentWord, 2);
+                char* album2 = wordToString(nameAlbum);
+                akuisisiCommandWord(&nameAlbum, currentWord, 3);
+                char* album3 = wordToString(nameAlbum);
+
+                if (strcmp(album2, "") != 0)
+                {
+                    com = concat(com, spasi);
+                    com = concat(com, album2);
+                }
+
+                if (strcmp(album3, "") != 0)
+                {
+                    com = concat(com, spasi);
+                    com = concat(com, album3);
+                }
+
+                printf("Daftar Lagu di %s:\n", com);
+                if (strcmp(com, "BORN PINK") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "BORN PINK");
+                }
+                else if (strcmp(com, "THE ALBUM") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "THE ALBUM");
+                }
+                else if (strcmp(com, "Favourite Worst Nightmare") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
+                }
+                else if (strcmp(com, "Humbug") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "Humbug");
+                }
+                else if (strcmp(com, "AM") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "AM");
+                }
+                else 
+                {
+                    wrong = true;
+                }
+            }
+        }
     }
-    else if (com == "Arctic Monkeys")
-    {
-        PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    }
+
 }
