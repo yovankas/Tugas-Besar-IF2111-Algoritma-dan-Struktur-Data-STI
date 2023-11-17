@@ -67,9 +67,8 @@ int main()
         ADVWORD();
     }
 
-    //PrintArrayPenyanyi(arrPenyanyi);
-    //PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    //PrintAlbumLagu(laguAlbum, "Humbug");
-
+    PrintArrayPenyanyi(arrPenyanyi);
+    PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    PrintAlbumLagu(laguAlbum, "CERITERA");
     return 0;
 }

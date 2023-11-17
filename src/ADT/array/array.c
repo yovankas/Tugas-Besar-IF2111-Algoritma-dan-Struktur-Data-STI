@@ -76,7 +76,7 @@ void SetTab(Array Tin, Array *Tout)
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
 void SetEl(Array *T, IdxType i, ElType v)
 {
-    BUFFER(*T)[i] = (char *)malloc((strlen(v)) * sizeof(char));
+    BUFFER(*T)[i] = (char *)malloc((strlen(v) + 1) * sizeof(char));
     strcpy(BUFFER(*T)[i], v);
     if (i > GetLastIdx(*T))
     {
