@@ -2,7 +2,7 @@
 #include "circular_queue.h"
 
 /* ********* Prototype ********* */
-boolean IsEmpty (Queue Q){
+boolean IsEmptyQueue (Queue Q){
 /* Mengirim true jika Q kosong */
 /* yaitu ketika idxHead=IDX_UNDEF dan idxTail=IDX_UNDEF */
 
@@ -10,7 +10,7 @@ boolean IsEmpty (Queue Q){
     return (Q.idxHead == IDX_UNDEF && Q.idxTail == IDX_UNDEF);
 }
 
-boolean IsFull (Queue Q){
+boolean IsFullQueue (Queue Q){
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu ketika idxHead=0 dan idxTail=IDX_MAX atau idxHead=idxTail+1 ketika idxHead > idxTail */
 
@@ -21,7 +21,7 @@ int Length (Queue Q){
 /* Mengirimkan banyaknya elemen Q, 0 jika kosong */
 
     //ALGORITMA
-    if (IsEmpty(Q)){
+    if (IsEmptyQueue(Q)){
         return 0;
     } else if (Q.idxHead <= Q.idxTail){
         return (Q.idxTail - Q.idxHead + 1);
@@ -58,7 +58,9 @@ void enqueue (Queue * Q, ElType X){
     } else {
         Q->idxTail = (Q->idxTail + 1) % (IDX_MAX + 1);
     }
-    Q->Tab[Q->idxTail] = X;
+    Q->Tab[Q->idxTail].artist = X.artist;
+    Q->Tab[Q->idxTail].album = X.album;
+    Q->Tab[Q->idxTail].song = X.song;
 }
 
 ElType dequeue (Queue * Q){
@@ -72,7 +74,9 @@ ElType dequeue (Queue * Q){
     ElType X;
 
     // ALGORITMA
-    X = Q->Tab[Q->idxHead];
+    X.artist = Q->Tab[Q->idxHead].artist;
+    X.album = Q->Tab[Q->idxHead].album;
+    X.song = Q->Tab[Q->idxHead].song;
     if (Q->idxHead == Q->idxTail) {
         Q->idxHead = IDX_UNDEF;
         Q->idxTail = IDX_UNDEF;
@@ -95,29 +99,25 @@ void displayQueue(Queue Q){
 
     // ALGORITMA
     if (Q.idxHead == IDX_UNDEF && Q.idxTail == IDX_UNDEF) {
-        printf("[]\n");
+        printf("Your queue is empty.\n");
     } else {
-        printf("[");
-        if (Q.idxHead <= Q.idxTail) {
-            for (i = Q.idxHead; i <= Q.idxTail; i++) {
-                if (i == Q.idxTail) {
-                    printf("%d", Q.Tab[i]);
-                } else {
-                    printf("%d,", Q.Tab[i]);
-                }
+        if (Q.idxHead <= Q.idxTail) 
+        {
+            for (i = Q.idxHead; i <= Q.idxTail; i++) 
+            {
+                printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
         } else {
             for (i = Q.idxHead; i < (IDX_MAX + 1); i++) {
-                printf("%d,", Q.Tab[i]);
+                printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
             for (i = 0; i <= Q.idxTail; i++) {
                 if (i == Q.idxTail) {
-                    printf("%d", Q.Tab[i]);
+                    printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
                 } else {
-                    printf("%d,", Q.Tab[i]);
+                    printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
                 }
             }
         }
-        printf("]\n");
     }
 }

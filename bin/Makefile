@@ -9,3 +9,6 @@ console:
 
 driveralbum:
 	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/album/driveralbum.c -o driveralbum.exe
+
+driverqueue:
+	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/queue/circular_queue.c ../src/ADT/queue/driverqueue.c -o driverqueue.exe

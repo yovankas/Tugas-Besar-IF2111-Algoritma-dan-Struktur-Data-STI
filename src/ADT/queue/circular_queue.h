@@ -5,13 +5,26 @@
 #ifndef __circular_queue_h__
 #define __circular_queue_h__
 
-#include "boolean.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../../boolean.h"
+#include "../../ADT/mesin/mesinkata.h"
+#include "../../ADT/set/set.h"
 
 #define IDX_UNDEF -1
 #define IDX_MAX 99
 
 /* Definisi tipe elemen dan indeks pada Queue */
-typedef int ElType;
+typedef struct 
+{
+        char* artist;
+        char* album;
+        char* song;
+} infotypeQueue;
+
+
+typedef infotypeQueue ElType;
 typedef int IdxType;
 
 typedef struct {
@@ -28,10 +41,10 @@ typedef struct {
 #define     TAIL(q) (q).Tab[(q).idxTail]
 
 /* ********* Prototype ********* */
-boolean IsEmpty (Queue Q);
+boolean IsEmptyQueue (Queue Q);
 /* Mengirim true jika Q kosong */
 /* yaitu ketika idxHead=IDX_UNDEF dan idxTail=IDX_UNDEF */
-boolean IsFull (Queue Q);
+boolean IsFullQueue (Queue Q);
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu ketika idxHead=0 dan idxTail=IDX_MAX atau idxHead=idxTail+1 ketika idxHead > idxTail */
 int Length (Queue Q);
