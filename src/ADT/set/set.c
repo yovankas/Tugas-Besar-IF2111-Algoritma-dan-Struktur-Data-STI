@@ -183,6 +183,7 @@ void CopySet(Set *s1, Set s2)
     }
     (*s1).Count = s2.Count;
 }
+
 void PrintSet(Set S)
 {
     int i = 0;
@@ -191,4 +192,9 @@ void PrintSet(Set S)
         printf("%d. %s\n", i + 1, S.Elements[i]);
         i += 1;
     }
+}
+
+infotype ValueSet(Set S, address i)
+{
+    return (S.Elements[i-1]);
 }

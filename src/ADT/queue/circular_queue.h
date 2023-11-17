@@ -24,11 +24,11 @@ typedef struct
 } infotypeQueue;
 
 
-typedef infotypeQueue ElType;
+typedef infotypeQueue ElTypeQueue;
 typedef int IdxType;
 
 typedef struct {
-        ElType Tab[IDX_MAX+1];  /* tabel penyimpan elemen */
+        ElTypeQueue Tab[IDX_MAX+1];  /* tabel penyimpan elemen */
         IdxType idxHead;  /* indeks elemen paling awal (terdepan) */
         IdxType idxTail;  /* indeks tempat menambah elemen baru */
 } Queue;
@@ -58,13 +58,13 @@ void CreateQueue (Queue * Q);
 /* - idxTail=IDX_UNDEF. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue (Queue * Q, ElType X);
+void enqueue (Queue * Q, ElTypeQueue X);
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
         X menjadi idxTail yang baru
         Jika Q kosong, idxHead dimulai dari 0 */
-ElType dequeue (Queue * Q);
+ElTypeQueue dequeue (Queue * Q);
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada idxHead;

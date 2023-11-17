@@ -13,6 +13,7 @@
 #include "./ADT/album/album.h"
 #include "./ADT/penyanyi/penyanyi.h"
 #include "./ADT/string/string.h"
+#include "./ADT/queue/circular_queue.h"
 
 void quit();
 /*
@@ -35,4 +36,10 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
  * F.S. Menampilkan list penyanyi, list album dari seorang penyanyi, serta list lagu dari suatu album
  */ 
 
+void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+/**
+ * Konstruktor
+ * I.S. Program berjalan
+ * F.S. Menambahkan sebuah lagu ke dalam queue
+ */ 
 #endif

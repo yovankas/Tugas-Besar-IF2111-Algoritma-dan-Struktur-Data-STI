@@ -10,6 +10,8 @@
 #include "./adt/album/album.h"
 #include "./adt/penyanyi/penyanyi.h"
 #include "./adt/string/string.h"
+#include "./adt/queue/circular_queue.h"
+#include "console.h"
 
 int main()
 {
@@ -67,8 +69,9 @@ int main()
         ADVWORD();
     }
 
-    PrintArrayPenyanyi(arrPenyanyi);
-    PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    PrintAlbumLagu(laguAlbum, "CERITERA");
+    //PrintArrayPenyanyi(arrPenyanyi);
+    //PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    //PrintAlbumLagu(laguAlbum, "CERITERA");
+ 
     return 0;
 }

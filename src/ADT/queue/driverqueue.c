@@ -5,7 +5,7 @@ int main ()
 {
     Queue Q;
     CreateQueue(&Q);
-    ElType q1;
+    ElTypeQueue q1;
     q1.artist = "BLACKPINK";
     q1.album = "BORN PINK";
     q1.song = "Pink Venom";

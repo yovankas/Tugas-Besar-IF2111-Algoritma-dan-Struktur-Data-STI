@@ -71,4 +71,6 @@ void CopyAlbum(Album *m1, Album m2);
 
 void PrintAlbumLagu(Album M, keytype k);
 
+infotype LaguFromAlbum(Album M, keytype k, int id);
+
 #endif

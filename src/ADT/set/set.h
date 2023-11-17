@@ -81,4 +81,6 @@ Set SetSubtract(Set s1, Set s2);
 void CopySet(Set *s1, Set s2);
 
 void PrintSet(Set s);
+
+infotype ValueSet(Set S, address i);
 #endif

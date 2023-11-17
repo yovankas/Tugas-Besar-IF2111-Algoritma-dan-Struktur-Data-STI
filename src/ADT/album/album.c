@@ -147,3 +147,11 @@ void PrintAlbumLagu(Album M, keytype k)
     set = ValueInAlbum(M, k);
     PrintSet(set);
 }
+
+infotype LaguFromAlbum(Album M, keytype k, int id)
+{
+    valuetype set;
+    set = ValueInAlbum(M, k);
+    infotype song = ValueSet(set, id);
+    return song;
+}

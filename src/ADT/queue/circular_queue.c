@@ -44,7 +44,7 @@ void CreateQueue (Queue * Q){
 
 
 /* *** Primitif Add/Delete *** */
-void enqueue (Queue * Q, ElType X){
+void enqueue (Queue * Q, ElTypeQueue X){
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
@@ -63,7 +63,7 @@ void enqueue (Queue * Q, ElType X){
     Q->Tab[Q->idxTail].song = X.song;
 }
 
-ElType dequeue (Queue * Q){
+ElTypeQueue dequeue (Queue * Q){
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada idxHead;
@@ -71,7 +71,7 @@ ElType dequeue (Queue * Q){
         Q mungkin kosong */
 
     //KAMUS LOKAL
-    ElType X;
+    ElTypeQueue X;
 
     // ALGORITMA
     X.artist = Q->Tab[Q->idxHead].artist;

@@ -153,3 +153,139 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
     }
 
 }
+
+void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
+{
+    printf("Daftar Penyanyi:\n");
+    PrintArrayPenyanyi(arrPenyanyi);
+
+    printf("Masukkan Nama Penyanyi: ");
+    startInputWord();
+    Word namePenyanyi;
+    akuisisiCommandWord(&namePenyanyi, currentWord, 1);
+    char* penyanyi = wordToString(namePenyanyi);
+    akuisisiCommandWord(&namePenyanyi, currentWord, 2);
+    char* penyanyi2 = wordToString(namePenyanyi);
+    char* spasi = " ";
+
+    if (strcmp(penyanyi2, "") != 0)
+    {
+        penyanyi = concat(penyanyi, spasi);
+        penyanyi = concat(penyanyi, penyanyi2);
+    }
+
+    printf("Daftar Album oleh %s :\n", penyanyi);
+    if (strcmp(penyanyi, "BLACKPINK") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+    }
+    else if (strcmp(penyanyi, "Arctic Monkeys") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    }
+    else if (strcmp(penyanyi, "NewJeans") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
+    }
+    else if (strcmp(penyanyi, "Hivi!") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
+    }
+
+    printf("Masukkan Nama Album yang dipilih: ");
+    startInputWord();
+    Word nameAlbum;
+    akuisisiCommandWord(&nameAlbum, currentWord, 1);
+    char* album = wordToString(nameAlbum);
+    akuisisiCommandWord(&nameAlbum, currentWord, 2);
+    char* album2 = wordToString(nameAlbum);
+    int i = 2;
+    while(strcmp(album2, "") != 0)
+    {
+        album = concat(album, spasi);
+        album = concat(album, album2);
+        i +=1;
+        akuisisiCommandWord(&nameAlbum, currentWord, i);
+        album2 = wordToString(nameAlbum);
+    }
+
+    printf("Daftar Lagu di %s:\n", album);
+    if (strcmp(album, "BORN PINK") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "BORN PINK");
+    }
+    else if (strcmp(album, "THE ALBUM") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "THE ALBUM");
+    }
+    else if (strcmp(album, "SQUARE ONE") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "SQUARE ONE");
+    }
+    else if (strcmp(album, "SQUARE TWO") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "SQUARE TWO");
+    }
+    else if (strcmp(album, "SQUARE UP") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "SQUARE UP");
+    }
+    else if (strcmp(album, "Favourite Worst Nightmare") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
+    }
+    else if (strcmp(album, "Humbug") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Humbug");
+    }
+    else if (strcmp(album, "AM") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "AM");
+    }
+    else if (strcmp(album, "New Jeans") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "New Jeans");
+    }
+    else if (strcmp(album, "OMG") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "OMG");
+    }
+    else if (strcmp(album, "Get Up") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Get Up");
+    }
+    else if (strcmp(album, "CERITERA") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "CERITERA");
+    }
+    else if (strcmp(album, "Kereta Kencan") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Kereta Kencan");
+    }
+    else if (strcmp(album, "Say Hi To Hivi!") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
+    }
+    
+    printf("Masukkan ID Lagu yang dipilih: ");
+    startInputWord();
+    Word IDs;
+    akuisisiCommandWord(&IDs, currentWord, 1);
+    int IDsong = wordToInt(IDs);
+    infotype song = LaguFromAlbum(laguAlbum, album, IDsong);
+
+    ElTypeQueue El;
+    El.artist = (char *)malloc(strlen(penyanyi) + 1);
+    El.album = (char *)malloc(strlen(album) + 1);
+    El.song = (char *)malloc(strlen(song) + 1);
+    if (El.artist != NULL && El.album != NULL && El.song != NULL)
+    {
+        // Copy strings to allocated memory
+        strcpy(El.artist, penyanyi);
+        strcpy(El.album, album);
+        strcpy(El.song, song);
+
+        // Enqueue the element
+        enqueue(Q, El);
+    }
+}
