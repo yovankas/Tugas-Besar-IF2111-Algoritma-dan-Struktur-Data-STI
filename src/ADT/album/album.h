@@ -52,7 +52,6 @@ valuetype ValueInAlbum(Album M, keytype k);
 		M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 void InsertInAlbum(Album *M, keytype k, valuetype v);
-
 /* Menghapus Elmt dari Album M. */
 /* I.S. M tidak kosong
 		element dengan key k mungkin anggota / bukan anggota dari M */

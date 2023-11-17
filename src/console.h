@@ -27,4 +27,12 @@ void help(boolean startcheck);
  * I.S. Program berjalan
  * F.S. Menampilkan daftar command yang mungkin untuk dieksekusi dengan deskripsinya
  */ 
+
+void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+/**
+ * Konstruktor
+ * I.S. Program berjalan
+ * F.S. Menampilkan list penyanyi, list album dari seorang penyanyi, serta list lagu dari suatu album
+ */ 
+
 #endif

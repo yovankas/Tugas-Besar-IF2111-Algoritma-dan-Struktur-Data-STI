@@ -47,3 +47,24 @@ void help(boolean startcheck)
         printf("18. QUIT -> Untuk keluar dari aplikasi WayangWave\n");
     }
 }
+
+void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
+{
+    printf("Data Penyanyi:\n");
+    PrintArrayPenyanyi(arrPenyanyi);
+
+    startInputWord();
+    Word command;
+    akuisisiCommandWord(&command, currentWord, 1);
+    char *com;
+    com = wordToString(command);
+
+    if (com == "BLACKPINK")
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+    }
+    else if (com == "Arctic Monkeys")
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    }
+}
