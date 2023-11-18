@@ -55,7 +55,7 @@ addressPlaylist SearchinPlaylist (Playlist PL, content val){
     //ALGORITMA
     P = First(PL);
     while(P != Nil_Playlist && !found){
-        if(IsEQWord(Info(P).lagu, val.lagu) && IsEQWord(Info(P).album, val.album) && IsEQWord(Info(P).penyanyi, val.penyanyi)){
+        if(strCompare(Info(P).lagu, val.lagu) && strCompare(Info(P).album, val.album) && strCompare(Info(P).penyanyi, val.penyanyi)){
             found = true;
         } else {
             P = Next(P);
@@ -214,7 +214,7 @@ void DelP (Playlist *PL, content val){
     // ALGORITMA
     last = First(*PL);
     prev = Nil_Playlist;
-    while (!IsEQWord(Info(last).lagu, val.lagu) || !IsEQWord(Info(last).album, val.album) || !IsEQWord(Info(last).penyanyi, val.penyanyi)) {
+    while (!strCompare(Info(last).lagu, val.lagu) || !strCompare(Info(last).album, val.album) || !strCompare(Info(last).penyanyi, val.penyanyi)) {
         prev = last;
         last = Next(last);
     }

@@ -5,16 +5,16 @@
 #include "../../boolean.h"
 #include "../../adt/mesin/mesinkata.h"
 #include "../../adt/array/array.h"
-#include "../word/word.h"
+#include "../../ADT/string/string.h"
 
 #define Nil_Playlist NULL
 
-// typedef Word infotype;
+typedef char* contentType;
 typedef struct tElmtlist *addressPlaylist;
 typedef struct content{
-    Word lagu;
-    Word album;
-    Word penyanyi;
+    contentType lagu;
+    contentType album;
+    contentType penyanyi;
 } content;
 
 typedef struct tElmtlist{
