@@ -95,7 +95,7 @@ void displayQueue(Queue Q){
 /* Jika Queue kosong : menulis [] */
 /* Note: Output mengandung newline */
     //KAMUS
-    int i, idx;
+    int i;
 
     // ALGORITMA
     if (Q.idxHead == IDX_UNDEF && Q.idxTail == IDX_UNDEF) {
