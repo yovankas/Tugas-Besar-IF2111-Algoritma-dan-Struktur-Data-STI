@@ -421,13 +421,13 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     currentSong.song = song;
 }
 
-void status(Queue *Q, Playlist *PL)
+void status(Queue *Q, Playlist *PL, currentSong currentSong)
 {
     if (!IsEmpty(*PL)){
         printf("Current Playlist: %s", Info(First(*PL))); 
     }
     printf("Now Playing:");
-        if(IsEmptyQueue(*Q)){
+        if(isEmptyCurrentSong){
             printf("No songs have been played yet. Please search for a song to begin playback.");
         }
         else {

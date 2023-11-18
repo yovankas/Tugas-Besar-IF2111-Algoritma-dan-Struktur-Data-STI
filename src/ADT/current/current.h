@@ -11,4 +11,6 @@ typedef struct
         char* song;
 } currentSong;
 
+boolean isEmptyCurrentSong(currentSong currentSong);
+
 #endif
