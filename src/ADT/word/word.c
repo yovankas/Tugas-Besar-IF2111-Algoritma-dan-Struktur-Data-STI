@@ -47,11 +47,11 @@ Word stringToWord(char *s)
     Word w;
 
     int i;
-    for (i = 0; i < strlen(s); i++)
+    for (i = 0; i < strLength(s); i++)
     {
         w.TabWord[i] = s[i];
     }
-    w.Length = strlen(s);
+    w.Length = strLength(s);
 
     return w;
 }
@@ -68,7 +68,7 @@ void CopyWord(Word *w1, Word w2)
 boolean stringEQWord(Word w, char *c)
 {
     boolean eq = false;
-    if (w.Length == strlen(c))
+    if (w.Length == strLength(c))
     {
         eq = true;
         int i = 0;

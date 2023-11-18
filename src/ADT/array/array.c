@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
+#include "../../adt/string/string.h"
 #include "array.h"
 
 /* ********** KONSTRUKTOR ********** */
@@ -66,7 +66,7 @@ void SetTab(Array Tin, Array *Tout)
     CreateArray(Tout);
     for (int i = IdxMin; i <= GetLastIdx(Tin); i++)
     {
-        strcpy(BUFFER(*Tout)[i], BUFFER(Tin)[i]);
+        strCopy(BUFFER(*Tout)[i], BUFFER(Tin)[i]);
     }
     NEFF(*Tout) = NEFF(Tin);
 }
@@ -76,8 +76,8 @@ void SetTab(Array Tin, Array *Tout)
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
 void SetEl(Array *T, IdxType i, ElType v)
 {
-    BUFFER(*T)[i] = (char *)malloc((strlen(v) + 1) * sizeof(char));
-    strcpy(BUFFER(*T)[i], v);
+    BUFFER(*T)[i] = (char *)malloc((strLength(v) + 1) * sizeof(char));
+    strCopy(BUFFER(*T)[i], v);
     if (i > GetLastIdx(*T))
     {
         NEFF(*T)

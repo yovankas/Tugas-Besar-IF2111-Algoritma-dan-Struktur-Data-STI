@@ -2,6 +2,7 @@
 #define set_H
 #include <stdio.h>
 #include "../../boolean.h"
+#include "../../adt/string/string.h"
 #include "../word/word.h"
 
 /* MODUL Set

@@ -4,6 +4,7 @@
 #include "../../boolean.h"
 #include "../../adt/mesin/mesinkata.h"
 #include "../../adt/set/set.h"
+#include "../../adt/string/string.h"
 
 // #define false 0
 // #define true 1

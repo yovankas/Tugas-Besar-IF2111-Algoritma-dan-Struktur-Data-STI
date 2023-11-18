@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "boolean.h"
 #include "./adt/array/array.h"
 #include "./adt/word/word.h"
@@ -70,16 +69,16 @@ int main()
         ADVWORD();
     }
 
-    //PrintArrayPenyanyi(arrPenyanyi);
-    //PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    //PrintAlbumLagu(laguAlbum, "Get Up");
+    PrintArrayPenyanyi(arrPenyanyi);
+    PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    PrintAlbumLagu(laguAlbum, "Get Up");
     
-    // Queue Q;
-    // CreateQueue(&Q);
-    // Stackchar Hist;
-    // CreateEmptyStackChar(&Hist);
-    // queueSong (&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
-    // displayQueue(Q);
+    Queue Q;
+    CreateQueue(&Q);
+    Stackchar Hist;
+    CreateEmptyStackChar(&Hist);
+    queueSong (&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
+    displayQueue(Q);
 
     return 0;
 }

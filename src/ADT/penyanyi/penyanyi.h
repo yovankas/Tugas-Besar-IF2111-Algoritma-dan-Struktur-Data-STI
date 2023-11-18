@@ -5,6 +5,7 @@
 #include "../../adt/mesin/mesinkata.h"
 #include "../../adt/album/album.h"
 #include "../../adt/array/array.h"
+#include "../../adt/string/string.h"
 
 // #define false 0
 // #define true 1

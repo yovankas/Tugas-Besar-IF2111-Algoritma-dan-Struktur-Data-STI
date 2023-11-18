@@ -1,5 +1,5 @@
 #include "penyanyi.h"
-#include <string.h>
+#include "../../adt/string/string.h"
 
 Penyanyi CreateEmptyPenyanyi()
 {
@@ -25,7 +25,7 @@ valuetypePenyanyi ValueInPenyanyi(Penyanyi M, keytype k)
 
     while (!found && idx < M.Count)
     {
-        if (strcmp(M.Elements[idx].Key, k) == 0)
+        if (strCompare(M.Elements[idx].Key, k) == 0)
         {
             found = true;
         }
@@ -42,8 +42,8 @@ void InsertInPenyanyi(Penyanyi *M, keytype k, valuetypePenyanyi v)
 {
     if (!IsMemberInPenyanyi(*M, k))
     {
-        (*M).Elements[(*M).Count].Key = (char *)malloc((strlen(k)) * sizeof(char));
-        strcpy((*M).Elements[(*M).Count].Key, k);
+        (*M).Elements[(*M).Count].Key = (char *)malloc((strLength(k) + 1) * sizeof(char));
+        strCopy((*M).Elements[(*M).Count].Key, k);
         copyArray(&((*M).Elements[(*M).Count].Value), v);
         (*M).Count++;
     }
@@ -61,7 +61,7 @@ void DeleteInPenyanyi(Penyanyi *M, keytype k)
 
     while (!found && (idx < (*M).Count))
     {
-        if (strcmp((*M).Elements[idx].Key, k))
+        if (strCompare((*M).Elements[idx].Key, k))
         {
             found = true;
         }
@@ -73,8 +73,8 @@ void DeleteInPenyanyi(Penyanyi *M, keytype k)
 
     for (iterator = (idx + 1); iterator < (*M).Count; iterator++)
     {
-        (*M).Elements[iterator - 1].Key = (char *)malloc((strlen((*M).Elements[iterator].Key)) * sizeof(char));
-        strcpy(((*M).Elements[iterator - 1].Key), (*M).Elements[iterator].Key);
+        (*M).Elements[iterator - 1].Key = (char *)malloc((strLength((*M).Elements[iterator].Key)) * sizeof(char));
+        strCopy(((*M).Elements[iterator - 1].Key), (*M).Elements[iterator].Key);
         copyArray(&((*M).Elements[iterator - 1].Value), (*M).Elements[iterator].Value);
     }
 
@@ -127,8 +127,8 @@ void CopyPenyanyi(Penyanyi *m1, Penyanyi m2)
 {
     for (int i = 0; i < (*m1).Count; i++)
     {
-        (*m1).Elements[i].Key = (char *)malloc((strlen(m2.Elements[i].Key)) * sizeof(char));
-        strcpy(((*m1).Elements[i].Key), m2.Elements[i].Key);
+        (*m1).Elements[i].Key = (char *)malloc((strLength(m2.Elements[i].Key)) * sizeof(char));
+        strCopy(((*m1).Elements[i].Key), m2.Elements[i].Key);
         copyArray(&((*m1).Elements[i].Value), m2.Elements[i].Value);
     }
 }

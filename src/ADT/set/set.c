@@ -1,5 +1,5 @@
-#include <string.h>
 #include "set.h"
+#include "../../adt/string/string.h"
 
 /* ********* Prototype ********* */
 
@@ -33,7 +33,7 @@ void InsertSet(Set *S, infotype Elmt)
     if (!IsMemberSet(*S, Elmt))
     {
         // Allocate memory for the content of the string
-        S->Elements[S->Count] = (char*) malloc((strlen(Elmt) + 1) * sizeof(char));
+        S->Elements[S->Count] = (char*) malloc((strLength(Elmt) + 1) * sizeof(char));
 
         // Check if memory allocation was successful
         if (S->Elements[S->Count] == NULL) {
@@ -42,7 +42,7 @@ void InsertSet(Set *S, infotype Elmt)
         }
 
         // Copy the content of the string
-        strcpy(S->Elements[S->Count], Elmt);
+        strCopy(S->Elements[S->Count], Elmt);
         S->Count += 1;
     }
 
@@ -64,7 +64,7 @@ void DeleteSetElement(Set *S, infotype Elmt)
     }
     while (!found && idx < S->Count)
     {
-        if (strcmp(S->Elements[idx], Elmt))
+        if (strCompare(S->Elements[idx], Elmt))
         {
             found = true;
         }
@@ -75,8 +75,8 @@ void DeleteSetElement(Set *S, infotype Elmt)
     }
     for (iterator = idx + 1; iterator < S->Count; iterator++)
     {
-        S->Elements[iterator - 1] = (char *)malloc((strlen(S->Elements[iterator])) * sizeof(char));
-        strcpy((S->Elements[iterator - 1]), S->Elements[iterator]);
+        S->Elements[iterator - 1] = (char *)malloc((strLength(S->Elements[iterator])) * sizeof(char));
+        strCopy((S->Elements[iterator - 1]), S->Elements[iterator]);
     }
     S->Count--;
 }
@@ -91,7 +91,7 @@ boolean IsMemberSet(Set S, infotype Elmt)
     address idx = 0, iterator;
     while (!found && idx < S.Count)
     {
-        if (strcmp(S.Elements[idx], Elmt) == 0)
+        if (strCompare(S.Elements[idx], Elmt) == 0)
         {
             found = true;
         }

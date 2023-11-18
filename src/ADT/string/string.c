@@ -1,6 +1,6 @@
 #include "string.h"
 
-int stringLength(string s)
+int strLength(string s)
 {
     int i = 0;
     while (s[i] != '\0')
@@ -13,7 +13,7 @@ int stringLength(string s)
 
 string concat(string s1, string s2)
 {
-    string ret = malloc((stringLength(s1) + stringLength(s2) + 1) * sizeof(char));
+    string ret = malloc((strLength(s1) + strLength(s2) + 1) * sizeof(char));
     string p = ret;
     while (*s1 != '\0')
     {
@@ -27,24 +27,20 @@ string concat(string s1, string s2)
     return ret;
 }
 
-string copyString(string s2)
+void strCopy(string s1, string s2)
 {
-    string s1 = malloc((stringLength(s2) + 1) * sizeof(char));
-    string p = s1;
     while (*s2 != '\0')
     {
-        *p++ = *s2++;
+        *s1++ = *s2++;
     }
-    *p = '\0';
-
-    return s1;
+    *s1 = '\0';
 }
 
 boolean isCharInString(string s, char c)
 {
     int i = 0, length;
     boolean found = false;
-    length = stringLength(s);
+    length = strLength(s);
 
     while (i < length && !found)
     {
@@ -55,4 +51,23 @@ boolean isCharInString(string s, char c)
         i++;
     }
     return found;
+}
+
+int strCompare(char *s1, char *s2) {
+    while (*s1 != '\0' && *s2 != '\0') {
+        if (*s1 != *s2) {
+            return (*s1 - *s2);
+        }
+        s1++;
+        s2++;
+    }
+
+    // Check for the case where one string is shorter than the other
+    if (*s1 != '\0') {
+        return 1; // s1 is longer
+    } else if (*s2 != '\0') {
+        return -1; // s2 is longer
+    }
+
+    return 0; // Both strings are equal
 }
