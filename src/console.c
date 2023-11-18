@@ -440,7 +440,22 @@ void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist cur
     displayQueue(*Q);
 }
 
-void songNext()
+void queuePlaylist (Queue *Q, Playlist playlistlagu)
 {
+    printf("Masukkan ID Playlist: ");
+    StartInputWord();
+    Word IDplaylist;
+    akuisisiCommandWord(&IDplaylist, CurrentWord, 1);
+    int IDplaylist = wordToInt(IDplaylist);
+    infotype playlist = 
+}
 
+void songNext(Queue *Q, )
+{
+    if (IsEmptyQueue(*Q)) {
+        PlayCurrentSong(currentSong);
+    }
+    else {
+        printf("Memutar lagu selanjutnya");
+    }
 }

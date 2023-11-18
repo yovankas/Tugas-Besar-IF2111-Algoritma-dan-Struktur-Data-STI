@@ -7,10 +7,16 @@ void PrintCurrentPlaylist(currentPlaylist currentPlaylist)
 
 boolean isEmptyCurrentSong(currentSong currentSong)
 {
-    return (strcmp(currentSong.album, "") == 0 && strcmp(currentSong.artist, "") == 0 && strcmp(currentSong.song, "") == 0);
+    return (strCompare(currentSong.album, "") == 0 && strCompare(currentSong.artist, "") == 0 && strCompare(currentSong.song, "") == 0);
 }
 
 void PrintCurrentSong(currentSong currentSong)
 {
     printf("%s - %s - %s\n", currentSong.artist, currentSong.song, currentSong.album);
+}
+
+void PlayCurrentSong(currentSong currentSong)
+{
+    printf("Queue kosong, memutar kembali lagu");
+    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
 }

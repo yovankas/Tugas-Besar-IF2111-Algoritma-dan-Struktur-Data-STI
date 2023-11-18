@@ -22,4 +22,6 @@ boolean isEmptyCurrentSong(currentSong currentSong);
 
 void PrintCurrentSong(currentSong currentSong);
 
+void PlayCurrentSong(currentSong currentSong);
+
 #endif
