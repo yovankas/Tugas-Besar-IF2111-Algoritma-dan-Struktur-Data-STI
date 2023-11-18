@@ -293,7 +293,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     }
 }
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong)
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
 {
     printf("Daftar Penyanyi:\n");
     PrintArrayPenyanyi(arrPenyanyi);
@@ -416,7 +416,20 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     printf("Memutar lagu %s oleh %s\n", song, penyanyi);
     CreateQueue(Q);
     CreateEmptyStackChar(History);
-    currentSong.album = album;
-    currentSong.artist = penyanyi;
-    currentSong.song = song;
+}
+
+void status(Queue *Q, Playlist *PL)
+{
+    if (!IsEmpty(*PL)){
+        printf("Current Playlist: %s", Info(First(*PL))); 
+    }
+    printf("Now Playing:");
+        if(IsEmptyQueue(*Q)){
+            printf("No songs have been played yet. Please search for a song to begin playback.");
+        }
+        else {
+            printf("%s - %s - %s", (*Q).Tab[(*Q).idxHead].artist, (*Q).Tab[(*Q).idxHead].song, (*Q).Tab[(*Q).idxHead].album);
+        }
+        printf("Queue:");
+        displayQueue(*Q);
 }
