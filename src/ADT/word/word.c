@@ -1,5 +1,4 @@
 #include "word.h"
-#include <string.h>
 
 Word CreateWord()
 {
