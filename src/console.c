@@ -414,3 +414,19 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     CreateQueue(Q);
     CreateEmptyStackChar(History);
 }
+
+void status(Queue *Q, Playlist *PL)
+{
+    if (!IsEmpty(*PL)){
+        printf("Current Playlist: %s", Info(First(*PL))); 
+    }
+    printf("Now Playing:");
+        if(IsEmpty(*Q)){
+            printf("No songs have been played yet. Please search for a song to begin playback.");
+        }
+        else {
+            printf("%s - %s - %s", Q.Tab[Q.idxHead].artist, Q.Tab[Q.idxHead].song, Q.Tab[Q.idxHead].album);
+        }
+        printf("Queue:");
+        displayQueue(*Q);
+}
