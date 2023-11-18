@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "../../boolean.h"
 #include "../../ADT/mesin/mesinkata.h"
+#include "../string/string.h"
 #include "../../ADT/set/set.h"
 
 #define NilStackchar -1

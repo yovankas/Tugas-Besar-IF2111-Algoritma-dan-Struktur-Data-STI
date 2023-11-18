@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "./boolean.h"
 #include "./ADT/array/array.h"
 #include "./ADT/word/word.h"

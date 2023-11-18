@@ -1,7 +1,6 @@
 #ifndef current_H
 #define current_H
 #include <stdio.h>
-#include <string.h>
 #include "../../boolean.h"
 #include "../string/string.h"
 

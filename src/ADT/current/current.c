@@ -9,3 +9,8 @@ void PrintCurrentSong(currentSong currentSong)
 {
     printf("%s - %s - %s\n", currentSong.artist, currentSong.song, currentSong.album);
 }
+
+void PrintCurrentPlaylist(currentPlaylist currentPlaylist)
+{
+    printf("%s\n", currentPlaylist.playlist);
+}
