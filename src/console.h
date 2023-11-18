@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+// #include <string.h>
 #include "./boolean.h"
 #include "./ADT/array/array.h"
 #include "./ADT/word/word.h"
@@ -53,7 +54,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
  *      Queue dan History kosong
  */
 
-void status(Queue *Q, Playlist *PL, currentSong currentSong);
+void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist currentPlaylist);
  /**
  * Konstruktor
  * I.S. Program berjalan, Queue dan Playlist mungkin kosong
