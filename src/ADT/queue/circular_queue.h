@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "../../boolean.h"
 #include "../../ADT/mesin/mesinkata.h"
 #include "../../ADT/set/set.h"
