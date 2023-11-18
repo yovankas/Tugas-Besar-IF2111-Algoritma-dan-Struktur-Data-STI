@@ -11,6 +11,13 @@ typedef struct
         char* song;
 } currentSong;
 
+typedef struct
+{
+        char* playlist;
+} currentPlaylist;
+
+void PrintCurrentPlaylist(currentPlaylist currentPlaylist);
+
 boolean isEmptyCurrentSong(currentSong currentSong);
 
 void PrintCurrentSong(currentSong currentSong);

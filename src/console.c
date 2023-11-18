@@ -8,7 +8,7 @@ void quit()
     akuisisiCommandWord(&command, currentWord, 1);
     char* confirm;
     confirm = wordToString(command);
-    if (strcmp(confirm, "Y") == 0)
+    if (strCompare(confirm, "Y") == 0)
     {
         printf("manggil save disini\n");
         //save(); // BELUM ADA FUNCTIONNYA
@@ -64,7 +64,7 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
     com = wordToString(command);
     boolean wrong = false;
 
-    if (strcmp(com, "Y") == 0)
+    if (strCompare(com, "Y") == 0)
     {
         printf("Pilih penyanyi untuk melihat album mereka: ");
         startInputWord();
@@ -75,18 +75,18 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
         char* penyanyi2 = wordToString(namePenyanyi);
         char* spasi = " ";
 
-        if (strcmp(penyanyi2, "") != 0)
+        if (strCompare(penyanyi2, "") != 0)
         {
             com = concat(com, spasi);
             com = concat(com, penyanyi2);
         }
 
         printf("Daftar Album oleh %s :\n", com);
-        if (strcmp(com, "BLACKPINK") == 0)
+        if (strCompare(com, "BLACKPINK") == 0)
         {
             PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
         }
-        else if (strcmp(com, "Arctic Monkeys") == 0)
+        else if (strCompare(com, "Arctic Monkeys") == 0)
         {
             PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
         }
@@ -102,7 +102,7 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
             akuisisiCommandWord(&command, currentWord, 1);
             com = wordToString(command);
 
-            if (strcmp(com, "Y") == 0)
+            if (strCompare(com, "Y") == 0)
             {
                 printf("Pilih album untuk melihat lagu yang ada di album: ");
                 startInputWord();
@@ -114,36 +114,36 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
                 akuisisiCommandWord(&nameAlbum, currentWord, 3);
                 char* album3 = wordToString(nameAlbum);
 
-                if (strcmp(album2, "") != 0)
+                if (strCompare(album2, "") != 0)
                 {
                     com = concat(com, spasi);
                     com = concat(com, album2);
                 }
 
-                if (strcmp(album3, "") != 0)
+                if (strCompare(album3, "") != 0)
                 {
                     com = concat(com, spasi);
                     com = concat(com, album3);
                 }
 
                 printf("Daftar Lagu di %s:\n", com);
-                if (strcmp(com, "BORN PINK") == 0)
+                if (strCompare(com, "BORN PINK") == 0)
                 {
                     PrintAlbumLagu(laguAlbum, "BORN PINK");
                 }
-                else if (strcmp(com, "THE ALBUM") == 0)
+                else if (strCompare(com, "THE ALBUM") == 0)
                 {
                     PrintAlbumLagu(laguAlbum, "THE ALBUM");
                 }
-                else if (strcmp(com, "Favourite Worst Nightmare") == 0)
+                else if (strCompare(com, "Favourite Worst Nightmare") == 0)
                 {
                     PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
                 }
-                else if (strcmp(com, "Humbug") == 0)
+                else if (strCompare(com, "Humbug") == 0)
                 {
                     PrintAlbumLagu(laguAlbum, "Humbug");
                 }
-                else if (strcmp(com, "AM") == 0)
+                else if (strCompare(com, "AM") == 0)
                 {
                     PrintAlbumLagu(laguAlbum, "AM");
                 }
@@ -171,26 +171,26 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     char* penyanyi2 = wordToString(namePenyanyi);
     char* spasi = " ";
 
-    if (strcmp(penyanyi2, "") != 0)
+    if (strCompare(penyanyi2, "") != 0)
     {
         penyanyi = concat(penyanyi, spasi);
         penyanyi = concat(penyanyi, penyanyi2);
     }
 
     printf("Daftar Album oleh %s :\n", penyanyi);
-    if (strcmp(penyanyi, "BLACKPINK") == 0)
+    if (strCompare(penyanyi, "BLACKPINK") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
     }
-    else if (strcmp(penyanyi, "Arctic Monkeys") == 0)
+    else if (strCompare(penyanyi, "Arctic Monkeys") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
     }
-    else if (strcmp(penyanyi, "NewJeans") == 0)
+    else if (strCompare(penyanyi, "NewJeans") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
     }
-    else if (strcmp(penyanyi, "Hivi!") == 0)
+    else if (strCompare(penyanyi, "Hivi!") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
     }
@@ -203,7 +203,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     akuisisiCommandWord(&nameAlbum, currentWord, 2);
     char* album2 = wordToString(nameAlbum);
     int i = 2;
-    while(strcmp(album2, "") != 0)
+    while(strCompare(album2, "") != 0)
     {
         album = concat(album, spasi);
         album = concat(album, album2);
@@ -213,59 +213,59 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     }
 
     printf("Daftar Lagu di %s:\n", album);
-    if (strcmp(album, "BORN PINK") == 0)
+    if (strCompare(album, "BORN PINK") == 0)
     {
         PrintAlbumLagu(laguAlbum, "BORN PINK");
     }
-    else if (strcmp(album, "THE ALBUM") == 0)
+    else if (strCompare(album, "THE ALBUM") == 0)
     {
         PrintAlbumLagu(laguAlbum, "THE ALBUM");
     }
-    else if (strcmp(album, "SQUARE ONE") == 0)
+    else if (strCompare(album, "SQUARE ONE") == 0)
     {
         PrintAlbumLagu(laguAlbum, "SQUARE ONE");
     }
-    else if (strcmp(album, "SQUARE TWO") == 0)
+    else if (strCompare(album, "SQUARE TWO") == 0)
     {
         PrintAlbumLagu(laguAlbum, "SQUARE TWO");
     }
-    else if (strcmp(album, "SQUARE UP") == 0)
+    else if (strCompare(album, "SQUARE UP") == 0)
     {
         PrintAlbumLagu(laguAlbum, "SQUARE UP");
     }
-    else if (strcmp(album, "Favourite Worst Nightmare") == 0)
+    else if (strCompare(album, "Favourite Worst Nightmare") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
     }
-    else if (strcmp(album, "Humbug") == 0)
+    else if (strCompare(album, "Humbug") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Humbug");
     }
-    else if (strcmp(album, "AM") == 0)
+    else if (strCompare(album, "AM") == 0)
     {
         PrintAlbumLagu(laguAlbum, "AM");
     }
-    else if (strcmp(album, "New Jeans") == 0)
+    else if (strCompare(album, "New Jeans") == 0)
     {
         PrintAlbumLagu(laguAlbum, "New Jeans");
     }
-    else if (strcmp(album, "OMG") == 0)
+    else if (strCompare(album, "OMG") == 0)
     {
         PrintAlbumLagu(laguAlbum, "OMG");
     }
-    else if (strcmp(album, "Get Up") == 0)
+    else if (strCompare(album, "Get Up") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Get Up");
     }
-    else if (strcmp(album, "CERITERA") == 0)
+    else if (strCompare(album, "CERITERA") == 0)
     {
         PrintAlbumLagu(laguAlbum, "CERITERA");
     }
-    else if (strcmp(album, "Kereta Kencan") == 0)
+    else if (strCompare(album, "Kereta Kencan") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Kereta Kencan");
     }
-    else if (strcmp(album, "Say Hi To Hivi!") == 0)
+    else if (strCompare(album, "Say Hi To Hivi!") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
     }
@@ -278,15 +278,15 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     infotype song = LaguFromAlbum(laguAlbum, album, IDsong);
 
     ElTypeQueue El;
-    El.artist = (char *)malloc(strlen(penyanyi) + 1);
-    El.album = (char *)malloc(strlen(album) + 1);
-    El.song = (char *)malloc(strlen(song) + 1);
+    El.artist = (char *)malloc(strLength(penyanyi) + 1);
+    El.album = (char *)malloc(strLength(album) + 1);
+    El.song = (char *)malloc(strLength(song) + 1);
     if (El.artist != NULL && El.album != NULL && El.song != NULL)
     {
         // Copy strings to allocated memory
-        strcpy(El.artist, penyanyi);
-        strcpy(El.album, album);
-        strcpy(El.song, song);
+        strCopy(El.artist, penyanyi);
+        strCopy(El.album, album);
+        strCopy(El.song, song);
 
         // Enqueue the element
         enqueue(Q, El);
@@ -307,26 +307,26 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     char* penyanyi2 = wordToString(namePenyanyi);
     char* spasi = " ";
 
-    if (strcmp(penyanyi2, "") != 0)
+    if (strCompare(penyanyi2, "") != 0)
     {
         penyanyi = concat(penyanyi, spasi);
         penyanyi = concat(penyanyi, penyanyi2);
     }
 
     printf("Daftar Album oleh %s :\n", penyanyi);
-    if (strcmp(penyanyi, "BLACKPINK") == 0)
+    if (strCompare(penyanyi, "BLACKPINK") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
     }
-    else if (strcmp(penyanyi, "Arctic Monkeys") == 0)
+    else if (strCompare(penyanyi, "Arctic Monkeys") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
     }
-    else if (strcmp(penyanyi, "NewJeans") == 0)
+    else if (strCompare(penyanyi, "NewJeans") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
     }
-    else if (strcmp(penyanyi, "Hivi!") == 0)
+    else if (strCompare(penyanyi, "Hivi!") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
     }
@@ -339,7 +339,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     akuisisiCommandWord(&nameAlbum, currentWord, 2);
     char* album2 = wordToString(nameAlbum);
     int i = 2;
-    while(strcmp(album2, "") != 0)
+    while(strCompare(album2, "") != 0)
     {
         album = concat(album, spasi);
         album = concat(album, album2);
@@ -349,59 +349,59 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     }
 
     printf("Daftar Lagu di %s:\n", album);
-    if (strcmp(album, "BORN PINK") == 0)
+    if (strCompare(album, "BORN PINK") == 0)
     {
         PrintAlbumLagu(laguAlbum, "BORN PINK");
     }
-    else if (strcmp(album, "THE ALBUM") == 0)
+    else if (strCompare(album, "THE ALBUM") == 0)
     {
         PrintAlbumLagu(laguAlbum, "THE ALBUM");
     }
-    else if (strcmp(album, "SQUARE ONE") == 0)
+    else if (strCompare(album, "SQUARE ONE") == 0)
     {
         PrintAlbumLagu(laguAlbum, "SQUARE ONE");
     }
-    else if (strcmp(album, "SQUARE TWO") == 0)
+    else if (strCompare(album, "SQUARE TWO") == 0)
     {
         PrintAlbumLagu(laguAlbum, "SQUARE TWO");
     }
-    else if (strcmp(album, "SQUARE UP") == 0)
+    else if (strCompare(album, "SQUARE UP") == 0)
     {
         PrintAlbumLagu(laguAlbum, "SQUARE UP");
     }
-    else if (strcmp(album, "Favourite Worst Nightmare") == 0)
+    else if (strCompare(album, "Favourite Worst Nightmare") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
     }
-    else if (strcmp(album, "Humbug") == 0)
+    else if (strCompare(album, "Humbug") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Humbug");
     }
-    else if (strcmp(album, "AM") == 0)
+    else if (strCompare(album, "AM") == 0)
     {
         PrintAlbumLagu(laguAlbum, "AM");
     }
-    else if (strcmp(album, "New Jeans") == 0)
+    else if (strCompare(album, "New Jeans") == 0)
     {
         PrintAlbumLagu(laguAlbum, "New Jeans");
     }
-    else if (strcmp(album, "OMG") == 0)
+    else if (strCompare(album, "OMG") == 0)
     {
         PrintAlbumLagu(laguAlbum, "OMG");
     }
-    else if (strcmp(album, "Get Up") == 0)
+    else if (strCompare(album, "Get Up") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Get Up");
     }
-    else if (strcmp(album, "CERITERA") == 0)
+    else if (strCompare(album, "CERITERA") == 0)
     {
         PrintAlbumLagu(laguAlbum, "CERITERA");
     }
-    else if (strcmp(album, "Kereta Kencan") == 0)
+    else if (strCompare(album, "Kereta Kencan") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Kereta Kencan");
     }
-    else if (strcmp(album, "Say Hi To Hivi!") == 0)
+    else if (strCompare(album, "Say Hi To Hivi!") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
     }
