@@ -1,7 +1,12 @@
 #ifndef stackchart_H
 #define stackchart_H
 
-#include "boolean.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../../boolean.h"
+#include "../../ADT/mesin/mesinkata.h"
+#include "../../ADT/set/set.h"
 
 #define NilStackchar -1
 #define MaxElStackchar 100

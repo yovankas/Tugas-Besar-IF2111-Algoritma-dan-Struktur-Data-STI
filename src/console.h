@@ -14,6 +14,7 @@
 #include "./ADT/penyanyi/penyanyi.h"
 #include "./ADT/string/string.h"
 #include "./ADT/queue/circular_queue.h"
+#include "./ADT/stack/stackchar.h"
 
 void quit();
 /*
@@ -42,4 +43,12 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
  * I.S. Program berjalan
  * F.S. Menambahkan sebuah lagu ke dalam queue
  */ 
+
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+/**
+ * Konstruktor
+ * I.S. Program berjalan, Queue dan History bisa saja memiliki isi ataupun kosong
+ * F.S. Memainkan lagu berdasarkan nama penyanyi, nama album, dan ID lagu
+ *      Queue dan History kosong
+ */
 #endif

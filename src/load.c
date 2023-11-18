@@ -11,6 +11,7 @@
 #include "./adt/penyanyi/penyanyi.h"
 #include "./adt/string/string.h"
 #include "./adt/queue/circular_queue.h"
+#include "./ADT/stack/stackchar.h"
 #include "console.h"
 
 int main()
@@ -72,6 +73,6 @@ int main()
     //PrintArrayPenyanyi(arrPenyanyi);
     //PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
     //PrintAlbumLagu(laguAlbum, "CERITERA");
- 
+  
     return 0;
 }
