@@ -18,6 +18,7 @@
 /* Definisi tipe elemen dan indeks pada Queue */
 typedef struct 
 {
+        int idPlaylist;
         char* artist;
         char* album;
         char* song;

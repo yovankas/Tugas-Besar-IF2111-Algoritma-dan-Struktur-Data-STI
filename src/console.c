@@ -427,6 +427,6 @@ void status(Queue *Q, Playlist *PL)
         else {
             printf("%s - %s - %s", Q.Tab[Q.idxHead].artist, Q.Tab[Q.idxHead].song, Q.Tab[Q.idxHead].album);
         }
-        printf("Queue:");
-        displayQueue(*Q);
+    printf("Queue:");
+    displayQueue(*Q);
 }
