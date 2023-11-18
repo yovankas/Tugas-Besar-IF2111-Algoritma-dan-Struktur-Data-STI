@@ -9,21 +9,21 @@
 
 #define Nil_Playlist NULL
 
-typedef Word infotype;
-typedef struct tElmtlist *address;
+// typedef Word infotype;
+typedef struct tElmtlist *addressPlaylist;
 typedef struct content{
-    infotype lagu;
-    infotype album;
-    infotype penyanyi;
+    Word lagu;
+    Word album;
+    Word penyanyi;
 } content;
 
 typedef struct tElmtlist{
     content info;
-    address next;
+    addressPlaylist next;
 } Elmtlist;
 
 typedef struct{
-    address First;
+    addressPlaylist First;
 } Playlist;
 
 /* Definisi list : */
@@ -36,27 +36,27 @@ typedef struct{
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (Playlist PL);
+boolean IsEmptyPlaylist (Playlist PL);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (Playlist *PL);
+void CreateEmptyPlaylist (Playlist *PL);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi (content val);
+addressPlaylist AlokasiPlaylist (content val);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
 /* menghasilkan P, maka info(P)=val, Next(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
-void Dealokasi (address *P);
+void DealokasiPlaylist (addressPlaylist *P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (Playlist PL, content val);
+addressPlaylist SearchinPlaylist (Playlist PL, content val);
 /* Mencari apakah ada elemen list dengan info(P)= val */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
@@ -85,19 +85,19 @@ void DelVLast (Playlist *PL, content *val);
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst (Playlist *PL, address P);
+void InsertFirst (Playlist *PL, addressPlaylist P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
-void InsertAfter (Playlist *PL, address P, address Prec);
+void InsertAfter (Playlist *PL, addressPlaylist P, addressPlaylist Prec);
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
-void InsertLast (Playlist *PL, address P);
+void InsertLast (Playlist *PL, addressPlaylist P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
-void DelFirst (Playlist *PL, address *P);
+void DelFirst (Playlist *PL, addressPlaylist *P);
 /* I.S. Playlist tidak kosong */
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
@@ -108,13 +108,13 @@ void DelP (Playlist *PL, content val);
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika tidak ada elemen list dengan info(P)=val, maka list tetap */
 /* Playlist mungkin menjadi kosong karena penghapusan */
-void DelLast (Playlist *PL, address *P);
+void DelLast (Playlist *PL, addressPlaylist *P);
 /* I.S. Playlist tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* Last element baru adalah predesesor elemen terakhir yg lama, */
 /* jika ada */
-void DelAfter (Playlist *PL, address *Pdel, address Prec);
+void DelAfter (Playlist *PL, addressPlaylist *Pdel, addressPlaylist Prec);
 /* I.S. Playlist tidak kosong. Prec adalah anggota list  */
 /* F.S. Menghapus Next(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
@@ -126,7 +126,7 @@ void PrintInfo (Playlist PL);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah terkecuali untuk newline di akhir output */
-int NbElmt (Playlist PL);
+int NbElmtPlaylist (Playlist PL);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 /****************** PROSES TERHADAP LIST ******************/

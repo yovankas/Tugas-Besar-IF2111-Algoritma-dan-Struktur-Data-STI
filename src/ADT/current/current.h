@@ -1,6 +1,7 @@
 #ifndef current_H
 #define current_H
 #include <stdio.h>
+#include <string.h>
 #include "../../boolean.h"
 #include "../string/string.h"
 
@@ -12,5 +13,7 @@ typedef struct
 } currentSong;
 
 boolean isEmptyCurrentSong(currentSong currentSong);
+
+void PrintCurrentSong(currentSong currentSong);
 
 #endif
