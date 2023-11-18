@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "playlist.h"
+#include "../../ADT/playlist/playlist.h"
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
