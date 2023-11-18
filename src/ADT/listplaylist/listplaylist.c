@@ -51,7 +51,9 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
 
 void printListPlaylist(const ListPlaylist *listPL) {
     for (arraysize i = 0; i < listPL->count; i++) {
-        printf("%d ", listPL->playlist[i]);
+        int nomor;
+        nomor = i+1;
+        printf("%d. %s ", nomor, listPL->playlist[i]);
     }
     printf("\n");
 }
