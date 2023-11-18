@@ -72,7 +72,6 @@ int main()
 
     //PrintArrayPenyanyi(arrPenyanyi);
     //PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    //PrintAlbumLagu(laguAlbum, "CERITERA");
-  
+    //PrintAlbumLagu(laguAlbum, "Get Up");
     return 0;
 }

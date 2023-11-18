@@ -3,9 +3,12 @@
 void quit()
 {
     printf("Apakah kamu ingin menyimpan data sesi sekarang? ");
-    char confirm;
-    scanf("%c", &confirm);
-    if (confirm == 'Y')
+    startInputWord();
+    Word command;
+    akuisisiCommandWord(&command, currentWord, 1);
+    char* confirm;
+    confirm = wordToString(command);
+    if (strcmp(confirm, "Y") == 0)
     {
         printf("manggil save disini\n");
         //save(); // BELUM ADA FUNCTIONNYA
@@ -290,7 +293,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     }
 }
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong)
 {
     printf("Daftar Penyanyi:\n");
     PrintArrayPenyanyi(arrPenyanyi);
@@ -413,4 +416,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     printf("Memutar lagu %s oleh %s\n", song, penyanyi);
     CreateQueue(Q);
     CreateEmptyStackChar(History);
+    currentSong.album = album;
+    currentSong.artist = penyanyi;
+    currentSong.song = song;
 }
