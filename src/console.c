@@ -421,7 +421,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     currentSong.song = song;
 }
 
-void status(Queue *Q, Playlist *PL, currentSong currentSong)
+void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist currentPlaylist)
 {
     if (Q.Tab[Q.idxHead].idPlaylist!=-1){
         printf("Current Playlist: %s", PrintCurrentPlaylist(currentPlaylist));
