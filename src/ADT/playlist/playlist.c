@@ -4,26 +4,26 @@
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty (Playlist PL){
+boolean IsEmptyPlaylist (Playlist PL){
 /* Mengirim true jika list kosong */
     return(First(PL) == Nil_Playlist);
 }
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty (Playlist *PL){
+void CreateEmptyPlaylist (Playlist *PL){
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
     First(*PL) = Nil_Playlist;
 }
 
 /****************** Manajemen Memori ******************/
-address Alokasi (content val){
+addressPlaylist AlokasiPlaylist (content val){
     /* Mengirimkan address hasil alokasi sebuah elemen */
     /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
     /* menghasilkan P, maka info(P)=val, Next(P)=Nil */
     /* Jika alokasi gagal, mengirimkan Nil */
     //KAMUS LOKAL
-    address P;
+    addressPlaylist P;
 
     //ALGORITMA
     P = (Elmtlist*) malloc (sizeof(Elmtlist));
@@ -37,20 +37,19 @@ address Alokasi (content val){
     }
 }
 
-void Dealokasi (address *P){
+void DealokasiPlaylist (addressPlaylist *P){
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
     free(*P);
 }
 
-/****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (Playlist PL, content val){
+addressPlaylist SearchinPlaylist (Playlist PL, content val){
 /* Mencari apakah ada elemen list dengan info(P)= val */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
     //KAMUS LOKAL
-    address P;
+    addressPlaylist P;
     boolean found;
 
     //ALGORITMA
@@ -77,10 +76,10 @@ void InsVFirst (Playlist *PL, content val){
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai val jika alokasi berhasil */
     //KAMUS LOKAL
-    address P;
+    addressPlaylist P;
 
     //ALGORITMA
-    P = Alokasi(val);
+    P = AlokasiPlaylist(val);
     if(P != Nil_Playlist){
         Next(P) = First(*PL);
         First(*PL) = P;
@@ -92,14 +91,14 @@ void InsVLast (Playlist *PL, content val){
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai val jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
     //KAMUS LOKAL
-    address P;
-    address last;
+    addressPlaylist P;
+    addressPlaylist last;
 
     //ALGORITMA
-    if(IsEmpty(*PL)){
+    if(IsEmptyPlaylist(*PL)){
         InsVFirst(PL, val);
     } else {
-        P = Alokasi(val);
+        P = AlokasiPlaylist(val);
         if(P != Nil_Playlist){
             last = First(*PL);
             while (Next(last) != Nil_Playlist){
@@ -116,13 +115,13 @@ void DelVFirst (Playlist *PL, content *val){
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada val */
 /*      dan alamat elemen pertama di-dealokasi */
     //KAMUS LOKAL
-    address P;
+    addressPlaylist P;
 
     //ALGORITMA
     P = First(*PL);
     *val = Info(P);
     First(*PL) = Next(P);
-    Dealokasi(&P);
+    DealokasiPlaylist(&P);
 }
 
 void DelVLast (Playlist *PL, content *val){
@@ -130,8 +129,8 @@ void DelVLast (Playlist *PL, content *val){
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada val */
 /*      dan alamat elemen terakhir di-dealokasi */
     //KAMUS LOKAL
-    address p;
-    address prev;
+    addressPlaylist p;
+    addressPlaylist prev;
 
     //ALGORITMA
     p = First(*PL);
@@ -141,17 +140,17 @@ void DelVLast (Playlist *PL, content *val){
     }
     *val = Info(p);
 
-    if(NbElmt(*PL) == 1){
+    if(NbElmtPlaylist(*PL) == 1){
         First(*PL) = Nil_Playlist;
     } else {
         Next(prev) = Nil_Playlist;
     }
-    Dealokasi(&p);
+    DealokasiPlaylist(&p);
 }
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst (Playlist *PL, address P){
+void InsertFirst (Playlist *PL, addressPlaylist P){
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
     //ALGORITMA
@@ -161,7 +160,7 @@ void InsertFirst (Playlist *PL, address P){
     }
 }
 
-void InsertAfter (Playlist *PL, address P, address Prec){
+void InsertAfter (Playlist *PL, addressPlaylist P, addressPlaylist Prec){
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
@@ -172,14 +171,14 @@ void InsertAfter (Playlist *PL, address P, address Prec){
     }
 }
 
-void InsertLast (Playlist *PL, address P){
+void InsertLast (Playlist *PL, addressPlaylist P){
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
     // KAMUS LOKAL
-    address last;
+    addressPlaylist last;
 
     // ALGORITMA
-    if (IsEmpty(*PL)){
+    if (IsEmptyPlaylist(*PL)){
         InsertFirst(PL, P);
     } else {
         if (last != Nil_Playlist) {
@@ -193,7 +192,7 @@ void InsertLast (Playlist *PL, address P){
 }
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
-void DelFirst (Playlist *PL, address *P){
+void DelFirst (Playlist *PL, addressPlaylist *P){
 /* I.S. Playlist tidak kosong */
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
@@ -209,8 +208,8 @@ void DelP (Playlist *PL, content val){
 /* Jika tidak ada elemen list dengan info(P)=val, maka list tetap */
 /* Playlist mungkin menjadi kosong karena penghapusan */
     // KAMUS LOKAL
-    address prev;
-    address last;
+    addressPlaylist prev;
+    addressPlaylist last;
 
     // ALGORITMA
     last = First(*PL);
@@ -226,18 +225,18 @@ void DelP (Playlist *PL, content val){
     else{
         Next(prev) = Next(last);
     }
-    Dealokasi(&last);
+    DealokasiPlaylist(&last);
 }
 
-void DelLast (Playlist *PL, address *P){
+void DelLast (Playlist *PL, addressPlaylist *P){
 /* I.S. Playlist tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* Last element baru adalah predesesor elemen terakhir yg lama, */
 /* jika ada */
     // KAMUS LOKAL
-    address last;
-    address prev;
+    addressPlaylist last;
+    addressPlaylist prev;
 
     // ALGORITMA
     last = First(*PL);
@@ -247,14 +246,14 @@ void DelLast (Playlist *PL, address *P){
     }
     *P = last;
 
-    if (NbElmt(*PL) == 1){
+    if (NbElmtPlaylist(*PL) == 1){
         First(*PL) = Nil_Playlist;
     } else {
         Next(prev) = Nil_Playlist;
     }
 }
 
-void DelAfter (Playlist *PL, address *Pdel, address Prec){
+void DelAfter (Playlist *PL, addressPlaylist *Pdel, addressPlaylist Prec){
 /* I.S. Playlist tidak kosong. Prec adalah anggota list  */
 /* F.S. Menghapus Next(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
@@ -270,10 +269,10 @@ void PrintInfo (Playlist PL){
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah terkecuali untuk newline di akhir output */
     // KAMUS LOKAL
-    address p;
+    addressPlaylist p;
 
     // ALGORITMA
-    if (IsEmpty(PL)){
+    if (IsEmptyPlaylist(PL)){
         printf("[]\n");
     } else {
         p = First(PL);
@@ -289,11 +288,11 @@ void PrintInfo (Playlist PL){
         }
     }
 }
-int NbElmt (Playlist PL){
+int NbElmtPlaylist (Playlist PL){
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
     // KAMUS LOKAL
     int cnt = 0;
-    address p;
+    addressPlaylist p;
     
     // ALGORITMA
     p = First(PL);
@@ -312,7 +311,7 @@ void InversList (Playlist *PL){
 /* Elemen terakhir menjadi elemen pertama, dan seterusnya. */
 /* Membalik elemen list, tanpa melakukan alokasi/dealokasi. */
     // KAMUS LOKAL
-    address p, prev, last;
+    addressPlaylist p, prev, last;
 
     // ALGORITMA
     p = First(*PL);
@@ -335,10 +334,10 @@ void Konkat1 (Playlist *PL1, Playlist *PL2, Playlist *PL3){
 /* dan PL1 serta PL2 menjadi list kosong.*/
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
     // KAMUS LOKAL
-    address last;
+    addressPlaylist last;
 
     // ALGORITMA
-    if (IsEmpty(*PL1)){
+    if (IsEmptyPlaylist(*PL1)){
         First(*PL3) = First(*PL2);
     } else {
         First(*PL3) = First(*PL1);

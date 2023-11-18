@@ -3,9 +3,12 @@
 void quit()
 {
     printf("Apakah kamu ingin menyimpan data sesi sekarang? ");
-    char confirm;
-    scanf("%c", &confirm);
-    if (confirm == 'Y')
+    startInputWord();
+    Word command;
+    akuisisiCommandWord(&command, currentWord, 1);
+    char* confirm;
+    confirm = wordToString(command);
+    if (strcmp(confirm, "Y") == 0)
     {
         printf("manggil save disini\n");
         //save(); // BELUM ADA FUNCTIONNYA
@@ -290,7 +293,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     }
 }
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong)
 {
     printf("Daftar Penyanyi:\n");
     PrintArrayPenyanyi(arrPenyanyi);
@@ -413,19 +416,24 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     printf("Memutar lagu %s oleh %s\n", song, penyanyi);
     CreateQueue(Q);
     CreateEmptyStackChar(History);
+    currentSong.album = album;
+    currentSong.artist = penyanyi;
+    currentSong.song = song;
 }
 
-void status(Queue *Q, Playlist *PL)
+void status(Queue *Q, Playlist *PL, currentSong currentSong)
 {
-    if (!IsEmpty(*PL)){
+    if (!IsEmptyPlaylist(*PL)){
         printf("Current Playlist: %s", Info(First(*PL))); 
     }
     printf("Now Playing:");
-        if(IsEmpty(*Q)){
+        if(isEmptyCurrentSong(currentSong))
+        {
             printf("No songs have been played yet. Please search for a song to begin playback.");
         }
-        else {
-            printf("%s - %s - %s", Q.Tab[Q.idxHead].artist, Q.Tab[Q.idxHead].song, Q.Tab[Q.idxHead].album);
+        else 
+        {
+            PrintCurrentSong(currentSong);
         }
     printf("Queue:");
     displayQueue(*Q);

@@ -15,7 +15,8 @@
 #include "./ADT/string/string.h"
 #include "./ADT/queue/circular_queue.h"
 #include "./ADT/stack/stackchar.h"
-#include "./ADT/playlist/playlist.h""
+#include "./ADT/playlist/playlist.h"
+#include "./ADT/current/current.h"
 
 void quit();
 /*
@@ -45,7 +46,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
  * F.S. Menambahkan sebuah lagu ke dalam queue
  */ 
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong);
 /**
  * Konstruktor
  * I.S. Program berjalan, Queue dan History bisa saja memiliki isi ataupun kosong
@@ -53,7 +54,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
  *      Queue dan History kosong
  */
 
- void status(Queue *Q, Playlist *PL);
+void status(Queue *Q, Playlist *PL, currentSong currentSong);
  /**
  * Konstruktor
  * I.S. Program berjalan, Queue dan Playlist mungkin kosong
