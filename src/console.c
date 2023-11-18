@@ -293,7 +293,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     }
 }
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong)
 {
     printf("Daftar Penyanyi:\n");
     PrintArrayPenyanyi(arrPenyanyi);
@@ -416,6 +416,9 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     printf("Memutar lagu %s oleh %s\n", song, penyanyi);
     CreateQueue(Q);
     CreateEmptyStackChar(History);
+    currentSong.album = album;
+    currentSong.artist = penyanyi;
+    currentSong.song = song;
 }
 
 void status(Queue *Q, Playlist *PL)
