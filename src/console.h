@@ -82,13 +82,8 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu);
  */
 
 
-<<<<<<< Updated upstream
-void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
- /*
-=======
 void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong);
  /**
->>>>>>> Stashed changes
  * Konstruktor
  * I.S. Program berjalan, queue mungkin kosong
  * F.S. Memutar lagu selanjutnya 

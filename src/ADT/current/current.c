@@ -35,13 +35,6 @@ void PlayCurrentSong(currentSong currentSong)
 
 void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q)
 {
-<<<<<<< Updated upstream
-    printf("Memutar lagu selanjutnya");
-    printf("“%s” oleh “%s”\n", nextSong.song, nextSong.artist);
-    currentSong.album = nextSong.album;
-    currentSong.artist = nextSong.artist;
-    currentSong.song = nextSong.song;
-=======
     printf("Memutar lagu selanjutnya ");
     nextSong->song = Q->Tab[Q->idxHead].song;
     nextSong->artist = Q->Tab[Q->idxHead].artist;
@@ -52,7 +45,6 @@ void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q)
     currentSong->song = nextSong->song;
     printf("%s oleh %s\n", currentSong->song, currentSong->artist);
     ReplaceNextSong(nextSong, Q);
->>>>>>> Stashed changes
 }
 
 void ReplayCurrentSong(currentSong currentSong)
