@@ -17,6 +17,7 @@
 #include "./ADT/stack/stackchar.h"
 #include "./ADT/playlist/playlist.h"
 #include "./ADT/current/current.h"
+#include "./ADT/listplaylist/listplaylist.h"
 
 void Delay (unsigned int Sec);
 
@@ -84,5 +85,11 @@ void songPrevious(Queue *Q, StackChar *History, currentSong currentSong);
  * I.S. Program berjalan, history mungkin kosong
  * F.S. Memutar lagu sebelumnya  
         Jika history kosong maka diputar current song
+*/
+
+void CreatePlaylist(ListPlaylist listPL, Playlist PL);
+/**
+ * I.S. Listplaylist masih seperti sebelum
+ * F.S. Membuat playlist baru dan menambahkannya ke list playlist
 */
 #endif
