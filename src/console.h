@@ -52,7 +52,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
  * F.S. Menambahkan sebuah lagu ke dalam queue
  */ 
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong);
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong *currentSong);
 /**
  * Konstruktor
  * I.S. Program berjalan, Queue dan History bisa saja memiliki isi ataupun kosong
@@ -82,8 +82,8 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu);
  */
 
 
-void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
- /*
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong);
+ /**
  * Konstruktor
  * I.S. Program berjalan, queue mungkin kosong
  * F.S. Memutar lagu selanjutnya 

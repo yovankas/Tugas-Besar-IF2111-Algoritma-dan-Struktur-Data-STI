@@ -6,7 +6,7 @@ ListPlaylist initListPlaylist() {
     ListPlaylist listPL;
     listPL.playlist = (infotypePlaylist*)malloc(InitialSizeListPL * sizeof(infotypePlaylist));
     if (listPL.playlist == NULL) {
-        fprintf(stderr, "Memory allocation error\n");
+        fprintf(stderr, "Memory allocation error for playlist\n");
         exit(EXIT_FAILURE);
     }
     listPL.capacity = InitialSizeListPL;
@@ -14,12 +14,12 @@ ListPlaylist initListPlaylist() {
     return listPL;
 }
 
-void addElmt(ListPlaylist *listPL, infotypePlaylist value) {
+void addElement(ListPlaylist *listPL, infotypePlaylist value) {
     if (listPL->count == listPL->capacity) {
         listPL->capacity *= 2;
         listPL->playlist = (infotypePlaylist*)realloc(listPL->playlist, listPL->capacity * sizeof(infotypePlaylist));
         if (listPL->playlist == NULL) {
-            fprintf(stderr, "Memory reallocation error\n");
+            fprintf(stderr, "Memory reallocation error for playlist\n");
             exit(EXIT_FAILURE);
         }
     }
@@ -27,7 +27,7 @@ void addElmt(ListPlaylist *listPL, infotypePlaylist value) {
     listPL->count++;
 }
 
-// Rest of the functions remain the same.
+// Rest of the functions remain the same with updated names.
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
     if (index >= listPL->count) {

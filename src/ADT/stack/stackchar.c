@@ -128,5 +128,5 @@ Stackchar MergeStackChar(Stackchar s1, Stackchar s2)
 void PlayPrevSong(Stackchar History)
 {
     printf("Memutar lagu sebelumnya");
-    printf("%s\n", History.T[TopStackchar(History)]);
+    printf("“%s” oleh “%s”\n", History.T[TopStackchar(History)].song, History.T[TopStackchar(History)].artist);
 }

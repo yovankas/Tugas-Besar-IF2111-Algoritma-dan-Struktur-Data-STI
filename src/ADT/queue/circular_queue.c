@@ -107,12 +107,12 @@ void displayQueue(Queue Q){
     else {
         if (Q.idxHead <= Q.idxTail) 
         {
-            for (i = Q.idxHead+1; i <= Q.idxTail; i++) 
+            for (i = Q.idxHead; i <= Q.idxTail; i++) 
             {
                 printf("%d. %s - %s - %s\n", i-Q.idxHead+1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
         } else {
-            for (i = Q.idxHead+1; i < (IDX_MAX + 1); i++) {
+            for (i = Q.idxHead; i < (IDX_MAX + 1); i++) {
                 printf("%d. %s - %s - %s\n", i-Q.idxHead+1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
             for (i = 0; i <= Q.idxTail; i++) {

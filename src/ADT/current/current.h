@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "../../boolean.h"
 #include "../string/string.h"
+#include "../queue/circular_queue.h"
 
 typedef struct 
 {
@@ -23,6 +24,10 @@ typedef struct
         char* playlist;
 } currentPlaylist;
 
+void CreateEmptyCurrentSong (currentSong *currentSong);
+
+void CreateEmptyCurrentPlaylist (currentPlaylist *currentPlaylist);
+
 void PrintCurrentPlaylist(currentPlaylist currentPlaylist);
 // Mengembalikan playlist yang sedang diputar
 
@@ -35,10 +40,12 @@ void PrintCurrentSong(currentSong currentSong);
 void PlayCurrentSong(currentSong currentSong);
 // Memutar current song
 
-void PlayNextSong(nextSong nextSong, currentSong currentSong);
+void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q);
 // Memutar next song
 
 void ReplayCurrentSong(currentSong currentSong);
 // Memutar kembali current song
+
+void ReplaceNextSong(nextSong *nextSong, Queue *Q);
 
 #endif

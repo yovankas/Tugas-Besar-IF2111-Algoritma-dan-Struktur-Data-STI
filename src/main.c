@@ -11,6 +11,15 @@ int main()
     Album laguAlbum;
     Set lagu;
     Queue Q;
+    Playlist playlistLagu;
+    Stackchar History;
+    currentSong currentSong;
+    currentPlaylist currentPlaylist;
+    nextSong nextSong;
+    CreateEmptyCurrentPlaylist(&currentPlaylist);
+    CreateEmptyCurrentSong(&currentSong);
+    CreateEmptyStackChar(&History);
+    CreateEmptyPlaylist(&playlistLagu);
     CreateQueue(&Q);
     CreateArray(&arrPenyanyi);
     CreateArray(&arrAlbum);
@@ -130,7 +139,7 @@ int main()
         }
         else if(strCompare(com, "PLAY SONG") == 0)
         {
-            printf("manggil play song\n");
+            playSong(&Q, &History, arrPenyanyi, albumPenyanyi, laguAlbum, &currentSong);
         }
         else if(strCompare(com, "PLAY PLAYLIST") == 0)
         {
@@ -139,7 +148,6 @@ int main()
         else if(strCompare(com, "QUEUE SONG") == 0)
         {
             queueSong(&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
-            displayQueue(Q);
         }
         else if(strCompare(com, "QUEUE SWAP") == 0)
         {
@@ -155,7 +163,7 @@ int main()
         }
         else if(strCompare(com, "SONG NEXT") == 0)
         {
-            printf("manggil song next\n");
+            songNext(&Q, &currentSong, &nextSong);
         }
         else if(strCompare(com, "SONG PREVIOUS") == 0)
         {
@@ -179,7 +187,7 @@ int main()
         }
         else if(strCompare(com, "STATUS") == 0)
         {
-            printf("manggil status\n");
+            status(&Q, &playlistLagu, currentSong, currentPlaylist);
         }
         else if(strCompare(com, "QUIT") == 0)
         {

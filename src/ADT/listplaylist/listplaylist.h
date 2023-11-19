@@ -1,5 +1,5 @@
-#ifndef LIST_PLAYLIST_H
-#define LIST_PLAYLIST_H
+#ifndef LISTPLAYLIST_H
+#define LISTPLAYLIST_H
 
 #include <stdlib.h>
 
@@ -7,17 +7,18 @@
 
 typedef char* infotypePlaylist;
 typedef int arraysize;
+
 typedef struct {
-    infotypePlaylist* playlist; // Use infotypePlaylist* for an array
+    infotypePlaylist* playlist;
     arraysize count;
     arraysize capacity;
 } ListPlaylist;
 
 ListPlaylist initListPlaylist();
 
-void CreateEmptyListPlaylist(ListPlaylist *listPL);
+// void createEmptyListPlaylist(ListPlaylist *listPL);
 
-void addElmt(ListPlaylist *listPL, infotypePlaylist value);
+void addElement(ListPlaylist *listPL, infotypePlaylist value);
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index);
 
