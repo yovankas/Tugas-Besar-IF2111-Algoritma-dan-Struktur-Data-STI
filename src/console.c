@@ -575,7 +575,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     } 
     else if(countChar == 3)
     {
-        addElmt(listPL, listPLinput);
+        addElement(listPL, listPLinput);
         PL.namePL = listPLinput;
         printf("Playlist %s berhasil dibuat!", &listPLinput);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
@@ -585,7 +585,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
 void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylist idxlagu2){
     Playlist *chosenPlaylist;
     arraysize idPLinput;
-    chosenPlaylist = listPL->playlist[idPLinput];
+    chosenPlaylist->namePL = listPL->playlist[idPLinput];
     SwapSongsinPlaylist(chosenPlaylist, idxlagu1, idxlagu2);
 }
 
