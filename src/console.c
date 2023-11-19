@@ -350,7 +350,7 @@ void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguA
     }
 }
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong currentSong)
+void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong *currentSong)
 {
     printf("Daftar Penyanyi:\n");
     PrintArrayPenyanyi(arrPenyanyi);
@@ -473,9 +473,9 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     printf("Memutar lagu %s oleh %s\n", song, penyanyi);
     CreateQueue(Q);
     CreateEmptyStackChar(History);
-    currentSong.album = album;
-    currentSong.artist = penyanyi;
-    currentSong.song = song;
+    (*currentSong).album = album;
+    (*currentSong).artist = penyanyi;
+    (*currentSong).song = song;
 }
 
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist)
@@ -484,9 +484,10 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
     {
         printf("Current Playlist: ");
         PrintCurrentPlaylist(currentPlaylist);
+        printf("\n");
     }
     
-    printf("Now Playing:");
+    printf("Now Playing: ");
         if(isEmptyCurrentSong(currentSong))
         {
             printf("No songs have been played yet. Please search for a song to begin playback.");
@@ -495,8 +496,10 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
         {
             PrintCurrentSong(currentSong);
         }
-    printf("Queue:");
+        printf("\n");
+    printf("Queue: ");
     displayQueue(*Q);
+    printf("\n");
 }
 
 void listPlaylist(ListPlaylist listPL)
@@ -515,13 +518,13 @@ void queuePlaylist (Queue *Q, Playlist *playlistLagu)
     // infotype playlist  
 }
 
-void songNext(Queue *Q, currentSong currentSong, nextSong nextSong)
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong)
 {
     if (IsEmptyQueue(*Q)) {
-        PlayCurrentSong(currentSong);
+        PlayCurrentSong(*currentSong);
     }
     else {
-        PlayNextSong(nextSong, currentSong);
+        PlayNextSong(nextSong, currentSong, Q);
     }
 }
 
@@ -572,7 +575,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     } 
     else if(countChar == 3)
     {
-        addElmt(listPL, listPLinput);
+        addElement(listPL, listPLinput);
         printf("Playlist %s berhasil dibuat!", &listPLinput);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
     }
