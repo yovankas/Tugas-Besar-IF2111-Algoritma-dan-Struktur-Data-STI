@@ -1,19 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "boolean.h"
-#include "./adt/array/array.h"
-#include "./adt/word/word.h"
-#include "./adt/mesin/mesinkata.h"
-#include "./adt/mesin/mesinkarakter.h"
-#include "./adt/set/set.h"
-#include "./adt/album/album.h"
-#include "./adt/penyanyi/penyanyi.h"
-#include "./adt/string/string.h"
-#include "./adt/queue/circular_queue.h"
-#include "./ADT/stack/stackchar.h"
-#include "console.h"
+#include "load.h"
 
-int main()
+void load()
 {
     Array arrPenyanyi = CreateArray();
     Array arrAlbum = CreateArray();
@@ -68,17 +55,4 @@ int main()
         }
         ADVWORD();
     }
-
-    PrintArrayPenyanyi(arrPenyanyi);
-    PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    PrintAlbumLagu(laguAlbum, "Get Up");
-    
-    Queue Q;
-    CreateQueue(&Q);
-    Stackchar Hist;
-    CreateEmptyStackChar(&Hist);
-    queueSong (&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
-    displayQueue(Q);
-
-    return 0;
 }

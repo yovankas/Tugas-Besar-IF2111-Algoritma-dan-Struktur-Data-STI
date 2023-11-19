@@ -423,8 +423,10 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
 
 void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist currentPlaylist)
 {
-    if (Q.Tab[Q.idxHead].idPlaylist! = -1){
-        printf("Current Playlist: %s", PrintCurrentPlaylist(currentPlaylist));
+    if(Q->Tab[Q->idxHead].idPlaylist != (-1))
+    {
+        printf("Current Playlist: ");
+        PrintCurrentPlaylist(currentPlaylist);
     }
     
     printf("Now Playing:");
@@ -443,14 +445,14 @@ void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist cur
 void queuePlaylist (Queue *Q, Playlist playlistlagu)
 {
     printf("Masukkan ID Playlist: ");
-    StartInputWord();
-    Word IDplaylist;
-    akuisisiCommandWord(&IDplaylist, CurrentWord, 1);
-    int IDplaylist = wordToInt(IDplaylist);
-    infotype playlist = 
+    startInputWord();
+    Word IDplaylistWord;
+    akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
+    int IDplaylist = wordToInt(IDplaylistWord);
+    // infotype playlist  
 }
 
-void songNext(Queue *Q, )
+void songNext(Queue *Q, currentSong currentSong)
 {
     if (IsEmptyQueue(*Q)) {
         PlayCurrentSong(currentSong);

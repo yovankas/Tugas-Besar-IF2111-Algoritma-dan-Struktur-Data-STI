@@ -55,7 +55,7 @@ addressPlaylist SearchinPlaylist (Playlist PL, content val){
     //ALGORITMA
     P = First(PL);
     while(P != Nil_Playlist && !found){
-        if(strCompare(Info(P).lagu, val.lagu) && strCompare(Info(P).album, val.album) && strCompare(Info(P).penyanyi, val.penyanyi)){
+        if(strCompare(Info(P).lagu, val.lagu) == 0 && strCompare(Info(P).album, val.album) == 0 && strCompare(Info(P).penyanyi, val.penyanyi) == 0){
             found = true;
         } else {
             P = Next(P);
