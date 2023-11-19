@@ -16,6 +16,6 @@
 #include "./ADT/stack/stackchar.h"
 #include "console.h"
 
-void load();
+void load(char* namafile,Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
 
 #endif

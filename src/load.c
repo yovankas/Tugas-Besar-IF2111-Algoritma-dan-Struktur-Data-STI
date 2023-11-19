@@ -1,17 +1,8 @@
 #include "load.h"
 
-void load()
+void load(char* namafile,Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu)
 {
-    Array arrPenyanyi = CreateArray();
-    Array arrAlbum = CreateArray();
-    Penyanyi albumPenyanyi = CreateEmptyPenyanyi();
-    Album laguAlbum;
-    Set lagu;
-    CreateArray(&arrPenyanyi);
-    CreateArray(&arrAlbum);
-    CreateEmptyAlbum(&laguAlbum);
-
-    STARTWORD("data/default.txt");
+    STARTWORD(concat("data/", namafile));
 
     if (!EOP)
     {
@@ -25,7 +16,7 @@ void load()
             //printf("Indeks: %d\n", i);
             int countAlbum = wordToInt(ambilKataKe(currentWord, 1));
             char *namaPenyanyi = wordToString(ambilMulaiKataKe(currentWord, 2));
-            SetEl(&arrPenyanyi, i, namaPenyanyi);
+            SetEl(arrPenyanyi, i, namaPenyanyi);
 
             //printf("Penyanyi: %s\n", namaPenyanyi);
 
@@ -35,23 +26,23 @@ void load()
                 ADVWORD();
                 int countLagu = wordToInt(ambilKataKe(currentWord, 1));
                 char *namaAlbum = wordToString(ambilMulaiKataKe(currentWord, 2));
-                SetEl(&arrAlbum, j, namaAlbum);
+                SetEl(arrAlbum, j, namaAlbum);
 
                 //printf("Album: %s\n", namaAlbum);
                 // Bikin set buat semua lagu dalam satu album
                 //printf("Jumlah Lagu: ");
                 //printf("%d\n", countLagu);
-                CreateEmptySet(&lagu);
+                CreateEmptySet(lagu);
                 for (int k = 0; k < countLagu; k++)
                 {
                     ADVWORD();
                     char *namaLagu = wordToString(currentWord);
                     //printf("Lagu: %s\n", namaLagu);
-                    InsertSet(&lagu, namaLagu);
+                    InsertSet(lagu, namaLagu);
                 }
-                InsertInAlbum(&laguAlbum, namaAlbum, lagu);
+                InsertInAlbum(laguAlbum, namaAlbum, *lagu);
             }
-            InsertInPenyanyi(&albumPenyanyi, namaPenyanyi, arrAlbum);
+            InsertInPenyanyi(albumPenyanyi, namaPenyanyi, *arrAlbum);
         }
         ADVWORD();
     }
