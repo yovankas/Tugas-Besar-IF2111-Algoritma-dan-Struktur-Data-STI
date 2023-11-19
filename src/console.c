@@ -1,8 +1,15 @@
 #include "console.h"
 
+void Delay (unsigned int Sec)
+{
+       clock_t ticks1 = clock(), ticks2 = ticks1;
+       while ( ( ticks2/CLOCKS_PER_SEC - ticks1/CLOCKS_PER_SEC ) < Sec)
+           ticks2 = clock();
+}
+
 void quit()
 {
-    printf("Apakah kamu ingin menyimpan data sesi sekarang? ");
+    printf("Apakah kamu ingin menyimpan data sesi sekarang?(Y/N) ");
     startInputWord();
     Word command;
     akuisisiCommandWord(&command, currentWord, 1);
@@ -90,6 +97,14 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
         {
             PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
         }
+        else if (strCompare(com, "NewJeans") == 0)
+        {
+            PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
+        }
+        else if (strCompare(com, "Hivi!") == 0)
+        {
+            PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
+        }
         else 
         {
             wrong = true;
@@ -135,6 +150,18 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
                 {
                     PrintAlbumLagu(laguAlbum, "THE ALBUM");
                 }
+                else if (strCompare(com, "SQUARE ONE") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "SQUARE ONE");
+                }
+                else if (strCompare(com, "SQUARE TWO") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "SQUARE TWO");
+                }
+                else if (strCompare(com, "SQUARE UP") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "SQUARE UP");
+                }
                 else if (strCompare(com, "Favourite Worst Nightmare") == 0)
                 {
                     PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
@@ -147,6 +174,30 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
                 {
                     PrintAlbumLagu(laguAlbum, "AM");
                 }
+                else if (strCompare(com, "New Jeans") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "New Jeans");
+                }
+                else if (strCompare(com, "OMG") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "OMG");
+                }
+                else if (strCompare(com, "Get Up") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "Get Up");
+                }
+                else if (strCompare(com, "CERITERA") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "CERITERA");
+                }
+                else if (strCompare(com, "Kereta Kencan") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "Kereta Kencan");
+                }
+                else if (strCompare(com, "Say Hi To Hivi!") == 0)
+                {
+                    PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
+                }
                 else 
                 {
                     wrong = true;
@@ -154,7 +205,6 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
             }
         }
     }
-
 }
 
 void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)

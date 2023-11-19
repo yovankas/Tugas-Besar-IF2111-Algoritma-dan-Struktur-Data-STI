@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-// #include <string.h>
+#include <time.h>
 #include "./boolean.h"
 #include "./ADT/array/array.h"
 #include "./ADT/word/word.h"
@@ -17,6 +17,8 @@
 #include "./ADT/stack/stackchar.h"
 #include "./ADT/playlist/playlist.h"
 #include "./ADT/current/current.h"
+
+void Delay (unsigned int Sec);
 
 void quit();
 /*
