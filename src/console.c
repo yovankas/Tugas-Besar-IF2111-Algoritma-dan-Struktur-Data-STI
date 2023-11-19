@@ -573,6 +573,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     else if(countChar == 3)
     {
         addElmt(listPL, listPLinput);
+        PL.namePL = listPLinput;
         printf("Playlist %s berhasil dibuat!", &listPLinput);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
     }

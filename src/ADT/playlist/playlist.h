@@ -9,6 +9,7 @@
 
 #define Nil_Playlist NULL
 
+typedef char *name;
 typedef char *infotype;
 typedef struct tElmtlist *addressPlaylist;
 typedef struct content{
@@ -23,6 +24,7 @@ typedef struct tElmtlist{
 } Elmtlist;
 
 typedef struct{
+    name namePL;
     addressPlaylist First;
 } Playlist;
 
