@@ -71,7 +71,8 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu);
  * F.S. Menambahkan playlist ke dalam queue
  */
 
- void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
+
+void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
  /**
  * Konstruktor
  * I.S. Program berjalan, queue mungkin kosong
@@ -79,7 +80,7 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu);
         Jika queue kosong maka diputar current song
 */
 
-void songPrevious(Queue *Q, StackChar *History, currentSong currentSong);
+void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong);
 /**
  * Konstruktor
  * I.S. Program berjalan, history mungkin kosong

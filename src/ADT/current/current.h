@@ -35,7 +35,7 @@ void PrintCurrentSong(currentSong currentSong);
 void PlayCurrentSong(currentSong currentSong);
 // Memutar current song
 
-void PlayNextSong(nextSong nextSong);
+void PlayNextSong(nextSong nextSong, currentSong currentSong);
 // Memutar next song
 
 void ReplayCurrentSong(currentSong currentSong);

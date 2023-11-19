@@ -130,7 +130,8 @@ int main()
         }
         else if(strCompare(com, "QUEUE SONG") == 0)
         {
-            printf("manggil queue song\n");
+            queueSong(&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
+            displayQueue(Q);
         }
         else if(strCompare(com, "QUEUE SWAP") == 0)
         {

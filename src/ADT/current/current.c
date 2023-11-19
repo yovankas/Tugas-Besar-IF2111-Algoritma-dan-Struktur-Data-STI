@@ -21,10 +21,13 @@ void PlayCurrentSong(currentSong currentSong)
     printf("%s oleh %s\n", currentSong.song, currentSong.artist);
 }
 
-void PlayNextSong(nextSong nextSong)
+void PlayNextSong(nextSong nextSong, currentSong currentSong)
 {
     printf("Memutar lagu selanjutnya");
     printf("%s oleh %s\n", nextSong.song, nextSong.artist);
+    currentSong.album = nextSong.album;
+    currentSong.artist = nextSong.artist;
+    currentSong.song = nextSong.song;
 }
 
 void ReplayCurrentSong(currentSong currentSong)
