@@ -9,7 +9,7 @@ typedef struct {
     char* *playlist;
     arraysize count;
     arraysize capacity;
-    arraysize idx;
+    arraysize idxElmt[count];
 } ListPlaylist;
 
 void initListPlaylist(ListPlaylist *listPL, arraysize initialCapacity);
