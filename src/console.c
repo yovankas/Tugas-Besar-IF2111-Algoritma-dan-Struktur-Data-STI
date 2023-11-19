@@ -421,7 +421,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
     currentSong.song = song;
 }
 
-void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist currentPlaylist)
+void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist)
 {
     if(Q->Tab[Q->idxHead].idPlaylist != (-1))
     {
@@ -442,7 +442,7 @@ void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist cur
     displayQueue(*Q);
 }
 
-void queuePlaylist (Queue *Q, Playlist playlistlagu)
+void queuePlaylist (Queue *Q, Playlist *playlistLagu)
 {
     printf("Masukkan ID Playlist: ");
     startInputWord();
@@ -452,12 +452,19 @@ void queuePlaylist (Queue *Q, Playlist playlistlagu)
     // infotype playlist  
 }
 
-void songNext(Queue *Q, currentSong currentSong)
+void songNext(Queue *Q, currentSong currentSong, nextSong nextSong)
 {
     if (IsEmptyQueue(*Q)) {
         PlayCurrentSong(currentSong);
     }
     else {
-        printf("Memutar lagu selanjutnya");
+        PlayNextSong(nextSong);
+    }
+}
+
+void songPrevious(Queue *Q, StackChar *History, currentSong currentSong)
+{
+    if (IsEmptyStackChar(*S)) {
+        ReplayCurrentSong(currentSong currentSong);
     }
 }

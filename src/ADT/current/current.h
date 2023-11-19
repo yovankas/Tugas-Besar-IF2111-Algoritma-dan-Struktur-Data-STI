@@ -17,11 +17,21 @@ typedef struct
 } currentPlaylist;
 
 void PrintCurrentPlaylist(currentPlaylist currentPlaylist);
+// Mengembalikan playlist yang sedang diputar
 
 boolean isEmptyCurrentSong(currentSong currentSong);
+// Memeriksa apakah ada lagu yang sedang diputar
 
 void PrintCurrentSong(currentSong currentSong);
+// Mengembalikan lagu yang sedang diputar
 
 void PlayCurrentSong(currentSong currentSong);
+// Memutar current song
+
+void PlayNextSong(nextSong nextSong);
+// Memutar next song
+
+void ReplayCurrentSong(currentSong currentSong);
+// Memutar kembali current song
 
 #endif

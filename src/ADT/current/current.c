@@ -20,3 +20,16 @@ void PlayCurrentSong(currentSong currentSong)
     printf("Queue kosong, memutar kembali lagu");
     printf("%s oleh %s\n", currentSong.song, currentSong.artist);
 }
+
+void PlayNextSong(nextSong nextSong)
+{
+    printf("Memutar lagu selanjutnya");
+    printf("%s oleh %s\n", nextSong.song, nextSong.artist);
+}
+
+void ReplayCurrentSong(currentSong currentSong)
+{
+    printf("Riwayat lagu kosong, memutar kembali lagu");
+    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
+}
+

@@ -12,14 +12,14 @@
 #define MaxElStackchar 100
 /* Nil adalah stack dengan elemen kosong . */
 
-typedef char *infotypeStackchar;
+typedef infotypeStackchar ElTypeStackchar;
 typedef int address; /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct
 {
-  infotypeStackchar T[MaxElStackchar]; /* tabel penyimpan elemen */
+  ElTypeStackchar T[MaxElStackchar]; /* tabel penyimpan elemen */
   address TOPSTACKCHAR;                /* alamat TOP: elemen puncak */
 } Stackchar;
 /* Definisi stack S kosong : S.TOP = Nil */

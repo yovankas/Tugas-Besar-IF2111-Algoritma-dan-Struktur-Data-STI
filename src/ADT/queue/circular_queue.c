@@ -100,23 +100,23 @@ void displayQueue(Queue Q){
     // ALGORITMA
     if (Q.idxHead == IDX_UNDEF && Q.idxTail == IDX_UNDEF) {
         printf("Your queue is empty.\n");
-    } else {
+    } 
+    else if (Q.idxHead == IDX_UNDEF) {
+        printf("Your queue is empty.\n");
+    }
+    else {
         if (Q.idxHead <= Q.idxTail) 
         {
-            for (i = Q.idxHead; i <= Q.idxTail; i++) 
+            for (i = Q.idxHead+1; i <= Q.idxTail; i++) 
             {
-                printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+                printf("%d. %s - %s - %s\n", i-Q.idxHead+1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
         } else {
-            for (i = Q.idxHead; i < (IDX_MAX + 1); i++) {
-                printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+            for (i = Q.idxHead+1; i < (IDX_MAX + 1); i++) {
+                printf("%d. %s - %s - %s\n", i-Q.idxHead+1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
             for (i = 0; i <= Q.idxTail; i++) {
-                if (i == Q.idxTail) {
-                    printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
-                } else {
-                    printf("%s - %s - %s\n", Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
-                }
+                printf("%d. %s - %s - %s\n", IDX_MAX-Q.idxHead+i+1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
         }
     }

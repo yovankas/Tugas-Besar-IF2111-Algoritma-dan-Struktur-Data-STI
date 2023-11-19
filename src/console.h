@@ -54,10 +54,33 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
  *      Queue dan History kosong
  */
 
-void status(Queue *Q, Playlist *PL, currentSong currentSong, currentPlaylist currentPlaylist);
+void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist);
  /**
  * Konstruktor
  * I.S. Program berjalan, Queue dan Playlist mungkin kosong
  * F.S. Menampilkan current playlist, dan queue
  */
+
+void queuePlaylist(Queue *Q, Playlist *playlistLagu);
+/**
+ * Konstruktor
+ * I.S. Program berjalan
+ * F.S. Menambahkan playlist ke dalam queue
+ */
+
+ void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
+ /**
+ * Konstruktor
+ * I.S. Program berjalan, queue mungkin kosong
+ * F.S. Memutar lagu selanjutnya 
+        Jika queue kosong maka diputar current song
+*/
+
+void songPrevious(Queue *Q, StackChar *History, currentSong currentSong);
+/**
+ * Konstruktor
+ * I.S. Program berjalan, history mungkin kosong
+ * F.S. Memutar lagu sebelumnya  
+        Jika history kosong maka diputar current song
+*/
 #endif
