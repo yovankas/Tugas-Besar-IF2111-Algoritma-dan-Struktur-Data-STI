@@ -698,6 +698,9 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     else if (strCompare(penyanyi, "Hivi!") == 0)
     {
         PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
+    } else {
+        printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n", penyanyi);
+        return;
     }
 
     printf("Masukkan Nama Album yang dipilih: ");
@@ -773,6 +776,8 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     else if (strCompare(album, "Say Hi To Hivi!") == 0)
     {
         PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
+    } else {
+        printf("Album %s tidak ada dalam daftar. Silakan coba lagi.\n", laguAlbum);
     }
 
     printf("Masukkan ID Lagu yang dipilih: ");
@@ -803,8 +808,8 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
 
     if (selectedPlaylist != NULL) {
         InsVLast(selectedPlaylist, newSong);
-        printf("Song '%s' by %s from the album '%s' has been added to the playlist '%s'.\n", newSong.lagu, newSong.penyanyi, newSong.album, selectedPlaylist->namePL);
+        printf("Lagu dengan judul “%s” pada album %s oleh penyanyi %s berhasil ditambahkan ke dalam playlist %s.\n", newSong.lagu, newSong.penyanyi, newSong.album, selectedPlaylist->namePL);
     } else {
-        printf("Playlist with ID %d not found.\n", id_playlist);
+        printf("Playlist dengan ID %d tidak ditemukan.\n", id_playlist);
     }
 }
