@@ -16,8 +16,6 @@ typedef struct {
 
 ListPlaylist initListPlaylist();
 
-// void createEmptyListPlaylist(ListPlaylist *listPL);
-
 void addElement(ListPlaylist *listPL, infotypePlaylist value);
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index);
