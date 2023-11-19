@@ -551,13 +551,16 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     //KAMUS
     char CharPL1, CharPL2, CharPL3;
     int countChar = 0;
+
+    //ALGORITMA
     printf("Masukkan nama playlist yang ingin dibuat : ");
     startInputWord();
-    char* listPLinput;
-    scanf("%s", &listPLinput);
+    Word listPLinput;
+    akuisisiCommandWord(&listPLinput, currentWord, 1);
+    char* listPL_input = wordToString(listPLinput);
     
     //pengecekan input nama playlist
-    START(listPLinput);
+    START(listPL_input);
     CharPL1 = GetCC();
     if(CharPL1 != BLANK)
     {
@@ -583,24 +586,26 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     } 
     else if(countChar == 3)
     {
-        addElement(listPL, listPLinput);
-        PL.namePL = listPLinput;
-        printf("Playlist %s berhasil dibuat!", &listPLinput);
+        addElement(listPL, listPL_input);
+        PL.namePL = listPL_input;
+        printf("Playlist %s berhasil dibuat!", &listPL_input);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
     }
 }
 
 void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2){
     Playlist *chosenPlaylist;
-    arraysize idPLinput;
     int totalsong;
     
-    scanf("%d", idPLinput);
-    if(idPLinput > listPL->count){
+    startInputWord();
+    Word idPLinput;
+    akuisisiCommandWord(&idPLinput, currentWord, 1);
+    int idPL_input = wordToInt(idPLinput);
+    if(idPL_input > listPL->count){
         printf("Tidak ada playlist dengan playlist ID %d", idPLinput);
         return;
     } else{
-        chosenPlaylist->namePL = listPL->playlist[idPLinput];
+        chosenPlaylist->namePL = listPL->playlist[idPL_input];
         totalsong = NbElmtPlaylist(*chosenPlaylist);
 
         if(idxlagu1 > totalsong){
@@ -616,13 +621,15 @@ void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2){
 }
 
 void PlaylistDelete(ListPlaylist *listPL){
-    arraysize idplaylist;
     printListPlaylist(listPL);
     printf("Masukkan ID Playlist yang dipilih :");
-    scanf("%d", &idplaylist);
+    startInputWord();
+    Word idplaylist;
+    akuisisiCommandWord(&idplaylist, currentWord, 1);
+    int id_playlist = wordToInt(idplaylist);
 
     arraysize idx_idplaylist = 0;
-    idx_idplaylist = idplaylist - 1;
+    idx_idplaylist = id_playlist - 1;
 
     if(idx_idplaylist >= listPL->count){
         printf("Tidak ada playlist dengan ID %d dalam daftar playlist pengguna. Silakan coba lagi.", idplaylist);
@@ -634,17 +641,19 @@ void PlaylistDelete(ListPlaylist *listPL){
 
 void PlaylistRemove(ListPlaylist *listPL, int idxlagu){
     Playlist *chosenPlaylist;
-    arraysize idPLinput;
     int totalsong;
+    startInputWord();
+    Word idPLinput;
+    akuisisiCommandWord(&idPLinput, currentWord, 1);
+    int id_PLinput = wordToInt(idPLinput);
 
-    scanf("%d", idPLinput);
-    chosenPlaylist->namePL = listPL->playlist[idPLinput];
+    chosenPlaylist->namePL = listPL->playlist[id_PLinput];
 
-    if(idPLinput > listPL->count){
+    if(id_PLinput > listPL->count){
         printf("Tidak ada playlist dengan playlist ID %d", idPLinput);
         return;
     } else{
-        chosenPlaylist->namePL = listPL->playlist[idPLinput];
+        chosenPlaylist->namePL = listPL->playlist[id_PLinput];
         totalsong = NbElmtPlaylist(*chosenPlaylist);
 
         if(idxlagu > totalsong){
@@ -652,6 +661,5 @@ void PlaylistRemove(ListPlaylist *listPL, int idxlagu){
             return;
         }
         DeleteSongByIndex(chosenPlaylist, idxlagu);
-        
     }
 }
