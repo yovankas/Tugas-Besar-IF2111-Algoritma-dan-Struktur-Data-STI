@@ -577,3 +577,27 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
     }
 }
+
+void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylist idxlagu2){
+    Playlist *chosenPlaylist;
+    arraysize idPLinput;
+    chosenPlaylist = listPL->playlist[idPLinput];
+    SwapSongsinPlaylist(chosenPlaylist, idxlagu1, idxlagu2);
+}
+
+void PlaylistDelete(ListPlaylist *listPL){
+    arraysize idplaylist;
+    printListPlaylist(listPL);
+    printf("Masukkan ID Playlist yang dipilih :");
+    scanf("%d", &idplaylist);
+
+    arraysize idx_idplaylist = 0;
+    idx_idplaylist = idplaylist - 1;
+
+    if(idx_idplaylist >= listPL->count){
+        printf("Tidak ada playlist dengan ID %d dalam daftar playlist pengguna. Silakan coba lagi.", idplaylist);
+    } else {
+        deleteAtIndex(listPL, idx_idplaylist);
+        printf("Playlist ID %d dengan judul “%s” berhasil dihapus.", idplaylist, listPL->playlist[idx_idplaylist]);
+    }
+}

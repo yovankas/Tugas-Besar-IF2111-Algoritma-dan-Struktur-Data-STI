@@ -145,7 +145,7 @@ void Konkat1 (Playlist *PL1, Playlist *PL2, Playlist *PL3);
 /* dan PL1 serta PL2 menjadi list kosong.*/
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
 
-void SwapSongs(Playlist *PL, addressPlaylist P1, addressPlaylist P2);
+void SwapSongsinPlaylist(Playlist *PL, addressPlaylist P1, addressPlaylist P2);
 /* I.S. P1 dan P2 berada di posisi awal masing-masing */
 /* F.S. P1 dan P2 bertukar posisi, P1 di posisi P2 dan viceversa */
 
