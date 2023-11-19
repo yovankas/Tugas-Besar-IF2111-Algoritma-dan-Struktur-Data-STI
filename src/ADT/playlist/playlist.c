@@ -351,3 +351,50 @@ void Konkat1 (Playlist *PL1, Playlist *PL2, Playlist *PL3){
     First(*PL1) = Nil_Playlist;
     First(*PL2) = Nil_Playlist;
 }
+
+void SwapSongsinPlaylist(Playlist *PL, addressPlaylist P1, addressPlaylist P2){
+    if (P1 == P2 || P1 == Nil_Playlist || P2 == Nil_Playlist) {
+        return;
+    }
+
+    addressPlaylist PrecP1 = Nil_Playlist;
+    addressPlaylist PrecP2 = Nil_Playlist;
+    addressPlaylist Current = First(*PL);
+
+    // Cari elemen sebelum P1 dan P2
+    while (Current != Nil_Playlist && (Current != P1 && Current != P2)) {
+        PrecP1 = Current;
+        Current = Next(Current);
+    }
+
+    if (Current == Nil_Playlist) {
+        // satu atau keduanya tidak ditemukan
+        return;
+    }
+
+    PrecP2 = PrecP1;
+    PrecP1 = Nil_Playlist;
+    Current = First(*PL);
+
+    while (Current != Nil_Playlist && (Current != P1 && Current != P2)) {
+        PrecP2 = PrecP1;
+        PrecP1 = Current;
+        Current = Next(Current);
+    }
+
+    if (PrecP1 != Nil_Playlist) {
+        Next(PrecP1) = P2;
+    } else {
+        First(*PL) = P2;
+    }
+
+    if (PrecP2 != Nil_Playlist) {
+        Next(PrecP2) = P1;
+    } else {
+        First(*PL) = P1;
+    }
+
+    addressPlaylist Temp = Next(P1);
+    Next(P1) = Next(P2);
+    Next(P2) = Temp;
+}
