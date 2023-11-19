@@ -50,12 +50,16 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
 }
 
 void printListPlaylist(const ListPlaylist *listPL) {
-    for (arraysize i = 0; i < listPL->count; i++) {
-        int nomor;
-        nomor = i+1;
-        printf("%d. %s ", nomor, listPL->playlist[i]);
+    if (listPL->count == 0){
+        printf("Kamu tidak memiliki playlist.")
     }
-    printf("\n");
+    else{
+        for (arraysize i = 0; i < listPL->count; i++) {
+            int nomor;
+            nomor = i+1;
+            printf("%d. %s\n", nomor, listPL->playlist[i]);
+        }
+    }
 }
 
 void freePlaylist(ListPlaylist *listPL) {

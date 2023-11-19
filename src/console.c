@@ -492,6 +492,12 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
     displayQueue(*Q);
 }
 
+void listPlaylist(ListPlaylist listPL)
+{
+    printf("Daftar Playlist yang kamu miliki:\n");
+    PrintListPlaylist(listPL);
+}
+
 void queuePlaylist (Queue *Q, Playlist *playlistLagu)
 {
     printf("Masukkan ID Playlist: ");
