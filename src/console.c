@@ -515,7 +515,15 @@ void queuePlaylist (Queue *Q, Playlist *playlistLagu)
     Word IDplaylistWord;
     akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
     int IDplaylist = wordToInt(IDplaylistWord);
-    // infotype playlist  
+    infotype playlist = LaguFromPlaylist(playlistLagu, IDplaylistWord);
+
+    ElTypeQueue Pl;
+    Pl.song = (char *)malloc(strLength(song) + 1);
+    while (Pl.song != NULL)
+    {
+        strCopy(Pl.song, song);
+        enqueue(Q, Pl);
+    }
 }
 
 void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong)

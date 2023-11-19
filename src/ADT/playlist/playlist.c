@@ -470,3 +470,7 @@ void DeleteSongByIndex(Playlist *PL, int index) {
     // dealokasi memory untuk elemen yang dihapus
     DealokasiPlaylist(&P);
 }
+
+infotype LagufromPlaylist(Playlist *PL, int id){
+    
+}
