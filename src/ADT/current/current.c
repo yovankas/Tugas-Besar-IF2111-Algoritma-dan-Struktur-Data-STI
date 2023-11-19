@@ -18,13 +18,13 @@ void PrintCurrentSong(currentSong currentSong)
 void PlayCurrentSong(currentSong currentSong)
 {
     printf("Queue kosong, memutar kembali lagu");
-    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
+    printf("“%s” oleh “%s”\n", currentSong.song, currentSong.artist);
 }
 
 void PlayNextSong(nextSong nextSong, currentSong currentSong)
 {
     printf("Memutar lagu selanjutnya");
-    printf("%s oleh %s\n", nextSong.song, nextSong.artist);
+    printf("“%s” oleh “%s”\n", nextSong.song, nextSong.artist);
     currentSong.album = nextSong.album;
     currentSong.artist = nextSong.artist;
     currentSong.song = nextSong.song;
@@ -33,6 +33,6 @@ void PlayNextSong(nextSong nextSong, currentSong currentSong)
 void ReplayCurrentSong(currentSong currentSong)
 {
     printf("Riwayat lagu kosong, memutar kembali lagu");
-    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
+    printf("“%s” oleh “%s”\n", currentSong.song, currentSong.artist);
 }
 
