@@ -127,4 +127,10 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
  *I.S. List lagu dalam playlist masih sama
  *F.S. bertambah 1 lagu di urutan terakhir dalam playlist
 */
+
+void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+/*
+ *I.S. List lagu dalam playlist masih sama
+ *F.S. bertambah lagu dari album di urutan terakhir dalam playlist
+*/
 #endif
