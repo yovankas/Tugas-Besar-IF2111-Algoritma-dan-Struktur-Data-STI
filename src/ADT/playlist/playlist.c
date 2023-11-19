@@ -398,3 +398,34 @@ void SwapSongsinPlaylist(Playlist *PL, addressPlaylist P1, addressPlaylist P2){
     Next(P1) = Next(P2);
     Next(P2) = Temp;
 }
+
+void DeleteSongAtAddress(Playlist *PL, addressPlaylist P) {
+    if (P == Nil_Playlist) {
+        // address Invalid
+        return;
+    }
+
+    addressPlaylist Prec = Nil_Playlist;
+    addressPlaylist Current = First(*PL);
+
+    // mencari elemen di address spesifik yang diinginkan
+    while (Current != Nil_Playlist && Current != P) {
+        Prec = Current;
+        Current = Next(Current);
+    }
+
+    if (Current == Nil_Playlist) {
+        // elemen tidak ditemukan
+        return;
+    }
+
+    if (Prec != Nil_Playlist) {
+        Next(Prec) = Next(Current);
+    } else {
+        // menghapus elemen kalau ada di posisi pertama
+        First(*PL) = Next(Current);
+    }
+
+    // dealokasi memori
+    DealokasiPlaylist(&Current);
+}
