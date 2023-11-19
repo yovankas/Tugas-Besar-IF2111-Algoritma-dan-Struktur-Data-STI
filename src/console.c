@@ -577,3 +577,10 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
     }
 }
+
+void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylist idxlagu2){
+    Playlist *chosenPlaylist;
+    arraysize idPLinput;
+    chosenPlaylist = listPL->playlist[idPLinput];
+    SwapSongsinPlaylist(chosenPlaylist, idxlagu1, idxlagu2);
+}

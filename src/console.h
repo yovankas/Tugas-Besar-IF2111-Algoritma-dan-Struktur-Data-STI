@@ -61,21 +61,21 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
  */
 
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist);
- /**
+ /*
  * Konstruktor
  * I.S. Program berjalan, Queue dan Playlist mungkin kosong
  * F.S. Menampilkan current playlist, dan queue
  */
 
 void listPlaylist(ListPlaylist listPL);
-/**
+/*
  * Konstruktor
  * I.S. Program berjalan
  * F.S. Menampilkan list playlist
- */
+ **/
 
 void queuePlaylist(Queue *Q, Playlist *playlistLagu);
-/**
+/*
  * Konstruktor
  * I.S. Program berjalan
  * F.S. Menambahkan playlist ke dalam queue
@@ -83,7 +83,7 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu);
 
 
 void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
- /**
+ /*
  * Konstruktor
  * I.S. Program berjalan, queue mungkin kosong
  * F.S. Memutar lagu selanjutnya 
@@ -91,7 +91,7 @@ void songNext(Queue *Q, currentSong currentSong, nextSong nextSong);
 */
 
 void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong);
-/**
+/*
  * Konstruktor
  * I.S. Program berjalan, history mungkin kosong
  * F.S. Memutar lagu sebelumnya  
@@ -99,8 +99,14 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong);
 */
 
 void CreatePlaylist(ListPlaylist listPL, Playlist PL);
-/**
+/*
  * I.S. Listplaylist masih seperti sebelum
  * F.S. Membuat playlist baru dan menambahkannya ke list playlist
+*/
+
+void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylist idxlagu2);
+/*
+ * I.S. Urutan lagu masih sama
+ * F.S. Lagu1 dan Lagu2 bertukar posisi
 */
 #endif
