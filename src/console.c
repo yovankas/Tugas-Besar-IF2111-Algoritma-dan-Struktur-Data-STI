@@ -464,7 +464,10 @@ void songNext(Queue *Q, currentSong currentSong, nextSong nextSong)
 
 void songPrevious(Queue *Q, StackChar *History, currentSong currentSong)
 {
-    if (IsEmptyStackChar(*S)) {
-        ReplayCurrentSong(currentSong currentSong);
+    if (IsEmptyStackChar(*History)) {
+        ReplayCurrentSong(currentSong);
+    }
+    else {
+        PlayPrevSong(*History);
     }
 }

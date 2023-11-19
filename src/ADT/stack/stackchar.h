@@ -12,6 +12,13 @@
 #define MaxElStackchar 100
 /* Nil adalah stack dengan elemen kosong . */
 
+typedef struct
+{
+    char* artist;
+    char* album;
+    char* song;
+} infotypeStackchar;
+
 typedef infotypeStackchar ElTypeStackchar;
 typedef int address; /* indeks tabel */
 
@@ -80,5 +87,7 @@ Stackchar MergeStackChar (Stackchar s1, Stackchar s2);
     /* Stack baru diisi sampai seluruh elemen s1 dan s2 masuk ke dalam stack,
        atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
        secukupnya yang dapat ditampung. */
-       
+
+void PlayPrevSong(Stackchar History);
+    /* Memutar lagu sebelumnya */
 #endif

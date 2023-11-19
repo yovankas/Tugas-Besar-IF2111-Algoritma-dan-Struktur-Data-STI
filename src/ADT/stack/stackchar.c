@@ -124,3 +124,9 @@ Stackchar MergeStackChar(Stackchar s1, Stackchar s2)
     }
     return s;
 }
+
+void PlayPrevSong(Stackchar History)
+{
+    printf("Memutar lagu sebelumnya");
+    printf("%s\n", S.T[TopStackchar(S)]);
+}
