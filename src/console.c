@@ -518,10 +518,10 @@ void queuePlaylist (Queue *Q, Playlist *playlistLagu)
     infotype playlist = LaguFromPlaylist(playlistLagu, IDplaylistWord);
 
     ElTypeQueue Pl;
-    Pl.song = (char *)malloc(strLength(song) + 1);
-    while (Pl.song != NULL)
+    Pl.playlist = (char *)malloc(strLength(playlist) + 1);
+    while (Pl.playlist != NULL)
     {
-        strCopy(Pl.song, song);
+        strCopy(Pl.playlist, playlist);
         enqueue(Q, Pl);
     }
 }
