@@ -9,6 +9,9 @@ typedef struct {
     char* *playlist;
     arraysize count;
     arraysize capacity;
+} ListPlaylist;
+
+typedef struct{
     arraysize idxElmt[count];
 } ListPlaylist;
 
