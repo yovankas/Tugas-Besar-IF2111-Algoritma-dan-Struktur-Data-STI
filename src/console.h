@@ -64,6 +64,13 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
  * F.S. Menampilkan current playlist, dan queue
  */
 
+void listPlaylist(ListPlaylist listPL)
+/**
+ * Konstruktor
+ * I.S. Program berjalan
+ * F.S. Menampilkan list playlist
+ */
+
 void queuePlaylist(Queue *Q, Playlist *playlistLagu);
 /**
  * Konstruktor
