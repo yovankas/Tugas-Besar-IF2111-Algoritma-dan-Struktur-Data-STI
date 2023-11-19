@@ -521,3 +521,39 @@ void songPrevious(Queue *Q, StackChar *History, currentSong currentSong)
         PlayPrevSong(*History);
     }
 }
+
+void PlaylistCreate(ListPlaylist *listPL, Playlist PL){
+    //KAMUS
+    char CharPL1, CharPL2, CharPL3;
+    int countChar = 0;
+    printf("Masukkan nama playlist yang ingin dibuat : ");
+    startInputWord();
+    char* listPLinput;
+    scanf("%s", &listPLinput);
+    
+    //pengecekan input nama playlist
+    START(listPLinput);
+    CharPL1 = GetCC();
+    if(CharPL1 != BLANK){
+        countChar += 1;
+    }
+    ADV();
+    CharPL2 = GetCC();
+    if(CharPL2 != BLANK){
+        countChar += 1;
+    }
+    ADV();
+    CharPL3 = GetCC();
+    if(CharPL3 != BLANK){
+        countChar += 1;
+    }
+
+    if(countChar != 3){
+        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
+        exit(EXIT_FAILURE);
+    } else if(countChar == 3){
+        addElmt(listPL, listPLinput);
+        printf("Playlist %s berhasil dibuat!", &listPLinput);
+        printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
+    }
+}
