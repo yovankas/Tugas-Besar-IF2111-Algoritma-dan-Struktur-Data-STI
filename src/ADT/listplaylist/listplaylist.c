@@ -55,10 +55,10 @@ void printListPlaylist(const ListPlaylist *listPL) {
     }
     else{
         for (arraysize i = 0; i < listPL->count; i++) {
-        int nomor;
-        nomor = i+1;
-        printf("%d. %s\n", nomor, listPL->playlist[i]);
-    }
+            int nomor;
+            nomor = i+1;
+            printf("%d. %s\n", nomor, listPL->playlist[i]);
+        }
     }
 }
 
