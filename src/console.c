@@ -663,3 +663,148 @@ void PlaylistRemove(ListPlaylist *listPL, int idxlagu){
         DeleteSongByIndex(chosenPlaylist, idxlagu);
     }
 }
+
+void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum){
+    printf("Daftar Penyanyi:\n");
+    PrintArrayPenyanyi(arrPenyanyi);
+
+    printf("Masukkan Nama Penyanyi: ");
+    startInputWord();
+    Word namePenyanyi;
+    char* penyanyi = wordToString(namePenyanyi);
+    akuisisiCommandWord(&namePenyanyi, currentWord, 2);
+    char* penyanyi2 = wordToString(namePenyanyi);
+    char* spasi = " ";
+
+    if (strCompare(penyanyi2, "") != 0)
+    {
+        penyanyi = concat(penyanyi, spasi);
+        penyanyi = concat(penyanyi, penyanyi2);
+    }
+
+    printf("Daftar Album oleh %s :\n", penyanyi);
+    if (strCompare(penyanyi, "BLACKPINK") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+    }
+    else if (strCompare(penyanyi, "Arctic Monkeys") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
+    }
+    else if (strCompare(penyanyi, "NewJeans") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
+    }
+    else if (strCompare(penyanyi, "Hivi!") == 0)
+    {
+        PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
+    }
+
+    printf("Masukkan Nama Album yang dipilih: ");
+    startInputWord();
+    Word nameAlbum;
+    akuisisiCommandWord(&nameAlbum, currentWord, 1);
+    char* album = wordToString(nameAlbum);
+    akuisisiCommandWord(&nameAlbum, currentWord, 2);
+    char* album2 = wordToString(nameAlbum);
+    int i = 2;
+    while(strCompare(album2, "") != 0)
+    {
+        album = concat(album, spasi);
+        album = concat(album, album2);
+        i +=1;
+        akuisisiCommandWord(&nameAlbum, currentWord, i);
+        album2 = wordToString(nameAlbum);
+    }
+
+    printf("Daftar Lagu di %s:\n", album);
+    if (strCompare(album, "BORN PINK") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "BORN PINK");
+    }
+    else if (strCompare(album, "THE ALBUM") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "THE ALBUM");
+    }
+    else if (strCompare(album, "SQUARE ONE") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "SQUARE ONE");
+    }
+    else if (strCompare(album, "SQUARE TWO") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "SQUARE TWO");
+    }
+    else if (strCompare(album, "SQUARE UP") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "SQUARE UP");
+    }
+    else if (strCompare(album, "Favourite Worst Nightmare") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
+    }
+    else if (strCompare(album, "Humbug") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Humbug");
+    }
+    else if (strCompare(album, "AM") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "AM");
+    }
+    else if (strCompare(album, "New Jeans") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "New Jeans");
+    }
+    else if (strCompare(album, "OMG") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "OMG");
+    }
+    else if (strCompare(album, "Get Up") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Get Up");
+    }
+    else if (strCompare(album, "CERITERA") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "CERITERA");
+    }
+    else if (strCompare(album, "Kereta Kencan") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Kereta Kencan");
+    }
+    else if (strCompare(album, "Say Hi To Hivi!") == 0)
+    {
+        PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
+    }
+
+    printf("Masukkan ID Lagu yang dipilih: ");
+    startInputWord();
+    Word IDs;
+    akuisisiCommandWord(&IDs, currentWord, 1);
+    int IDsong = wordToInt(IDs);
+    
+    printListPlaylist(listPL);
+    printf("Masukkan ID Playlist yang dipilih :");
+    startInputWord();
+    Word idplaylist;
+    akuisisiCommandWord(&idplaylist, currentWord, 1);
+    int id_playlist = wordToInt(idplaylist);
+    
+    Playlist *selectedPlaylist = NULL;
+    for (int i = 0; i < listPL->count; i++) {
+        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], id_playlist) == 0) {
+            selectedPlaylist = &listPL->playlist[i];
+            break;
+        }
+    }
+
+    content newSong;
+    newSong.lagu = LaguFromAlbum(laguAlbum, album, IDsong);
+    newSong.album = album;
+    newSong.penyanyi = penyanyi;
+
+    if (selectedPlaylist != NULL) {
+        InsVLast(selectedPlaylist, newSong);
+        printf("Song '%s' by %s from the album '%s' has been added to the playlist '%s'.\n", newSong.lagu, newSong.penyanyi, newSong.album, selectedPlaylist->namePL);
+    } else {
+        printf("Playlist with ID %d not found.\n", id_playlist);
+    }
+}

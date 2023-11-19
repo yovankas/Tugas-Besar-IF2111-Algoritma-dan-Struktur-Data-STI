@@ -121,4 +121,10 @@ void PlaylistRemove(ListPlaylist *listPL, int idxlagu);
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
 */
+
+void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+/*
+ *I.S. List lagu dalam playlist masih sama
+ *F.S. bertambah 1 lagu di urutan terakhir dalam playlist
+*/
 #endif
