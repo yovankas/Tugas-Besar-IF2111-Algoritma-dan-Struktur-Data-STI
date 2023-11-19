@@ -109,4 +109,10 @@ void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylis
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
 */
+
+void PlaylistDelete(ListPlaylist *PL);
+/*
+ * I.S. Daftar Playlist user masih seperti semula
+ * F.S. Playlist yg dipilih sudah dihapus
+*/
 #endif
