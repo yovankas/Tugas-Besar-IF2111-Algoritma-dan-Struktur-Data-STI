@@ -11,6 +11,13 @@ typedef struct
         char* song;
 } currentSong;
 
+typedef struct 
+{
+        char* artist;
+        char* album;
+        char* song;
+} nextSong;
+
 typedef struct
 {
         char* playlist;
