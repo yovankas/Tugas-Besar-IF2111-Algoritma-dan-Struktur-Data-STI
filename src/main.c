@@ -36,9 +36,17 @@ int main()
         
         if (strCompare(commandchar, "START") == 0)
         {
-            printf("manggil start\n");
-            isInputValid = true;
-            startcheck = true;
+            start(&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu);
+            if (!IsEmpty(arrPenyanyi))
+            {
+                printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
+                isInputValid = true;
+                startcheck = true;
+            }
+            else
+            {
+                printf("File konfigurasi aplikasi gagal dibaca. Mohon ulangi proses.\n");
+            }
         }
         else if (strCompare(commandchar, "LOAD") == 0)
         {
@@ -48,18 +56,18 @@ int main()
                 load(wordToString(namafile), &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu);
                 if(!IsEmpty(arrPenyanyi))
                 {
-                    printf("Saved file berhasil dibaca. WayangWave berhasil dijalankan\n");
+                    printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
                     isInputValid = true;
                     startcheck = true;
                 }
                 else
                 {
-                    printf("Saved file tidak berhasil dibaca. WayangWave gagal dijalankan.\n");
+                    printf("Save file tidak ditemukan. WayangWave tidak berhasil dijalankan.\n");
                 }
             }
             else
             {
-                printf("Saved file tidak berhasil dibaca. WayangWave gagal dijalankan.\n");
+                printf("Save file tidak ditemukan. WayangWave tidak berhasil dijalankan.\n");
             }
         }
         else if (strCompare(commandchar, "HELP") == 0)
@@ -68,7 +76,7 @@ int main()
         }
         else 
         {
-            printf("Command tidak dikenali. Masukin yg bner lha!!\n");
+            printf("Command tidak bisa dieksekusi. Mohon masukkan command yang sesuai.\n");
 
         }
     }

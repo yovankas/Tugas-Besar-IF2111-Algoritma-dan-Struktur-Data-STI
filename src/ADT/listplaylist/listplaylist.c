@@ -1,21 +1,23 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../ADT/listplaylist/listplaylist.h"
+#include "listplaylist.h"
 
-void initListPlaylist(ListPlaylist *listPL, arraysize initialCapacity) {
-    listPL->playlist = (char* *)malloc(initialCapacity * sizeof(char*));
-    if (listPL->playlist == NULL) {
-        printf("Memory allocation error\n");
+ListPlaylist initListPlaylist() {
+    ListPlaylist listPL;
+    listPL.playlist = (infotypePlaylist*)malloc(InitialSizeListPL * sizeof(infotypePlaylist));
+    if (listPL.playlist == NULL) {
+        fprintf(stderr, "Memory allocation error\n");
         exit(EXIT_FAILURE);
     }
-    listPL->count = 0;
-    listPL->capacity = initialCapacity;
+    listPL.capacity = InitialSizeListPL;
+    listPL.count = 0;
+    return listPL;
 }
 
-void addElmt(ListPlaylist *listPL, char* value) {
+void addElmt(ListPlaylist *listPL, infotypePlaylist value) {
     if (listPL->count == listPL->capacity) {
         listPL->capacity *= 2;
-        listPL->playlist = (char* *)realloc(listPL->playlist, listPL->capacity * sizeof(char*));
+        listPL->playlist = (infotypePlaylist*)realloc(listPL->playlist, listPL->capacity * sizeof(infotypePlaylist));
         if (listPL->playlist == NULL) {
             fprintf(stderr, "Memory reallocation error\n");
             exit(EXIT_FAILURE);
@@ -24,6 +26,8 @@ void addElmt(ListPlaylist *listPL, char* value) {
     listPL->playlist[listPL->count] = value;
     listPL->count++;
 }
+
+// Rest of the functions remain the same.
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
     if (index >= listPL->count) {
@@ -41,7 +45,7 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
     // Periksa apakah playlist kurang dari setengahnya, dan dikecilkan
     if (listPL->count > 0 && listPL->count <= listPL->capacity / 2) {
         listPL->capacity /= 2;
-        listPL->playlist = (char* *)realloc(listPL->playlist, listPL->capacity * sizeof(char*));
+        listPL->playlist = (infotypePlaylist*)realloc(listPL->playlist, listPL->capacity * sizeof(infotypePlaylist));
         if (listPL->playlist == NULL) {
             fprintf(stderr, "Memory reallocation error\n");
             exit(EXIT_FAILURE);
@@ -49,14 +53,13 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
     }
 }
 
-void printListPlaylist(const ListPlaylist *listPL) {
+void printListPlaylist(ListPlaylist *listPL) {
     if (listPL->count == 0){
-        printf("Kamu tidak memiliki playlist.")
+        printf("Kamu tidak memiliki playlist.");
     }
-    else{
+    else {
         for (arraysize i = 0; i < listPL->count; i++) {
-            int nomor;
-            nomor = i+1;
+            int nomor = i + 1;
             printf("%d. %s\n", nomor, listPL->playlist[i]);
         }
     }

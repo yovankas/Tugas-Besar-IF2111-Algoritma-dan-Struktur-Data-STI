@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "load.h"
 #include "./boolean.h"
 #include "./ADT/array/array.h"
 #include "./ADT/word/word.h"
@@ -20,6 +21,8 @@
 #include "./ADT/listplaylist/listplaylist.h"
 
 void Delay (unsigned int Sec);
+
+void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
 
 void quit();
 /*
@@ -64,7 +67,7 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
  * F.S. Menampilkan current playlist, dan queue
  */
 
-void listPlaylist(ListPlaylist listPL)
+void listPlaylist(ListPlaylist listPL);
 /**
  * Konstruktor
  * I.S. Program berjalan

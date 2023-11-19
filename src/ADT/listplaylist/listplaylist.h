@@ -2,32 +2,27 @@
 #define LIST_PLAYLIST_H
 
 #include <stdlib.h>
-#include "../../ADT/string/string.h"
 
+#define InitialSizeListPL 100
+
+typedef char* infotypePlaylist;
 typedef int arraysize;
 typedef struct {
-    char* *playlist;
+    infotypePlaylist* playlist; // Use infotypePlaylist* for an array
     arraysize count;
     arraysize capacity;
 } ListPlaylist;
 
-typedef struct{
-    arraysize idxElmt[count];
-} ListPlaylist;
+ListPlaylist initListPlaylist();
 
-void initListPlaylist(ListPlaylist *listPL, arraysize initialCapacity);
-// Untuk Menginisialisasi array dinamis list playlist
+void CreateEmptyListPlaylist(ListPlaylist *listPL);
 
-void addElmt(ListPlaylist *listPL, char* value);
-// Untuk menambahkan elemen baru ke dynamic array list playlist di belakang element terakhir dalam array
+void addElmt(ListPlaylist *listPL, infotypePlaylist value);
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index);
-// Untuk menghapus elemen di index tertentu
 
-void printListPlaylist(const ListPlaylist *listPL);
-// Menampilkan elemen yang ada dalam array
+void printListPlaylist(ListPlaylist *listPL);
 
 void freeListPlaylist(ListPlaylist *listPL);
-// Mengosongkan memori yang dialokasikan untuk array dinamis
 
 #endif

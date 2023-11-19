@@ -2,9 +2,16 @@
 
 void Delay (unsigned int Sec)
 {
-       clock_t ticks1 = clock(), ticks2 = ticks1;
-       while ( ( ticks2/CLOCKS_PER_SEC - ticks1/CLOCKS_PER_SEC ) < Sec)
-           ticks2 = clock();
+    clock_t ticks1 = clock(), ticks2 = ticks1;
+    while ( ( ticks2/CLOCKS_PER_SEC - ticks1/CLOCKS_PER_SEC ) < Sec)
+    {
+        ticks2 = clock();
+    }
+}
+
+void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu)
+{
+    load("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
 }
 
 void quit()
@@ -495,7 +502,7 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
 void listPlaylist(ListPlaylist listPL)
 {
     printf("Daftar Playlist yang kamu miliki:\n");
-    PrintListPlaylist(listPL);
+    printListPlaylist(&listPL);
 }
 
 void queuePlaylist (Queue *Q, Playlist *playlistLagu)
@@ -528,7 +535,8 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong)
     }
 }
 
-void PlaylistCreate(ListPlaylist *listPL, Playlist PL){
+void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
+{
     //KAMUS
     char CharPL1, CharPL2, CharPL3;
     int countChar = 0;
@@ -540,24 +548,30 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL){
     //pengecekan input nama playlist
     START(listPLinput);
     CharPL1 = GetCC();
-    if(CharPL1 != BLANK){
+    if(CharPL1 != BLANK)
+    {
         countChar += 1;
     }
     ADV();
     CharPL2 = GetCC();
-    if(CharPL2 != BLANK){
+    if(CharPL2 != BLANK)
+    {
         countChar += 1;
     }
     ADV();
     CharPL3 = GetCC();
-    if(CharPL3 != BLANK){
+    if(CharPL3 != BLANK)
+    {
         countChar += 1;
     }
 
-    if(countChar != 3){
+    if(countChar != 3)
+    {
         printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
         exit(EXIT_FAILURE);
-    } else if(countChar == 3){
+    } 
+    else if(countChar == 3)
+    {
         addElmt(listPL, listPLinput);
         printf("Playlist %s berhasil dibuat!", &listPLinput);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
