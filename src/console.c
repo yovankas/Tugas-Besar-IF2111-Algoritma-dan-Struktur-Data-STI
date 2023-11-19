@@ -582,11 +582,29 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     }
 }
 
-void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylist idxlagu2){
+void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2){
     Playlist *chosenPlaylist;
     arraysize idPLinput;
-    chosenPlaylist->namePL = listPL->playlist[idPLinput];
-    SwapSongsinPlaylist(chosenPlaylist, idxlagu1, idxlagu2);
+    int totalsong;
+    
+    scanf("%d", idPLinput);
+    if(idPLinput > listPL->count){
+        printf("Tidak ada playlist dengan playlist ID %d", idPLinput);
+        return;
+    } else{
+        chosenPlaylist->namePL = listPL->playlist[idPLinput];
+        totalsong = NbElmtPlaylist(*chosenPlaylist);
+
+        if(idxlagu1 > totalsong){
+            printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu1, chosenPlaylist);
+            return;
+        } else if(idxlagu2 > totalsong){
+            printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu2, chosenPlaylist);
+            return;
+        }
+
+        SwapSongsByIndex(chosenPlaylist, idxlagu1, idxlagu2);
+    }
 }
 
 void PlaylistDelete(ListPlaylist *listPL){
@@ -603,5 +621,29 @@ void PlaylistDelete(ListPlaylist *listPL){
     } else {
         deleteAtIndex(listPL, idx_idplaylist);
         printf("Playlist ID %d dengan judul “%s” berhasil dihapus.", idplaylist, listPL->playlist[idx_idplaylist]);
+    }
+}
+
+void PlaylistRemove(ListPlaylist *listPL, int idxlagu){
+    Playlist *chosenPlaylist;
+    arraysize idPLinput;
+    int totalsong;
+
+    scanf("%d", idPLinput);
+    chosenPlaylist->namePL = listPL->playlist[idPLinput];
+
+    if(idPLinput > listPL->count){
+        printf("Tidak ada playlist dengan playlist ID %d", idPLinput);
+        return;
+    } else{
+        chosenPlaylist->namePL = listPL->playlist[idPLinput];
+        totalsong = NbElmtPlaylist(*chosenPlaylist);
+
+        if(idxlagu > totalsong){
+            printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu, chosenPlaylist);
+            return;
+        }
+        DeleteSongByIndex(chosenPlaylist, idxlagu);
+        
     }
 }

@@ -104,7 +104,7 @@ void CreatePlaylist(ListPlaylist listPL, Playlist PL);
  * F.S. Membuat playlist baru dan menambahkannya ke list playlist
 */
 
-void PlaylistSwap(ListPlaylist *listPL, addressPlaylist idxlagu1, addressPlaylist idxlagu2);
+void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2);
 /*
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
@@ -114,5 +114,11 @@ void PlaylistDelete(ListPlaylist *PL);
 /*
  * I.S. Daftar Playlist user masih seperti semula
  * F.S. Playlist yg dipilih sudah dihapus
+*/
+
+void PlaylistRemove(ListPlaylist *listPL, int idxlagu);
+/*
+ * I.S. Urutan lagu masih sama
+ * F.S. Lagu1 dan Lagu2 bertukar posisi
 */
 #endif

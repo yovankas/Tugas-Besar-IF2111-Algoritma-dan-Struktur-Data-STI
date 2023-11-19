@@ -399,33 +399,74 @@ void SwapSongsinPlaylist(Playlist *PL, addressPlaylist P1, addressPlaylist P2){
     Next(P2) = Temp;
 }
 
-void DeleteSongAtAddress(Playlist *PL, addressPlaylist P) {
-    if (P == Nil_Playlist) {
-        // address Invalid
+void SwapSongsByIndex(Playlist *PL, int index1, int index2) {
+    int count = 0; // Variable untuk track current idx
+    addressPlaylist P1 = First(*PL); // Pointer ke elemen pertama
+    addressPlaylist P2 = NULL; // Pointer ke elemen kedua
+    addressPlaylist PrevP1 = NULL; // Pointer ke elemen sebelum P1
+
+    // cari elemen pertama untuk swap (P1) dan PrevP1
+    while (P1 != Nil_Playlist && count < index1) {
+        PrevP1 = P1;
+        P1 = Next(P1);
+        count++;
+    }
+
+    // kalau first index di luar batas, tidak usah lakukan apa2
+    if (P1 == Nil_Playlist) {
+        printf("Index %d di luar batas.\n", index1);
         return;
     }
 
-    addressPlaylist Prec = Nil_Playlist;
-    addressPlaylist Current = First(*PL);
+    count = 0; // Reset count
+    P2 = P1; // Set P2 ke P1
 
-    // mencari elemen di address spesifik yang diinginkan
-    while (Current != Nil_Playlist && Current != P) {
-        Prec = Current;
-        Current = Next(Current);
+    // cari elemen kedua untuk swap (P2)
+    while (P2 != Nil_Playlist && count < index2 - index1) {
+        P2 = Next(P2);
+        count++;
     }
 
-    if (Current == Nil_Playlist) {
-        // elemen tidak ditemukan
+    // kalau index kedua di luar batas, tidak usah lakukan apa2
+    if (P2 == Nil_Playlist) {
+        printf("Index %d di luar batas.\n", index2);
         return;
     }
 
-    if (Prec != Nil_Playlist) {
-        Next(Prec) = Next(Current);
+    if (PrevP1 != NULL) {
+        Next(PrevP1) = P2;
     } else {
-        // menghapus elemen kalau ada di posisi pertama
-        First(*PL) = Next(Current);
+        First(*PL) = P2;
     }
 
-    // dealokasi memori
-    DealokasiPlaylist(&Current);
+    Next(P1) = Next(P2);
+    Next(P2) = P1;
+}
+
+void DeleteSongByIndex(Playlist *PL, int index) {
+    int count = 0; // variabel untuk track
+    addressPlaylist P = First(*PL); // Pointer ke elemen pertama
+    addressPlaylist PrevP = NULL; // Pointer ke elemen sebelum P
+
+    // cari element untuk delete (P) dan (PrevP)
+    while (P != Nil_Playlist && count < index) {
+        PrevP = P;
+        P = Next(P);
+        count++;
+    }
+
+    // kalau indeks di luar batas, tidak usah lakukan apa2
+    if (P == Nil_Playlist) {
+        printf("Index %d di luar batas.\n", index);
+        return;
+    }
+
+    if (PrevP != NULL) {
+        Next(PrevP) = Next(P);
+    } else {
+        First(*PL) = Next(P);
+    }
+
+    // dealokasi memory untuk elemen yang dihapus
+    DealokasiPlaylist(&P);
 }

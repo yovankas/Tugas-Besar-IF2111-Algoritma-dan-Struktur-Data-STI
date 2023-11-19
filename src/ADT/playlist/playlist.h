@@ -151,6 +151,7 @@ void SwapSongsinPlaylist(Playlist *PL, addressPlaylist P1, addressPlaylist P2);
 /* I.S. P1 dan P2 berada di posisi awal masing-masing */
 /* F.S. P1 dan P2 bertukar posisi, P1 di posisi P2 dan viceversa */
 
-void DeleteSongAtAddress(Playlist *PL, addressPlaylist P);
+void SwapSongsByIndex(Playlist *PL, int index1, int index2);
 
+void DeleteSongByIndex(Playlist *PL, int index);
 #endif
