@@ -66,6 +66,8 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
  *      Queue dan History kosong
  */
 
+void playPlaylist(Queue *Q, Stackchar *History, Playlist playlistLagu, ListPlaylist listPlaylist);
+
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist);
 /*
  * Konstruktor
