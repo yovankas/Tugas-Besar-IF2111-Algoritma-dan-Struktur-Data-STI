@@ -11,7 +11,7 @@ void Delay(unsigned int Sec)
 
 void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu)
 {
-    load("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
+    loaddefault("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
 }
 
 void quit()

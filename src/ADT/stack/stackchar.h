@@ -88,4 +88,5 @@ Stackchar MergeStackChar (Stackchar s1, Stackchar s2);
        atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
        secukupnya yang dapat ditampung. */
 
+void printStackchar(Stackchar S);
 #endif

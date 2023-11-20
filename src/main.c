@@ -16,6 +16,7 @@ int main()
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
+    ListPlaylist ListPL = initListPlaylist();
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
     CreateEmptyStackChar(&history);
@@ -62,7 +63,7 @@ int main()
             akuisisiCommandWord(&namafile, currentWord, 2);
             if (namafile.Length > 0)
             {
-                load(wordToString(namafile), &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu);
+                loadsaved(wordToString(namafile),&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &ListPL, &playlistLagu);
                 if (!IsEmpty(arrPenyanyi))
                 {
                     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
@@ -136,7 +137,7 @@ int main()
         }
         else if (strCompare(com, "LIST PLAYLIST") == 0)
         {
-            printf("manggil list playlist\n");
+            listPlaylist(ListPL);
         }
         else if (strCompare(com, "PLAY SONG") == 0)
         {

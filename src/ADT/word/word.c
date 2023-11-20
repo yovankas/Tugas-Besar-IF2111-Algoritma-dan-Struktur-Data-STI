@@ -303,3 +303,54 @@ boolean isWordInt(Word w)
     }
     return cek;
 }
+
+Word sebelumSemicolon(Word w, int kataKe)
+{
+    Word w2;
+    int i = 0, counter = 0, length = 0;
+    boolean stop;
+
+    while (counter != kataKe - 1 && i < w.Length)
+    {
+        stop = false;
+        if (w.TabWord[i] == ';')
+        {
+            counter++;
+            while (i < w.Length && !stop)
+            {
+                i++;
+                if (w.TabWord[i] != ';')
+                {
+                    stop = true;
+                }
+            }
+        }
+        else
+        {
+            i++;
+        }
+
+        if (i == w.Length)
+        {
+            counter++;
+        }
+    }
+
+    stop = false;
+    while (!stop && i < w.Length)
+    {
+        if (w.TabWord[i] == ';')
+        {
+            stop = true;
+        }
+        else
+        {
+            w2.TabWord[length] = w.TabWord[i];
+            i++;
+            length++;
+        }
+    }
+    w2.Length = length;
+
+    return w2;
+}
