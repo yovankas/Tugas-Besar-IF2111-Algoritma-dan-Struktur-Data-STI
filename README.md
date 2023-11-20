@@ -10,7 +10,10 @@ Dengan dedikasi dan kerja keras, akhirnya WayangWave berhasil dibuat dan siap di
 Berikut adalah struktur folder dari WayangWave kami:
 - Folder `bin` yang berisi
   - File `Makefile` untuk melakukan kompilasi terhadap program utama
+- Folder `data` yang berisi nama album, lagu, dan penyanyi
+- Folder `Docs yang berisi dokumen-dokumen tugas besar`
 - Folder `src` yang berisi :
   - Folder `ADT` yang berguna untuk menyimpan seluruh ADT yang digunakan
   - Folder `console` yang digunakan untuk menyimpan seluruh utilities dalam WayangWave yang diperlukan (start, load, list, play, queue, song, playlist, status, save, quit, help)
   - File `main.c` yang merupakan program utama
+  - File `boolean.h` sebagai header boolean
