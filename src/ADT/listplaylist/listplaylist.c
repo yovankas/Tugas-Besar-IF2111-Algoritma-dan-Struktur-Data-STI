@@ -14,16 +14,17 @@ ListPlaylist initListPlaylist() {
     return listPL;
 }
 
-void addElement(ListPlaylist *listPL, infotypePlaylist value) {
+void addElement(ListPlaylist *listPL, char* value) {
     if (listPL->count == listPL->capacity) {
         listPL->capacity *= 2;
         listPL->playlist = (infotypePlaylist*)realloc(listPL->playlist, listPL->capacity * sizeof(infotypePlaylist));
+        listPL->playlist->countsongPL = 0;
         if (listPL->playlist == NULL) {
             fprintf(stderr, "Memory reallocation error for playlist\n");
             exit(EXIT_FAILURE);
         }
     }
-    listPL->playlist[listPL->count] = value;
+    listPL->playlist[listPL->count].namePL = value;
     listPL->count++;
 }
 
@@ -57,8 +58,8 @@ void printListPlaylist(ListPlaylist *listPL) {
     }
     else {
         printf("Your playlist:\n");
-        for (arraysize idxPLlist = 1; i <= listPL->count; i++) {
-            printf("%d. %s\n", idxPLlist, listPL->playlist[i]);
+        for (arraysize idxPLlist = 1; idxPLlist <= listPL->count; idxPLlist++) {
+            printf("%d. %s\n", idxPLlist, listPL->playlist[idxPLlist]);
         }
     }
 }
@@ -69,7 +70,7 @@ void freeListPlaylist(ListPlaylist *listPL) {
     listPL->capacity = 0;
 }
 
-infotypePlaylist namePlaylistFromIndex(ListPlaylist listPL, int ID)
+char* namePlaylistFromIndex(ListPlaylist listPL, int ID)
 {
-    return (listPL.playlist[ID]);
+    return (listPL.playlist[ID].namePL);
 }

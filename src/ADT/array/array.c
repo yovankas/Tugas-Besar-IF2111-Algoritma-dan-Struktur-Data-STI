@@ -76,7 +76,8 @@ void SetTab(Array Tin, Array *Tout)
 /* Mengeset nilai elemen tabel yang ke-i sehingga bernilai v */
 void SetEl(Array *T, IdxType i, ElType v)
 {
-    BUFFER(*T)[i] = (char *)malloc((strLength(v) + 1) * sizeof(char));
+    BUFFER(*T)
+    [i] = (char *)malloc((strLength(v) + 1) * sizeof(char));
     strCopy(BUFFER(*T)[i], v);
     if (i > GetLastIdx(*T))
     {
@@ -125,6 +126,20 @@ boolean IsFull(Array T)
     return NEFF(T) == IdxMax;
 }
 
+boolean IsElmtExist(Array T, ElType el)
+{
+    int i;
+    for (i = 0; i <= T.Neff; i++)
+    {
+        if (strCompare(T.TI[i], el) == 0)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void copyArray(Array *destination, Array source)
 {
     // Copy the elements one by one.
@@ -138,24 +153,28 @@ void copyArray(Array *destination, Array source)
 }
 
 /* ********** BACA dan TULIS dengan INPUT/OUTPUT device ********** */
-void PrintArrayPenyanyi (Array T) {
-/* Proses : Menuliskan isi tabel dengan traversal */
-/* I.S. T boleh kosong */
-/* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
-/* Jika isi tabel [1,2,3] maka akan diprint
-1. 1
-2. 2
-3. 3
-*/
-/* Jika T kosong : Hanya menulis "Tabel kosong" */
-    if (IsEmpty(T)) {
+void PrintArrayPenyanyi(Array T)
+{
+    /* Proses : Menuliskan isi tabel dengan traversal */
+    /* I.S. T boleh kosong */
+    /* F.S. Jika T tidak kosong : indeks dan elemen tabel ditulis berderet ke bawah */
+    /* Jika isi tabel [1,2,3] maka akan diprint
+    1. 1
+    2. 2
+    3. 3
+    */
+    /* Jika T kosong : Hanya menulis "Tabel kosong" */
+    if (IsEmpty(T))
+    {
         printf("Tidak ada Penyanyi\n");
     }
-    else {
+    else
+    {
         // printf("Daftar Penyanyi:\n");
         IdxType i;
-        for (i = 0; i <= NbElmt(T) ; i++) {
-            printf("%d. %s\n", i+1, BUFFER(T)[i]);
+        for (i = 0; i <= NbElmt(T); i++)
+        {
+            printf("%d. %s\n", i + 1, BUFFER(T)[i]);
         }
     }
 }

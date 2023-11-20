@@ -466,7 +466,7 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist)
     Word IDplaylistWord;
     akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
     int IDplaylist = wordToInt(IDplaylistWord);
-    infotypePlaylist namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
+    char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
     if (strCompare(namePlaylist, "") != 0)
     {
         int i = 0;
@@ -520,7 +520,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     startInputWord();
     Word listPLinput;
     akuisisiCommandWord(&listPLinput, currentWord, 1);
-    char *listPL_input = wordToString(listPLinput);
+    char* listPL_input = wordToString(listPLinput);
 
     // pengecekan input nama playlist
     START(listPL_input);
@@ -573,7 +573,7 @@ void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2)
     }
     else
     {
-        chosenPlaylist.namePL = listPL->playlist[idPL_input];
+        chosenPlaylist.namePL = listPL->playlist[idPL_input].namePL;
         totalsong = NbElmtPlaylist(chosenPlaylist);
 
         if (idxlagu1 > totalsong)
@@ -624,7 +624,7 @@ void PlaylistRemove(ListPlaylist *listPL, int idxlagu)
     akuisisiCommandWord(&idPLinput, currentWord, 1);
     int id_PLinput = wordToInt(idPLinput);
 
-    chosenPlaylist.namePL = listPL->playlist[id_PLinput];
+    chosenPlaylist.namePL = listPL->playlist[id_PLinput].namePL;
 
     if (id_PLinput > listPL->count)
     {
@@ -633,7 +633,7 @@ void PlaylistRemove(ListPlaylist *listPL, int idxlagu)
     }
     else
     {
-        chosenPlaylist.namePL = listPL->playlist[id_PLinput];
+        chosenPlaylist.namePL = listPL->playlist[id_PLinput].namePL;
         totalsong = NbElmtPlaylist(chosenPlaylist);
 
         if (idxlagu > totalsong)
@@ -783,9 +783,9 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     CreateEmptyPlaylist(chosenPlaylist);
     for (int i = 0; i < listPL->count; i++)
     {
-        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], listPL->playlist[id_playlist]) == 0)
+        if (listPL->playlist[i].namePL != NULL && strCompare(listPL->playlist[i].namePL, listPL->playlist[id_playlist].namePL) == 0)
         {
-            strCopy(chosenPlaylist->namePL, listPL->playlist[i]);
+            strCopy(chosenPlaylist->namePL, listPL->playlist[i].namePL);
             break;
         }
     }
@@ -939,9 +939,9 @@ void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrP
     CreateEmptyPlaylist(chosenPlaylist);
     for (int i = 0; i < listPL->count; i++)
     {
-        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], listPL->playlist[id_playlist]) == 0)
+        if (listPL->playlist[i].namePL != NULL && strCompare(listPL->playlist[i].namePL, listPL->playlist[id_playlist].namePL) == 0)
         {
-            strCopy(chosenPlaylist->namePL, listPL->playlist[i]);
+            strCopy(chosenPlaylist->namePL, listPL->playlist[i].namePL);
             break;
         }
     }

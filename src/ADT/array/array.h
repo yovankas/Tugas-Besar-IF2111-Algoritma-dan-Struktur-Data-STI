@@ -17,7 +17,7 @@ typedef char *ElType;
 typedef struct
 {
 	ElType TI[IdxMax - IdxMin + 1]; /* memori tempat penyimpan elemen (container) */
-	int Neff;						/* banyaknya elemen efektif */
+	int Neff;												/* banyaknya elemen efektif */
 } Array;
 
 /* Indeks yang digunakan [IdxMin..IdxMax] */
@@ -91,8 +91,11 @@ boolean IsEmpty(Array T);
 boolean IsFull(Array T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
+/* Check if element exist in array or not */
+boolean IsElmtExist(Array T, ElType el);
+
 void copyArray(Array *destination, Array source);
 
-void PrintArrayPenyanyi (Array T);
+void PrintArrayPenyanyi(Array T);
 
 #endif

@@ -16,6 +16,8 @@ int main()
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
+    Stackchar History;
+    CreateEmptyStackChar(&History);
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
     CreateEmptyStackChar(&history);
@@ -193,7 +195,7 @@ int main()
         }
         else if (strCompare(com, "SONG PREVIOUS") == 0)
         {
-            printf("manggil song previous\n");
+            songPrevious(&Q, &History, currentSong);
         }
         else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {

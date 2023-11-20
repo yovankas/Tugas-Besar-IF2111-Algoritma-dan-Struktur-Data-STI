@@ -22,7 +22,7 @@ typedef struct {
 
 ListPlaylist initListPlaylist();
 
-void addElement(ListPlaylist *listPL, infotypePlaylist value);
+void addElement(ListPlaylist *listPL, char* value);
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index);
 
@@ -30,6 +30,6 @@ void printListPlaylist(ListPlaylist *listPL);
 
 void freeListPlaylist(ListPlaylist *listPL);
 
-infotypePlaylist namePlaylistFromIndex(ListPlaylist listPL, int ID);
+char* namePlaylistFromIndex(ListPlaylist listPL, int ID);
 
 #endif
