@@ -16,6 +16,7 @@ int main()
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
+    ListPlaylist ListPlaylist = initListPlaylist();
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
     CreateEmptyStackChar(&History);
@@ -135,7 +136,7 @@ int main()
         }
         else if(strCompare(com, "LIST PLAYLIST") == 0)
         {
-            printf("manggil list playlist\n");
+            listPlaylist(ListPlaylist);
         }
         else if(strCompare(com, "PLAY SONG") == 0)
         {
@@ -171,7 +172,8 @@ int main()
         }
         else if(strCompare(com, "PLAYLIST CREATE") == 0)
         {
-            printf("manggil playlist create\n");
+            Playlist PL;
+            CreatePlaylist(&ListPlaylist, PL);
         }
         else if(strCompare(com, "PLAYLIST SWAP") == 0)
         {
