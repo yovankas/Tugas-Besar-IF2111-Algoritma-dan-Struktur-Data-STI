@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "load.h"
-#include "console.h"
+#include "./console/load.h"
+#include "./console/console.h"
 
 int main()
 {

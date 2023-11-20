@@ -438,13 +438,13 @@ void playPlaylist(Queue *Q, Stackchar *History, Playlist playlistLagu, ListPlayl
     int IDplaylist = wordToInt(IDplaylistWord);
     char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
 
-    printf("Memutar playlist “%s”\n", namePlaylist);
+    printf("Memutar playlist %s\n", namePlaylist);
     CreateQueue(Q); // Empty queue
     CreateEmptyStackChar(History); // Empty history
     if (strCompare(namePlaylist, "") != 0)
     {
         int i = 0;
-        content playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
+        content playlist = LaguFromPlaylist(playlistLagu, namePlaylist, i);
         while (strCompare(playlist.album, "") != 0)
         {
             ElTypeQueue queuePL;
@@ -456,9 +456,9 @@ void playPlaylist(Queue *Q, Stackchar *History, Playlist playlistLagu, ListPlayl
             stackPL.album = playlist.album;
             stackPL.artist = playlist.penyanyi;
             stackPL.song = playlist.lagu;
-            Push(History, stackPL);
+            PushStackChar(History, stackPL);
             i += 1;
-            playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
+            playlist = LaguFromPlaylist(playlistLagu, namePlaylist, i);
         }
     }
 }
