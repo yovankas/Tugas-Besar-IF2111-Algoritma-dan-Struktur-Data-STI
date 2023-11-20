@@ -24,8 +24,8 @@ void addElement(ListPlaylist *listPL, char* value) {
             exit(EXIT_FAILURE);
         }
     }
-    listPL->playlist[listPL->count].namePL = value;
-    listPL->count++;
+    listPL->playlist->namePL = value;
+    listPL->count ++;
 }
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
@@ -59,7 +59,7 @@ void printListPlaylist(ListPlaylist *listPL) {
     else {
         printf("Your playlist:\n");
         for (arraysize idxPLlist = 1; idxPLlist <= listPL->count; idxPLlist++) {
-            printf("%d. %s\n", idxPLlist, listPL->playlist[idxPLlist]);
+            printf("%d. %s\n", idxPLlist, listPL->playlist[idxPLlist].namePL);
         }
     }
 }

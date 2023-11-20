@@ -198,7 +198,12 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {
-            printf("manggil playlist create\n");
+            CreatePlaylist(&ListPL, playlistLagu);
+        }
+        else if (strCompare(com, "PLAYLIST ADD") == 0)
+        {
+            Playlist chosenPlaylist;
+            PlaylistAddSong(&ListPL, &chosenPlaylist, arrPenyanyi, albumPenyanyi, laguAlbum);
         }
         else if (strCompare(com, "PLAYLIST SWAP") == 0)
         {

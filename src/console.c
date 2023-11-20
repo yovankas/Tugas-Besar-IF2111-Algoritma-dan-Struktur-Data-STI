@@ -508,7 +508,7 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong)
     }
 }
 
-void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
+void CreatePlaylist(ListPlaylist *listPL, Playlist PL)
 {
     // KAMUS
     char CharPL1, CharPL2, CharPL3;
@@ -521,38 +521,32 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     Word listPLinput;
     akuisisiCommandWord(&listPLinput, currentWord, 1);
     char* listPL_input = wordToString(listPLinput);
+    akuisisiCommandWord(&listPLinput, currentWord, 2);
+    char *input2 = wordToString(listPLinput);
+    
+    int input = 2;
+    while (strCompare(input2, "") != 0)
+    {
+        listPL_input = concat(listPL_input, " ");
+        listPL_input = concat(listPL_input, input2);
+        input +=1;
+        akuisisiCommandWord(&listPLinput, currentWord, input);
+        input2 = wordToString(listPLinput);
+    }
 
     // pengecekan input nama playlist
-    START(listPL_input);
-    CharPL1 = GetCC();
-    if (CharPL1 != BLANK)
-    {
-        countChar += 1;
-    }
-    ADV();
-    CharPL2 = GetCC();
-    if (CharPL2 != BLANK)
-    {
-        countChar += 1;
-    }
-    ADV();
-    CharPL3 = GetCC();
-    if (CharPL3 != BLANK)
-    {
-        countChar += 1;
-    }
 
-    if (countChar != 3)
-    {
-        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
-        exit(EXIT_FAILURE);
-    }
-    else if (countChar == 3)
+    if (strLength(listPL_input) > 3 && strCompare(listPL_input, "") != 0)
     {
         addElement(listPL, listPL_input);
         PL.namePL = listPL_input;
-        printf("Playlist %s berhasil dibuat!", &listPL_input);
+        printf("Playlist %s berhasil dibuat! ", listPL_input);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
+    }
+    else
+    {
+        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -653,6 +647,7 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     printf("Masukkan Nama Penyanyi: ");
     startInputWord();
     Word namePenyanyi;
+    akuisisiCommandWord(&namePenyanyi, currentWord, 1);
     char *penyanyi = wordToString(namePenyanyi);
     akuisisiCommandWord(&namePenyanyi, currentWord, 2);
     char *penyanyi2 = wordToString(namePenyanyi);
