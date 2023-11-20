@@ -101,7 +101,7 @@ void displayQueue(Queue Q){
     if (Q.idxHead == IDX_UNDEF && Q.idxTail == IDX_UNDEF) {
         printf("Your queue is empty.\n");
     } 
-    else if (Q.idxHead == IDX_UNDEF) {
+    else if (Q.idxHead+1 == IDX_UNDEF) {
         printf("Your queue is empty.\n");
     }
     else {

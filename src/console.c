@@ -563,6 +563,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     int countChar = 0;
 
     //ALGORITMA
+    CreateEmptyPlaylist(&PL);
     printf("Masukkan nama playlist yang ingin dibuat : ");
     startInputWord();
     Word listPLinput;
@@ -605,6 +606,7 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
 
 void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2){
     Playlist *chosenPlaylist;
+    CreateEmptyPlaylist(&chosenPlaylist);
     int totalsong;
     
     startInputWord();
@@ -651,6 +653,7 @@ void PlaylistDelete(ListPlaylist *listPL){
 
 void PlaylistRemove(ListPlaylist *listPL, int idxlagu){
     Playlist *chosenPlaylist;
+    CreateEmptyPlaylist(&chosenPlaylist);
     int totalsong;
     startInputWord();
     Word idPLinput;
@@ -804,14 +807,12 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     Word idplaylist;
     akuisisiCommandWord(&idplaylist, currentWord, 1);
     int id_playlist = wordToInt(idplaylist);
-    char* id_playlistchar;
-    intToString(id_playlist, id_playlistchar);
     
-    Playlist selectedPlaylist;
-    CreateEmptyPlaylist(&selectedPlaylist);
+    Playlist chosenPlaylist;
+    CreateEmptyPlaylist(&chosenPlaylist);
     for (int i = 0; i < listPL->count; i++) {
-        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], id_playlistchar) == 0) {
-            selectedPlaylist.namePL = &listPL->playlist[i];
+        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], listPL->playlist[id_playlist]) == 0) {
+            chosenPlaylist.namePL = &listPL->playlist[i];
             break;
         }
     }
@@ -821,8 +822,8 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     newSong.album = album;
     newSong.penyanyi = penyanyi;
 
-    if (strCompare(selectedPlaylist.namePL, "") != 0) {
-        InsVLast(*selectedPlaylist, newSong);
+    if (strCompare(chosenPlaylist.namePL, "") != 0) {
+        InsVLast(*chosenPlaylist, newSong);
         printf("Lagu dengan judul “%s” pada album %s oleh penyanyi %s berhasil ditambahkan ke dalam playlist %s.\n", newSong.lagu, newSong.penyanyi, newSong.album, selectedPlaylist->namePL);
     } else {
         printf("Playlist dengan ID %d tidak ditemukan.\n", id_playlist);
@@ -954,21 +955,21 @@ void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrP
     int id_playlist = wordToInt(idplaylist);
     
     char* id_playlistchar;
-    Playlist selectedPlaylist = NULL;
+    CreateEmptyPlaylist(&chosenPlaylist);
     for (int i = 0; i < listPL->count; i++) {
-        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], intToString(id_playlist, id_playlistchar)) == 0) {
-            selectedPlaylist.namePL = &listPL->playlist[i]; 
+        if (listPL->playlist[i] != NULL && strCompare(listPL->playlist[i], listPL->playlist[id_playlist]) == 0) {
+            chosenPlaylist.namePL = &listPL->playlist[i]; 
             break;
         }
     }
 
-    if (selectedPlaylist != NULL) {
+    if (chosenPlaylist != NULL) {
         content newSong;
         for(int j = 0; j < laguAlbum.Count; j++){
             newSong.lagu = LaguFromAlbum(laguAlbum, album, j);
             newSong.album = album;
             newSong.penyanyi = penyanyi;
-            InsVLast(selectedPlaylist, newSong);
+            InsVLast(chosenPlaylist, newSong);
         }
         printf("Album dengan judul %s berhasil ditambahkan ke dalam playlist pengguna %s.\n", newSong.album, selectedPlaylist->namePL);
     } else {
