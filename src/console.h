@@ -74,7 +74,7 @@ void listPlaylist(ListPlaylist listPL);
  * F.S. Menampilkan list playlist
  **/
 
-void queuePlaylist(Queue *Q, Playlist *playlistLagu);
+void queuePlaylist (Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist);
 /*
  * Konstruktor
  * I.S. Program berjalan

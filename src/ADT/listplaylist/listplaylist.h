@@ -24,4 +24,6 @@ void printListPlaylist(ListPlaylist *listPL);
 
 void freeListPlaylist(ListPlaylist *listPL);
 
+infotypePlaylist namePlaylistFromIndex(ListPlaylist listPL, int ID);
+
 #endif

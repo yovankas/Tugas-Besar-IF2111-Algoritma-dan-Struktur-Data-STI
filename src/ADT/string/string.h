@@ -23,4 +23,6 @@ boolean isCharInString(string s, char c);
 
 int strCompare(char *s1, char *s2);
 
+void intToString(int num, char *str);
+
 #endif

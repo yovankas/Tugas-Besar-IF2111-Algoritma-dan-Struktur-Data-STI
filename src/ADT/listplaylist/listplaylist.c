@@ -69,3 +69,8 @@ void freeListPlaylist(ListPlaylist *listPL) {
     listPL->count = 0;
     listPL->capacity = 0;
 }
+
+infotypePlaylist namePlaylistFromIndex(ListPlaylist listPL, int ID)
+{
+    return (listPL.playlist[ID]);
+}

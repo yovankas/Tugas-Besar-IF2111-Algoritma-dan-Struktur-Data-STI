@@ -154,4 +154,7 @@ void SwapSongsinPlaylist(Playlist *PL, addressPlaylist P1, addressPlaylist P2);
 void SwapSongsByIndex(Playlist *PL, int index1, int index2);
 
 void DeleteSongByIndex(Playlist *PL, int index);
+
+content LaguFromPlaylist(Playlist PL, char* namePlaylist, int songKe);
+
 #endif

@@ -471,6 +471,36 @@ void DeleteSongByIndex(Playlist *PL, int index) {
     DealokasiPlaylist(&P);
 }
 
-infotype LagufromPlaylist(Playlist *PL, int id){
-    
+content LaguFromPlaylist(Playlist PL, char* namePlaylist, int songKe)
+{
+    addressPlaylist P = First(PL);
+    content emptyContent; // Placeholder for an empty content
+
+    while (P != NULL && strCompare(PL.namePL, namePlaylist) != 0)
+    {
+        P = Next(P);
+    }
+
+    if (P != NULL)
+    {
+        int count = 0;
+        while (P != NULL && count < songKe)
+        {
+            P = Next(P);
+            count++;
+        }
+
+        if (P != NULL)
+        {
+            // Assuming Info(P) is of type content
+            return Info(P);
+        }
+    }
+
+    // Return an empty content if playlist or song is not found
+    emptyContent.lagu = NULL;
+    emptyContent.album = NULL;
+    emptyContent.penyanyi = NULL;
+
+    return emptyContent;
 }

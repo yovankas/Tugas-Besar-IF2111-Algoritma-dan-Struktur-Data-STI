@@ -71,3 +71,7 @@ int strCompare(char *s1, char *s2) {
 
     return 0; // Both strings are equal
 }
+
+void intToString(int num, char *str) {
+    sprintf(str, "%d", num);
+}
