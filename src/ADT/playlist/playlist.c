@@ -300,7 +300,8 @@ int NbElmtPlaylist (Playlist PL){
         p = Next(p);
         cnt++;
     }
-    return cnt;
+    PL.countisiPL = cnt;
+    return PL.countisiPL;
 }
 
 /****************** PROSES TERHADAP LIST ******************/

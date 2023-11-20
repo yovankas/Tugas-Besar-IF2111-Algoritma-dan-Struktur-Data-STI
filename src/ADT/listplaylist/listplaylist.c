@@ -57,9 +57,8 @@ void printListPlaylist(ListPlaylist *listPL) {
     }
     else {
         printf("Your playlist:\n");
-        for (arraysize i = 0; i < listPL->count; i++) {
-            int nomor = i + 1;
-            printf("%d. %s\n", nomor, listPL->playlist[i]);
+        for (arraysize idxPLlist = 1; i <= listPL->count; i++) {
+            printf("%d. %s\n", idxPLlist, listPL->playlist[i]);
         }
     }
 }

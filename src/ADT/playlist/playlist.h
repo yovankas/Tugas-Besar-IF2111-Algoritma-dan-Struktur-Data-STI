@@ -25,6 +25,7 @@ typedef struct tElmtlist{
 
 typedef struct{
     name namePL;
+    int countisiPL;
     addressPlaylist First;
 } Playlist;
 
