@@ -429,6 +429,40 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
     (*currentSong).song = song;
 }
 
+void playPlaylist(Queue *Q, Stackchar *History, Playlist playlistLagu, ListPlaylist listPlaylist)
+{
+    printf("Masukkan ID Playlist: ");
+    startInputWord();
+    Word IDplaylistWord;
+    akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
+    int IDplaylist = wordToInt(IDplaylistWord);
+    char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
+
+    printf("Memutar playlist “%s”\n", namePlaylist);
+    CreateQueue(Q); // Empty queue
+    CreateEmptyStackChar(History); // Empty history
+    if (strCompare(namePlaylist, "") != 0)
+    {
+        int i = 0;
+        content playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
+        while (strCompare(playlist.album, "") != 0)
+        {
+            ElTypeQueue queuePL;
+            queuePL.album = playlist.album;
+            queuePL.artist = playlist.penyanyi;
+            queuePL.song = playlist.lagu;
+            enqueue(Q, queuePL);
+            ElTypeStackchar stackPL;
+            stackPL.album = playlist.album;
+            stackPL.artist = playlist.penyanyi;
+            stackPL.song = playlist.lagu;
+            Push(History, stackPL);
+            i += 1;
+            playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
+        }
+    }
+}
+
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist)
 {
     if (Q->Tab[Q->idxHead].idPlaylist != (-1))
