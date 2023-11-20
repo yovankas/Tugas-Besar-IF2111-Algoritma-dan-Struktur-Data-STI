@@ -88,6 +88,5 @@ Stackchar MergeStackChar (Stackchar s1, Stackchar s2);
        atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
        secukupnya yang dapat ditampung. */
 
-void PlayPrevSong(Stackchar History);
-    /* Memutar lagu sebelumnya */
+void printStackchar(Stackchar S);
 #endif

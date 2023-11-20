@@ -11,7 +11,7 @@ void Delay(unsigned int Sec)
 
 void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu)
 {
-    load("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
+    loaddefault("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
 }
 
 void quit()
@@ -216,12 +216,6 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
     }
 }
 
-void listPlaylist(ListPlaylist listPL)
-{
-    printf("Daftar Playlist yang kamu miliki:\n");
-    printListPlaylist(&listPL);
-}
-
 void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
 {
     printf("Daftar Penyanyi:\n");
@@ -303,31 +297,6 @@ void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAl
         enqueue(Q, El);
 
         displayQueue(*Q);
-    }
-}
-
-void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist)
-{
-    printf("Masukkan ID Playlist: ");
-    startInputWord();
-    Word IDplaylistWord;
-    akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
-    int IDplaylist = wordToInt(IDplaylistWord);
-    char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
-    if (strCompare(namePlaylist, "") != 0)
-    {
-        int i = 0;
-        content playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
-        while (strCompare(playlist.album, "") != 0)
-        {
-            ElTypeQueue queuePL;
-            queuePL.album = playlist.album;
-            queuePL.artist = playlist.penyanyi;
-            queuePL.song = playlist.lagu;
-            enqueue(Q, queuePL);
-            i += 1;
-            playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
-        }
     }
 }
 
@@ -460,40 +429,6 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
     (*currentSong).song = song;
 }
 
-void playPlaylist(Queue *Q, Stackchar *History, Playlist playlistLagu, ListPlaylist listPlaylist)
-{
-    printf("Masukkan ID Playlist: ");
-    startInputWord();
-    Word IDplaylistWord;
-    akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
-    int IDplaylist = wordToInt(IDplaylistWord);
-    char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
-
-    printf("Memutar playlist “%s”\n", namePlaylist);
-    CreateQueue(Q); // Empty queue
-    CreateEmptyStackChar(History); // Empty history
-    if (strCompare(namePlaylist, "") != 0)
-    {
-        int i = 0;
-        content playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
-        while (strCompare(playlist.album, "") != 0)
-        {
-            ElTypeQueue queuePL;
-            queuePL.album = playlist.album;
-            queuePL.artist = playlist.penyanyi;
-            queuePL.song = playlist.lagu;
-            enqueue(Q, queuePL);
-            ElTypeStackchar stackPL;
-            stackPL.album = playlist.album;
-            stackPL.artist = playlist.penyanyi;
-            stackPL.song = playlist.lagu;
-            Push(History, stackPL);
-            i += 1;
-            playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
-        }
-    }
-}
-
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist)
 {
     if (Q->Tab[Q->idxHead].idPlaylist != (-1))
@@ -518,7 +453,38 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
     printf("\n");
 }
 
-void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong)
+void listPlaylist(ListPlaylist listPL)
+{
+    printf("Daftar Playlist yang kamu miliki:\n");
+    printListPlaylist(&listPL);
+}
+
+void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist)
+{
+    printf("Masukkan ID Playlist: ");
+    startInputWord();
+    Word IDplaylistWord;
+    akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
+    int IDplaylist = wordToInt(IDplaylistWord);
+    char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist);
+    if (strCompare(namePlaylist, "") != 0)
+    {
+        int i = 0;
+        content playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
+        while (strCompare(playlist.album, "") != 0)
+        {
+            ElTypeQueue queuePL;
+            queuePL.album = playlist.album;
+            queuePL.artist = playlist.penyanyi;
+            queuePL.song = playlist.lagu;
+            enqueue(Q, queuePL);
+            i += 1;
+            playlist = LaguFromPlaylist(*playlistLagu, namePlaylist, i);
+        }
+    }
+}
+
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History)
 {
     if (IsEmptyQueue(*Q))
     {
@@ -526,23 +492,23 @@ void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong)
     }
     else
     {
-        PlayNextSong(nextSong, currentSong, Q);
+        PlayNextSong(nextSong, currentSong, Q, History);
     }
 }
 
-void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong)
+void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong)
 {
     if (IsEmptyStackChar(*History))
     {
-        ReplayCurrentSong(currentSong);
+        ReplayCurrentSong(*currentSong);
     }
     else
     {
-        PlayPrevSong(*History);
+        PlayPrevSong(History, currentSong);
     }
 }
 
-void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
+void CreatePlaylist(ListPlaylist *listPL, Playlist PL)
 {
     // KAMUS
     char CharPL1, CharPL2, CharPL3;
@@ -555,38 +521,32 @@ void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
     Word listPLinput;
     akuisisiCommandWord(&listPLinput, currentWord, 1);
     char* listPL_input = wordToString(listPLinput);
+    akuisisiCommandWord(&listPLinput, currentWord, 2);
+    char *input2 = wordToString(listPLinput);
+    
+    int input = 2;
+    while (strCompare(input2, "") != 0)
+    {
+        listPL_input = concat(listPL_input, " ");
+        listPL_input = concat(listPL_input, input2);
+        input +=1;
+        akuisisiCommandWord(&listPLinput, currentWord, input);
+        input2 = wordToString(listPLinput);
+    }
 
     // pengecekan input nama playlist
-    START(listPL_input);
-    CharPL1 = GetCC();
-    if (CharPL1 != BLANK)
-    {
-        countChar += 1;
-    }
-    ADV();
-    CharPL2 = GetCC();
-    if (CharPL2 != BLANK)
-    {
-        countChar += 1;
-    }
-    ADV();
-    CharPL3 = GetCC();
-    if (CharPL3 != BLANK)
-    {
-        countChar += 1;
-    }
 
-    if (countChar != 3)
-    {
-        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
-        exit(EXIT_FAILURE);
-    }
-    else if (countChar == 3)
+    if (strLength(listPL_input) > 3 && strCompare(listPL_input, "") != 0)
     {
         addElement(listPL, listPL_input);
         PL.namePL = listPL_input;
-        printf("Playlist %s berhasil dibuat!", &listPL_input);
+        printf("Playlist %s berhasil dibuat! ", listPL_input);
         printf("Silakan masukkan lagu - lagu artis terkini kesayangan Anda!");
+    }
+    else
+    {
+        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
+        exit(EXIT_FAILURE);
     }
 }
 
@@ -687,6 +647,7 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     printf("Masukkan Nama Penyanyi: ");
     startInputWord();
     Word namePenyanyi;
+    akuisisiCommandWord(&namePenyanyi, currentWord, 1);
     char *penyanyi = wordToString(namePenyanyi);
     akuisisiCommandWord(&namePenyanyi, currentWord, 2);
     char *penyanyi2 = wordToString(namePenyanyi);

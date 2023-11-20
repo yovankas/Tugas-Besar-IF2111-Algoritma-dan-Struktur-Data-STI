@@ -13,10 +13,14 @@
 #include "./adt/penyanyi/penyanyi.h"
 #include "./adt/string/string.h"
 #include "./adt/queue/circular_queue.h"
-#include "./ADT/stack/stackchar.h"
+#include "./adt/current/current.h"
+#include "./adt/stack/stackchar.h"
+#include "./ADT/playlist/playlist.h"
 #include "console.h"
 #include "./ADT/listplaylist/listplaylist.h"
 
-void load(char* namafile,Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
+void loaddefault(char* namafile,Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
+
+void loadsaved(char* namafile,Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, ListPlaylist *ListPL, Playlist *savedPlaylist);
 
 #endif

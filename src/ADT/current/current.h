@@ -4,6 +4,7 @@
 #include "../../boolean.h"
 #include "../string/string.h"
 #include "../queue/circular_queue.h"
+#include "../stack/stackchar.h"
 
 typedef struct 
 {
@@ -40,12 +41,15 @@ void PrintCurrentSong(currentSong currentSong);
 void PlayCurrentSong(currentSong currentSong);
 // Memutar current song
 
-void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q);
+void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History);
 // Memutar next song
 
 void ReplayCurrentSong(currentSong currentSong);
 // Memutar kembali current song
 
 void ReplaceNextSong(nextSong *nextSong, Queue *Q);
+
+void PlayPrevSong(Stackchar *History, currentSong *currentSong);
+    /* Memutar lagu sebelumnya */
 
 #endif

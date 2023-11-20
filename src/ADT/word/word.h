@@ -62,4 +62,6 @@ Word upperWord(Word w);
 /* Mereturn false jika bukan semua elemen tabword integer, true jika semua integer*/
 boolean isWordInt(Word w);
 
+Word sebelumSemicolon(Word w, int kataKe);
+
 #endif

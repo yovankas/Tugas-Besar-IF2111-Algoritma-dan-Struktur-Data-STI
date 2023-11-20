@@ -125,8 +125,15 @@ Stackchar MergeStackChar(Stackchar s1, Stackchar s2)
     return s;
 }
 
-void PlayPrevSong(Stackchar History)
-{
-    printf("Memutar lagu sebelumnya");
-    printf("“%s” oleh “%s”\n", History.T[TopStackchar(History)].song, History.T[TopStackchar(History)].artist);
+void printStackchar(Stackchar S) {
+    if (IsEmptyStackChar(S)) {
+        printf("Stackchar is empty.\n");
+    } else {
+        InverseStackChar(&S);
+        int j = 1;
+        for (int i = S.TOPSTACKCHAR; i >= 0; i--) {
+            printf("%d. %s - %s - %s\n", j, S.T[i].artist, S.T[i].album, S.T[i].song);
+            j++;
+        }
+    }
 }
