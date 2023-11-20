@@ -103,7 +103,7 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong);
         Jika history kosong maka diputar current song
 */
 
-void CreatePlaylist(ListPlaylist listPL, Playlist PL);
+void CreatePlaylist(ListPlaylist *listPL, Playlist PL);
 /*
  * I.S. Listplaylist masih seperti sebelum
  * F.S. Membuat playlist baru dan menambahkannya ke list playlist
