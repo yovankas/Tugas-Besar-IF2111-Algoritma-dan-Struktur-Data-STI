@@ -124,9 +124,3 @@ Stackchar MergeStackChar(Stackchar s1, Stackchar s2)
     }
     return s;
 }
-
-void PlayPrevSong(Stackchar History)
-{
-    printf("Memutar lagu sebelumnya");
-    printf("“%s” oleh “%s”\n", History.T[TopStackchar(History)].song, History.T[TopStackchar(History)].artist);
-}

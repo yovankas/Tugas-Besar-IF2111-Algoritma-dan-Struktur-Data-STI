@@ -16,8 +16,6 @@ int main()
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
-    Stackchar History;
-    CreateEmptyStackChar(&History);
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
     CreateEmptyStackChar(&history);
@@ -191,11 +189,11 @@ int main()
         }
         else if (strCompare(com, "SONG NEXT") == 0)
         {
-            songNext(&Q, &currentSong, &nextSong);
+            songNext(&Q, &currentSong, &nextSong, &history);
         }
         else if (strCompare(com, "SONG PREVIOUS") == 0)
         {
-            songPrevious(&Q, &History, currentSong);
+            songPrevious(&Q, &history, &currentSong);
         }
         else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {

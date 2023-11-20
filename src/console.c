@@ -484,7 +484,7 @@ void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist)
     }
 }
 
-void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong)
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History)
 {
     if (IsEmptyQueue(*Q))
     {
@@ -492,19 +492,19 @@ void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong)
     }
     else
     {
-        PlayNextSong(nextSong, currentSong, Q);
+        PlayNextSong(nextSong, currentSong, Q, History);
     }
 }
 
-void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong)
+void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong)
 {
     if (IsEmptyStackChar(*History))
     {
-        ReplayCurrentSong(currentSong);
+        ReplayCurrentSong(*currentSong);
     }
     else
     {
-        PlayPrevSong(*History);
+        PlayPrevSong(History, currentSong);
     }
 }
 

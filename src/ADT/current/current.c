@@ -33,13 +33,18 @@ void PlayCurrentSong(currentSong currentSong)
     printf("“%s” oleh “%s”\n", currentSong.song, currentSong.artist);
 }
 
-void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q)
+void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History)
 {
     printf("Memutar lagu selanjutnya ");
     nextSong->song = Q->Tab[Q->idxHead].song;
     nextSong->artist = Q->Tab[Q->idxHead].artist;
     nextSong->album = Q->Tab[Q->idxHead].album;
     // printf("%s oleh %s\n", nextSong->song, nextSong->artist);
+    infotypeStackchar historysong;
+    historysong.album = currentSong->album;
+    historysong.artist = currentSong->artist;
+    historysong.song = currentSong->song;
+    PushStackChar(History, historysong);
     currentSong->album = nextSong->album;
     currentSong->artist = nextSong->artist;
     currentSong->song = nextSong->song;
@@ -59,4 +64,15 @@ void ReplaceNextSong(nextSong *nextSong, Queue *Q)
     nextSong->album = next.album;
     nextSong->artist = next.artist;
     nextSong->song = next.song;
+}
+
+void PlayPrevSong(Stackchar *History, currentSong *currentSong)
+{
+    printf("Memutar lagu sebelumnya ");
+    infotypeStackchar X;
+    PopStackChar(History, &X);
+    printf("%s oleh %s", X.song, X.artist);
+    currentSong->album = X.album;
+    currentSong->artist = X.artist;
+    currentSong->song = X.song;
 }
