@@ -24,7 +24,7 @@ boolean IsFullStackChar(Stackchar S)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void PushStackChar(Stackchar *S, infotypeStackchar X)
+void PushStackChar(Stackchar *S, ElTypeStackchar X)
 {
     TopStackchar(*S)++;
     InfoTopStackchar(*S) = X;
@@ -34,7 +34,7 @@ void PushStackChar(Stackchar *S, infotypeStackchar X)
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void PopStackChar(Stackchar *S, infotypeStackchar *X)
+void PopStackChar(Stackchar *S, ElTypeStackchar *X)
 {
     (*X) = InfoTopStackchar(*S);
     TopStackchar(*S)--;
