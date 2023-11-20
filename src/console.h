@@ -20,7 +20,7 @@
 #include "./ADT/current/current.h"
 #include "./ADT/listplaylist/listplaylist.h"
 
-void Delay (unsigned int Sec);
+void Delay(unsigned int Sec);
 
 void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
 
@@ -36,23 +36,29 @@ void help(boolean startcheck);
  * Konstruktor
  * I.S. Program berjalan
  * F.S. Menampilkan daftar command yang mungkin untuk dieksekusi dengan deskripsinya
- */ 
+ */
 
 void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
 /**
  * Konstruktor
  * I.S. Program berjalan
  * F.S. Menampilkan list penyanyi, list album dari seorang penyanyi, serta list lagu dari suatu album
- */ 
+ */
 
-void queueSong (Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
 /**
  * Konstruktor
  * I.S. Program berjalan
  * F.S. Menambahkan sebuah lagu ke dalam queue
- */ 
+ */
 
-void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong *currentSong);
+void queueSwap(Queue *Q, int x, int y);
+
+void queueRemove(Queue *Q, int id);
+
+void queueClear(Queue *Q);
+
+void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong *currentSong);
 /**
  * Konstruktor
  * I.S. Program berjalan, Queue dan History bisa saja memiliki isi ataupun kosong
@@ -61,7 +67,7 @@ void playSong (Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPe
  */
 
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist);
- /*
+/*
  * Konstruktor
  * I.S. Program berjalan, Queue dan Playlist mungkin kosong
  * F.S. Menampilkan current playlist, dan queue
@@ -74,63 +80,62 @@ void listPlaylist(ListPlaylist listPL);
  * F.S. Menampilkan list playlist
  **/
 
-void queuePlaylist (Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist);
+void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist);
 /*
  * Konstruktor
  * I.S. Program berjalan
  * F.S. Menambahkan playlist ke dalam queue
  */
 
-
 void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong);
- /**
- * Konstruktor
- * I.S. Program berjalan, queue mungkin kosong
- * F.S. Memutar lagu selanjutnya 
-        Jika queue kosong maka diputar current song
+/**
+* Konstruktor
+* I.S. Program berjalan, queue mungkin kosong
+* F.S. Memutar lagu selanjutnya
+       Jika queue kosong maka diputar current song
 */
 
 void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong);
 /*
  * Konstruktor
  * I.S. Program berjalan, history mungkin kosong
- * F.S. Memutar lagu sebelumnya  
+ * F.S. Memutar lagu sebelumnya
         Jika history kosong maka diputar current song
 */
 
-void CreatePlaylist(ListPlaylist *listPL, Playlist PL);
+void CreatePlaylist(ListPlaylist listPL, Playlist PL);
 /*
  * I.S. Listplaylist masih seperti sebelum
  * F.S. Membuat playlist baru dan menambahkannya ke list playlist
-*/
+ */
 
 void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2);
 /*
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
-*/
+ */
 
 void PlaylistDelete(ListPlaylist *PL);
 /*
  * I.S. Daftar Playlist user masih seperti semula
  * F.S. Playlist yg dipilih sudah dihapus
-*/
+ */
 
 void PlaylistRemove(ListPlaylist *listPL, int idxlagu);
 /*
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
-*/
+ */
 
 void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
 /*
  *I.S. List lagu dalam playlist masih sama
  *F.S. bertambah 1 lagu di urutan terakhir dalam playlist
-*/
+ */
 
 void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
 /*
  *I.S. List lagu dalam playlist masih sama
  *F.S. bertambah lagu dari album di urutan terakhir dalam playlist
-*/
+ */
 #endif

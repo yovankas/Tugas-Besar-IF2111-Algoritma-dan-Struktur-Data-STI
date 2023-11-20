@@ -12,22 +12,21 @@ int main()
     Set lagu;
     Queue Q;
     Playlist playlistLagu;
-    Stackchar History;
+    Stackchar history;
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
-    ListPlaylist ListPlaylist = initListPlaylist();
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
-    CreateEmptyStackChar(&History);
+    CreateEmptyStackChar(&history);
     CreateEmptyPlaylist(&playlistLagu);
     CreateQueue(&Q);
     CreateArray(&arrPenyanyi);
     CreateArray(&arrAlbum);
     CreateEmptyAlbum(&laguAlbum);
     Word command, namafile;
-    char* commandchar;
-    boolean isInputValid= false;
+    char *commandchar;
+    boolean isInputValid = false;
     boolean startcheck = false;
     boolean isQuit = false;
 
@@ -43,7 +42,7 @@ int main()
         startInputWord();
         akuisisiCommandWord(&command, currentWord, 1);
         commandchar = wordToString(command);
-        
+
         if (strCompare(commandchar, "START") == 0)
         {
             start(&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu);
@@ -64,7 +63,7 @@ int main()
             if (namafile.Length > 0)
             {
                 load(wordToString(namafile), &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu);
-                if(!IsEmpty(arrPenyanyi))
+                if (!IsEmpty(arrPenyanyi))
                 {
                     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
                     isInputValid = true;
@@ -84,15 +83,16 @@ int main()
         {
             help(startcheck);
         }
-        else 
+        else
         {
             printf("Command tidak bisa dieksekusi. Mohon masukkan command yang sesuai.\n");
-
         }
     }
 
     while (!isQuit)
     {
+        boolean invalidCommand = false;
+
         printf("\n=========================================================[ Main Menu WayangWave ]=========================================================\n");
         printf("1. LIST DEFAULT\n");
         printf("2. LIST PLAYLIST\n");
@@ -129,78 +129,111 @@ int main()
             com = concat(com, comcharbefore);
         }
         command = stringToWord(com);
-        
+
         if (strCompare(com, "LIST DEFAULT") == 0)
         {
             listDefault(arrPenyanyi, albumPenyanyi, laguAlbum);
         }
-        else if(strCompare(com, "LIST PLAYLIST") == 0)
+        else if (strCompare(com, "LIST PLAYLIST") == 0)
         {
-            listPlaylist(ListPlaylist);
+            printf("manggil list playlist\n");
         }
-        else if(strCompare(com, "PLAY SONG") == 0)
+        else if (strCompare(com, "PLAY SONG") == 0)
         {
-            playSong(&Q, &History, arrPenyanyi, albumPenyanyi, laguAlbum, &currentSong);
+            playSong(&Q, &history, arrPenyanyi, albumPenyanyi, laguAlbum, &currentSong);
         }
-        else if(strCompare(com, "PLAY PLAYLIST") == 0)
+        else if (strCompare(com, "PLAY PLAYLIST") == 0)
         {
             printf("manggil play playlist\n");
         }
-        else if(strCompare(com, "QUEUE SONG") == 0)
+        else if (strCompare(com, "QUEUE SONG") == 0)
         {
             queueSong(&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
         }
-        else if(strCompare(com, "QUEUE SWAP") == 0)
+        else if (strCompare(com, "QUEUE SWAP") == 0)
         {
-            printf("manggil queue swap\n");
+            Word xWord, yWord;
+            akuisisiCommandWord(&xWord, currentWord, 3);
+            akuisisiCommandWord(&yWord, currentWord, 4);
+
+            if (strLength(wordToString(xWord)) == 0 || strLength(wordToString(yWord)) == 0)
+            {
+                invalidCommand = true;
+            }
+            else
+            {
+                int x = wordToInt(xWord);
+                int y = wordToInt(yWord);
+
+                queueSwap(&Q, x, y);
+            }
         }
-        else if(strCompare(com, "QUEUE REMOVE") == 0)
+        else if (strCompare(com, "QUEUE REMOVE") == 0)
         {
-            printf("manggil queue remove\n");
+            Word idWord;
+            akuisisiCommandWord(&idWord, currentWord, 3);
+
+            if (strLength(wordToString(idWord)) == 0)
+            {
+                invalidCommand = true;
+            }
+            else
+            {
+                int id = wordToInt(idWord);
+                queueRemove(&Q, id);
+            }
         }
-        else if(strCompare(com, "QUEUE CLEAR") == 0)
+        else if (strCompare(com, "QUEUE CLEAR") == 0)
         {
-            printf("manggil queue clear\n");
+            queueClear(&Q);
         }
-        else if(strCompare(com, "SONG NEXT") == 0)
+        else if (strCompare(com, "SONG NEXT") == 0)
         {
             songNext(&Q, &currentSong, &nextSong);
         }
-        else if(strCompare(com, "SONG PREVIOUS") == 0)
+        else if (strCompare(com, "SONG PREVIOUS") == 0)
         {
             printf("manggil song previous\n");
         }
-        else if(strCompare(com, "PLAYLIST CREATE") == 0)
+        else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {
-            Playlist PL;
-            CreatePlaylist(&ListPlaylist, PL);
+            printf("manggil playlist create\n");
         }
-        else if(strCompare(com, "PLAYLIST SWAP") == 0)
+        else if (strCompare(com, "PLAYLIST SWAP") == 0)
         {
             printf("manggil playlist swap\n");
         }
-        else if(strCompare(com, "PLAYLIST REMOVE") == 0)
+        else if (strCompare(com, "PLAYLIST REMOVE") == 0)
         {
             printf("manggil playlist remove\n");
         }
-        else if(strCompare(com, "PLAYLIST DELETE") == 0)
+        else if (strCompare(com, "PLAYLIST DELETE") == 0)
         {
             printf("manggil playlist delete\n");
         }
-        else if(strCompare(com, "STATUS") == 0)
+        else if (strCompare(com, "STATUS") == 0)
         {
             status(&Q, &playlistLagu, currentSong, currentPlaylist);
         }
-        else if(strCompare(com, "QUIT") == 0)
+        else if (strCompare(com, "QUIT") == 0)
         {
             quit();
             isQuit = true;
         }
-        else if(strCompare(com, "HELP") == 0)
+        else if (strCompare(com, "HELP") == 0)
         {
             help(startcheck);
         }
-        Delay(4);
+        else
+        {
+            invalidCommand = true;
+        }
+
+        if (invalidCommand)
+        {
+            printf("Command tidak bisa dieksekusi!\n");
+        }
+        // Delay(4);
     }
 
     return 0;

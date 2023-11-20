@@ -236,22 +236,15 @@ void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAl
         penyanyi = concat(penyanyi, penyanyi2);
     }
 
-    printf("Daftar Album oleh %s :\n", penyanyi);
-    if (strCompare(penyanyi, "BLACKPINK") == 0)
+    if (IsElmtExist(arrPenyanyi, penyanyi))
     {
-        PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+        printf("Daftar Album oleh %s :\n", penyanyi);
+        PrintAlbumPenyanyi(albumPenyanyi, penyanyi);
     }
-    else if (strCompare(penyanyi, "Arctic Monkeys") == 0)
+    else
     {
-        PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    }
-    else if (strCompare(penyanyi, "NewJeans") == 0)
-    {
-        PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
-    }
-    else if (strCompare(penyanyi, "Hivi!") == 0)
-    {
-        PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
+        printf("Penyanyi %s tidak ditemukan!\n", penyanyi);
+        return;
     }
 
     printf("Masukkan Nama Album yang dipilih: ");
@@ -271,62 +264,15 @@ void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAl
         album2 = wordToString(nameAlbum);
     }
 
-    printf("Daftar Lagu di %s:\n", album);
-    if (strCompare(album, "BORN PINK") == 0)
+    if (IsElmtExist(ValueInPenyanyi(albumPenyanyi, penyanyi), album))
     {
-        PrintAlbumLagu(laguAlbum, "BORN PINK");
+        printf("Daftar Lagu di %s:\n", album);
+        PrintAlbumLagu(laguAlbum, album);
     }
-    else if (strCompare(album, "THE ALBUM") == 0)
+    else
     {
-        PrintAlbumLagu(laguAlbum, "THE ALBUM");
-    }
-    else if (strCompare(album, "SQUARE ONE") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "SQUARE ONE");
-    }
-    else if (strCompare(album, "SQUARE TWO") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "SQUARE TWO");
-    }
-    else if (strCompare(album, "SQUARE UP") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "SQUARE UP");
-    }
-    else if (strCompare(album, "Favourite Worst Nightmare") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
-    }
-    else if (strCompare(album, "Humbug") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Humbug");
-    }
-    else if (strCompare(album, "AM") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "AM");
-    }
-    else if (strCompare(album, "New Jeans") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "New Jeans");
-    }
-    else if (strCompare(album, "OMG") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "OMG");
-    }
-    else if (strCompare(album, "Get Up") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Get Up");
-    }
-    else if (strCompare(album, "CERITERA") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "CERITERA");
-    }
-    else if (strCompare(album, "Kereta Kencan") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Kereta Kencan");
-    }
-    else if (strCompare(album, "Say Hi To Hivi!") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
+        printf("Album penyanyi %s dengan judul %s tidak ditemukan!\n", penyanyi, album);
+        return;
     }
 
     printf("Masukkan ID Lagu yang dipilih: ");
@@ -349,7 +295,64 @@ void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAl
 
         // Enqueue the element
         enqueue(Q, El);
+
+        displayQueue(*Q);
     }
+}
+
+void queueSwap(Queue *Q, int x, int y)
+{
+    int countQueueSong = Length(*Q);
+    if (countQueueSong == 0)
+    {
+        printf("Queue lagu kosong!\n");
+    }
+    else if (x < 1 || x > countQueueSong)
+    {
+        printf("Lagu dengan urutan ke %d tidak ditemukan dalam queue.\n", x);
+    }
+    else if (y < 1 || y > countQueueSong)
+    {
+        printf("Lagu dengan urutan ke %d tidak ditemukan dalam queue.\n", y);
+    }
+    else
+    {
+        int xSong = (x + Q->idxHead - 1) % (IDX_MAX + 1);
+        int ySong = (y + Q->idxHead - 1) % (IDX_MAX + 1);
+
+        swapQueueElmt(Q, xSong, ySong);
+    }
+}
+
+void queueRemove(Queue *Q, int id)
+{
+    int countQueueSong = Length(*Q);
+    if (countQueueSong == 0)
+    {
+        printf("Queue lagu kosong!\n");
+    }
+    else if (id < 1 || id > countQueueSong)
+    {
+        printf("Lagu dengan urutan ke %d tidak ada.\n", id);
+    }
+    else
+    {
+        // printf("Before:\n");
+        // displayQueue(*Q);
+
+        ElTypeQueue el = removeQueueElmtByIdx(Q, id);
+        printf("Lagu %s oleh %s telah dihapus dari queue!\n", el.song, el.artist);
+
+        // printf("\nAfter:\n");
+        // displayQueue(*Q);
+    }
+}
+
+void queueClear(Queue *Q)
+{
+    CreateQueue(Q);
+
+    printf("Queue berhasil dikosongkan!\n");
 }
 
 void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum, currentSong *currentSong)
@@ -372,22 +375,15 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
         penyanyi = concat(penyanyi, penyanyi2);
     }
 
-    printf("Daftar Album oleh %s :\n", penyanyi);
-    if (strCompare(penyanyi, "BLACKPINK") == 0)
+    if (IsElmtExist(arrPenyanyi, penyanyi))
     {
-        PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
+        printf("Daftar Album oleh %s :\n", penyanyi);
+        PrintAlbumPenyanyi(albumPenyanyi, penyanyi);
     }
-    else if (strCompare(penyanyi, "Arctic Monkeys") == 0)
+    else
     {
-        PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
-    }
-    else if (strCompare(penyanyi, "NewJeans") == 0)
-    {
-        PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
-    }
-    else if (strCompare(penyanyi, "Hivi!") == 0)
-    {
-        PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
+        printf("Penyanyi %s tidak ditemukan!\n", penyanyi);
+        return;
     }
 
     printf("Masukkan Nama Album yang dipilih: ");
@@ -408,61 +404,14 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
     }
 
     printf("Daftar Lagu di %s:\n", album);
-    if (strCompare(album, "BORN PINK") == 0)
+    if (IsElmtExist(ValueInPenyanyi(albumPenyanyi, penyanyi), album))
     {
-        PrintAlbumLagu(laguAlbum, "BORN PINK");
+        PrintAlbumLagu(laguAlbum, album);
     }
-    else if (strCompare(album, "THE ALBUM") == 0)
+    else
     {
-        PrintAlbumLagu(laguAlbum, "THE ALBUM");
-    }
-    else if (strCompare(album, "SQUARE ONE") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "SQUARE ONE");
-    }
-    else if (strCompare(album, "SQUARE TWO") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "SQUARE TWO");
-    }
-    else if (strCompare(album, "SQUARE UP") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "SQUARE UP");
-    }
-    else if (strCompare(album, "Favourite Worst Nightmare") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
-    }
-    else if (strCompare(album, "Humbug") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Humbug");
-    }
-    else if (strCompare(album, "AM") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "AM");
-    }
-    else if (strCompare(album, "New Jeans") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "New Jeans");
-    }
-    else if (strCompare(album, "OMG") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "OMG");
-    }
-    else if (strCompare(album, "Get Up") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Get Up");
-    }
-    else if (strCompare(album, "CERITERA") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "CERITERA");
-    }
-    else if (strCompare(album, "Kereta Kencan") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Kereta Kencan");
-    }
-    else if (strCompare(album, "Say Hi To Hivi!") == 0)
-    {
-        PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
+        printf("Album penyanyi %s dengan judul %s tidak ditemukan!\n", penyanyi, album);
+        return;
     }
 
     printf("Masukkan ID Lagu yang dipilih: ");
@@ -473,7 +422,7 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
     infotype song = LaguFromAlbum(laguAlbum, album, IDsong);
 
     printf("Memutar lagu %s oleh %s\n", song, penyanyi);
-    CreateQueue(Q);
+    CreateQueue(Q); // Empty the queue
     CreateEmptyStackChar(History);
     (*currentSong).album = album;
     (*currentSong).artist = penyanyi;
@@ -559,7 +508,7 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong currentSong)
     }
 }
 
-void CreatePlaylist(ListPlaylist *listPL, Playlist PL)
+void PlaylistCreate(ListPlaylist *listPL, Playlist PL)
 {
     // KAMUS
     char CharPL1, CharPL2, CharPL3;
@@ -593,7 +542,7 @@ void CreatePlaylist(ListPlaylist *listPL, Playlist PL)
         countChar += 1;
     }
 
-    if (countChar <= 3)
+    if (countChar != 3)
     {
         printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
         exit(EXIT_FAILURE);

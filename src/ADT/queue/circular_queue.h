@@ -15,56 +15,56 @@
 #define IDX_MAX 99
 
 /* Definisi tipe elemen dan indeks pada Queue */
-typedef struct 
+typedef struct
 {
         int idPlaylist;
-        char* artist;
-        char* album;
-        char* song;
+        char *artist;
+        char *album;
+        char *song;
 } infotypeQueue;
-
 
 typedef infotypeQueue ElTypeQueue;
 typedef int IdxType;
 
-typedef struct {
-        ElTypeQueue Tab[IDX_MAX+1];  /* tabel penyimpan elemen */
-        IdxType idxHead;  /* indeks elemen paling awal (terdepan) */
-        IdxType idxTail;  /* indeks tempat menambah elemen baru */
+typedef struct
+{
+        ElTypeQueue Tab[IDX_MAX + 1]; /* tabel penyimpan elemen */
+        IdxType idxHead;              /* indeks elemen paling awal (terdepan) */
+        IdxType idxTail;              /* indeks tempat menambah elemen baru */
 } Queue;
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).Tab[(q).idxHead]
-#define     TAIL(q) (q).Tab[(q).idxTail]
+#define HEAD(q) (q).Tab[(q).idxHead]
+#define TAIL(q) (q).Tab[(q).idxTail]
 
 /* ********* Prototype ********* */
-boolean IsEmptyQueue (Queue Q);
+boolean IsEmptyQueue(Queue Q);
 /* Mengirim true jika Q kosong */
 /* yaitu ketika idxHead=IDX_UNDEF dan idxTail=IDX_UNDEF */
-boolean IsFullQueue (Queue Q);
+boolean IsFullQueue(Queue Q);
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu ketika idxHead=0 dan idxTail=IDX_MAX atau idxHead=idxTail+1 ketika idxHead > idxTail */
-int Length (Queue Q);
+int Length(Queue Q);
 /* Mengirimkan banyaknya elemen Q, 0 jika kosong */
 
 /* *** Kreator *** */
-void CreateQueue (Queue * Q);
+void CreateQueue(Queue *Q);
 /* I.S. sembarang */
 /* F.S. mengembalikan Q kosong dengan kondisi sbb: */
 /* - idxHead=IDX_UNDEF; */
 /* - idxTail=IDX_UNDEF. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue (Queue * Q, ElTypeQueue X);
+void enqueue(Queue *Q, ElTypeQueue X);
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
         X menjadi idxTail yang baru
         Jika Q kosong, idxHead dimulai dari 0 */
-ElTypeQueue dequeue (Queue * Q);
+ElTypeQueue dequeue(Queue *Q);
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. mengembalikan nilai Q pada idxHead;
@@ -80,5 +80,9 @@ void displayQueue(Queue q);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 /* Note: Output mengandung newline */
+
+void swapQueueElmt(Queue *Q, int x, int y);
+
+ElTypeQueue removeQueueElmtByIdx(Queue *Q, int idx);
 
 #endif
