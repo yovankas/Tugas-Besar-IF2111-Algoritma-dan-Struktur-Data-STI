@@ -24,7 +24,7 @@ void addElement(ListPlaylist *listPL, char* value) {
             exit(EXIT_FAILURE);
         }
     }
-    listPL->playlist->namePL = value;
+    listPL->playlist[listPL->count].namePL = value;
     listPL->count ++;
 }
 
@@ -52,14 +52,14 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
     }
 }
 
-void printListPlaylist(ListPlaylist *listPL) {
-    if (listPL->count == 0){
+void printListPlaylist(ListPlaylist listPL) {
+    if (listPL.count == 0){
         printf("Your playlist is empty.\n");
     }
     else {
         printf("Your playlist:\n");
-        for (arraysize idxPLlist = 1; idxPLlist <= listPL->count; idxPLlist++) {
-            printf("%d. %s\n", idxPLlist, listPL->playlist[idxPLlist].namePL);
+        for (arraysize idxPLlist = 1; idxPLlist <= listPL.count; idxPLlist++) {
+            printf("%d. %s\n", idxPLlist, listPL.playlist[idxPLlist-1].namePL);
         }
     }
 }

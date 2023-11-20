@@ -26,7 +26,7 @@ void addElement(ListPlaylist *listPL, char* value);
 
 void deleteAtIndex(ListPlaylist *listPL, arraysize index);
 
-void printListPlaylist(ListPlaylist *listPL);
+void printListPlaylist(ListPlaylist listPL);
 
 void freeListPlaylist(ListPlaylist *listPL);
 

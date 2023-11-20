@@ -490,7 +490,7 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
 void listPlaylist(ListPlaylist listPL)
 {
     printf("Daftar Playlist yang kamu miliki:\n");
-    printListPlaylist(&listPL);
+    printListPlaylist(listPL);
 }
 
 void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist)
@@ -582,6 +582,7 @@ void CreatePlaylist(ListPlaylist *listPL, Playlist PL)
         printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
         exit(EXIT_FAILURE);
     }
+
 }
 
 void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2)
@@ -621,7 +622,7 @@ void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2)
 
 void PlaylistDelete(ListPlaylist *listPL)
 {
-    printListPlaylist(listPL);
+    printListPlaylist(*listPL);
     printf("Masukkan ID Playlist yang dipilih :");
     startInputWord();
     Word idplaylist;
@@ -802,19 +803,21 @@ void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPe
     akuisisiCommandWord(&IDs, currentWord, 1);
     int IDsong = wordToInt(IDs);
 
-    printListPlaylist(listPL);
-    printf("Masukkan ID Playlist yang dipilih :");
+    printListPlaylist(*listPL);
+    printf("Masukkan ID Playlist yang dipilih: ");
     startInputWord();
     Word idplaylist;
     akuisisiCommandWord(&idplaylist, currentWord, 1);
     int id_playlist = wordToInt(idplaylist);
 
     CreateEmptyPlaylist(chosenPlaylist);
+    int i = 0;
     for (int i = 0; i < listPL->count; i++)
     {
-        if (listPL->playlist[i].namePL != NULL && strCompare(listPL->playlist[i].namePL, listPL->playlist[id_playlist].namePL) == 0)
+        if (listPL->playlist[i].namePL != NULL && strCompare(listPL->playlist[i].namePL, listPL->playlist[id_playlist-1].namePL) == 0)
         {
             strCopy(chosenPlaylist->namePL, listPL->playlist[i].namePL);
+            printf("pantek\n");
             break;
         }
     }
@@ -957,8 +960,8 @@ void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrP
         return;
     }
 
-    printListPlaylist(listPL);
-    printf("Masukkan ID Playlist yang dipilih :");
+    printListPlaylist(*listPL);
+    printf("Masukkan ID Playlist yang dipilih: ");
     startInputWord();
     Word idplaylist;
     akuisisiCommandWord(&idplaylist, currentWord, 1);
@@ -968,7 +971,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrP
     CreateEmptyPlaylist(chosenPlaylist);
     for (int i = 0; i < listPL->count; i++)
     {
-        if (listPL->playlist[i].namePL != NULL && strCompare(listPL->playlist[i].namePL, listPL->playlist[id_playlist].namePL) == 0)
+        if (listPL->playlist[i].namePL != NULL && strCompare(listPL->playlist[i].namePL, listPL->playlist[id_playlist-1].namePL) == 0)
         {
             strCopy(chosenPlaylist->namePL, listPL->playlist[i].namePL);
             break;
