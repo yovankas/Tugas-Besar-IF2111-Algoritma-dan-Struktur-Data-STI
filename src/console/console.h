@@ -66,7 +66,7 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
  *      Queue dan History kosong
  */
 
-void playPlaylist(Queue *Q, Stackchar *History, Playlist playlistLagu, ListPlaylist listPlaylist);
+void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPlaylist listPlaylist);
 
 void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist);
 /*
@@ -82,7 +82,7 @@ void listPlaylist(ListPlaylist listPL);
  * F.S. Menampilkan list playlist
  **/
 
-void queuePlaylist(Queue *Q, Playlist *playlistLagu, ListPlaylist listPlaylist);
+void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist);
 /*
  * Konstruktor
  * I.S. Program berjalan
@@ -105,37 +105,37 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong);
         Jika history kosong maka diputar current song
 */
 
-void CreatePlaylist(ListPlaylist *listPL, Playlist PL);
+void CreatePlaylist(ListPlaylist *listPL, PlaylistManager* Manager);
 /*
  * I.S. Listplaylist masih seperti sebelum
  * F.S. Membuat playlist baru dan menambahkannya ke list playlist
  */
 
-void PlaylistSwap(ListPlaylist *listPL, int idxlagu1, int idxlagu2);
+void PlaylistSwap(ListPlaylist *listPL, PlaylistManager *manager, int IDPlaylist, int idxlagu1, int idxlagu2);
 /*
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
  */
 
-void PlaylistDelete(ListPlaylist *PL);
+void PlaylistDelete(ListPlaylist *listPL, PlaylistManager *manager);
 /*
  * I.S. Daftar Playlist user masih seperti semula
  * F.S. Playlist yg dipilih sudah dihapus
  */
 
-void PlaylistRemove(ListPlaylist *listPL, int idxlagu);
+void PlaylistRemove(ListPlaylist *listPL, PlaylistManager* manager, int IDPlaylist,  int idxlagu);
 /*
  * I.S. Urutan lagu masih sama
  * F.S. Lagu1 dan Lagu2 bertukar posisi
  */
 
-void PlaylistAddSong(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+void PlaylistAddSong(ListPlaylist *listPL, PlaylistManager* manager, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
 /*
  *I.S. List lagu dalam playlist masih sama
  *F.S. bertambah 1 lagu di urutan terakhir dalam playlist
  */
 
-void PlaylistAddAlbum(ListPlaylist *listPL, Playlist *chosenPlaylist, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
+void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum);
 /*
  *I.S. List lagu dalam playlist masih sama
  *F.S. bertambah lagu dari album di urutan terakhir dalam playlist

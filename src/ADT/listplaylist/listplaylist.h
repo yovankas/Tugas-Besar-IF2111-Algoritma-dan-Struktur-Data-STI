@@ -32,4 +32,6 @@ void freeListPlaylist(ListPlaylist *listPL);
 
 char* namePlaylistFromIndex(ListPlaylist listPL, int ID);
 
+int jumlahSongPlaylistFromIndex(ListPlaylist listPL, int ID);
+
 #endif

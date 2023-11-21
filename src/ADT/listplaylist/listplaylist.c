@@ -74,3 +74,8 @@ char* namePlaylistFromIndex(ListPlaylist listPL, int ID)
 {
     return (listPL.playlist[ID].namePL);
 }
+
+int jumlahSongPlaylistFromIndex(ListPlaylist listPL, int ID)
+{
+    return (listPL.playlist[ID].countsongPL);
+}

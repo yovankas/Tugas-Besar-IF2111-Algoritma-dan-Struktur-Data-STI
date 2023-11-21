@@ -11,16 +11,15 @@ int main()
     Album laguAlbum;
     Set lagu;
     Queue Q;
-    Playlist playlistLagu;
     Stackchar history;
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
     ListPlaylist ListPL = initListPlaylist();
+    PlaylistManager *Manager = createPlaylistManager();
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
     CreateEmptyStackChar(&history);
-    CreateEmptyPlaylist(&playlistLagu);
     CreateQueue(&Q);
     CreateArray(&arrPenyanyi);
     CreateArray(&arrAlbum);
@@ -63,7 +62,7 @@ int main()
             akuisisiCommandWord(&namafile, currentWord, 2);
             if (namafile.Length > 0)
             {
-                loadsaved(wordToString(namafile),&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &ListPL, &playlistLagu);
+                // loadsaved(wordToString(namafile),&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &ListPL, &Manager);
                 if (!IsEmpty(arrPenyanyi))
                 {
                     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
@@ -198,12 +197,12 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {
-            CreatePlaylist(&ListPL, playlistLagu);
+            // CreatePlaylist(&ListPL, playlistLagu);
         }
         else if (strCompare(com, "PLAYLIST ADD") == 0)
         {
-            Playlist chosenPlaylist;
-            PlaylistAddSong(&ListPL, &chosenPlaylist, arrPenyanyi, albumPenyanyi, laguAlbum);
+            // Playlist chosenPlaylist;
+            // PlaylistAddSong(&ListPL, &chosenPlaylist, arrPenyanyi, albumPenyanyi, laguAlbum);
         }
         else if (strCompare(com, "PLAYLIST SWAP") == 0)
         {
@@ -219,7 +218,7 @@ int main()
         }
         else if (strCompare(com, "STATUS") == 0)
         {
-            status(&Q, &playlistLagu, currentSong, currentPlaylist);
+            // status(&Q, &playlistLagu, currentSong, currentPlaylist);
         }
         else if (strCompare(com, "QUIT") == 0)
         {
