@@ -4,6 +4,7 @@
 #include "../../adt/string/string.h"
 
 #define NMax 100
+#define BLANK '\n'
 
 typedef struct
 {
