@@ -64,6 +64,9 @@ void enqueue(Queue *Q, ElTypeQueue X);
 /* F.S. Tail "maju" dengan mekanisme circular buffer,
         X menjadi idxTail yang baru
         Jika Q kosong, idxHead dimulai dari 0 */
+
+void insertHead(Queue *Q, ElTypeQueue X);
+
 ElTypeQueue dequeue(Queue *Q);
 /* Proses: Menghapus idxHead pada Q dengan aturan FIFO, lalu mengembalikan nilainya */
 /* I.S. Q tidak mungkin kosong */

@@ -35,6 +35,8 @@ void PrintCurrentPlaylist(currentPlaylist currentPlaylist);
 boolean isEmptyCurrentSong(currentSong currentSong);
 // Memeriksa apakah ada lagu yang sedang diputar
 
+boolean isEmptyCurrentPlaylist(currentPlaylist currentPlaylist);
+
 void PrintCurrentSong(currentSong currentSong);
 // Mengembalikan lagu yang sedang diputar
 
@@ -49,7 +51,7 @@ void ReplayCurrentSong(currentSong currentSong);
 
 void ReplaceNextSong(nextSong *nextSong, Queue *Q);
 
-void PlayPrevSong(Stackchar *History, currentSong *currentSong);
+void PlayPrevSong(Stackchar *History, currentSong *currentSong, Queue *Q);
     /* Memutar lagu sebelumnya */
 
 #endif

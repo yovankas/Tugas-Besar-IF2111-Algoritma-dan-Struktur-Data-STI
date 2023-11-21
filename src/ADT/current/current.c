@@ -22,6 +22,11 @@ boolean isEmptyCurrentSong(currentSong currentSong)
     return (strCompare(currentSong.album, "") == 0 && strCompare(currentSong.artist, "") == 0 && strCompare(currentSong.song, "") == 0);
 }
 
+boolean isEmptyCurrentPlaylist(currentPlaylist currentPlaylist)
+{
+    return (strCompare(currentPlaylist.playlist, "") == 0);
+}
+
 void PrintCurrentSong(currentSong currentSong)
 {
     printf("%s - %s - %s\n", currentSong.artist, currentSong.song, currentSong.album);
@@ -29,8 +34,8 @@ void PrintCurrentSong(currentSong currentSong)
 
 void PlayCurrentSong(currentSong currentSong)
 {
-    printf("Queue kosong, memutar kembali lagu");
-    printf("“%s” oleh “%s”\n", currentSong.song, currentSong.artist);
+    printf("Queue kosong, memutar kembali lagu ");
+    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
 }
 
 void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History)
@@ -54,8 +59,8 @@ void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackc
 
 void ReplayCurrentSong(currentSong currentSong)
 {
-    printf("Riwayat lagu kosong, memutar kembali lagu");
-    printf("“%s” oleh “%s”\n", currentSong.song, currentSong.artist);
+    printf("Riwayat lagu kosong, memutar kembali lagu ");
+    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
 }
 
 void ReplaceNextSong(nextSong *nextSong, Queue *Q)
@@ -66,8 +71,13 @@ void ReplaceNextSong(nextSong *nextSong, Queue *Q)
     nextSong->song = next.song;
 }
 
-void PlayPrevSong(Stackchar *History, currentSong *currentSong)
+void PlayPrevSong(Stackchar *History, currentSong *currentSong, Queue *Q)
 {
+    ElTypeQueue queueCS;
+    queueCS.album = currentSong->album;
+    queueCS.artist = currentSong->artist;
+    queueCS.song = currentSong->song;
+    insertHead(Q, queueCS);
     printf("Memutar lagu sebelumnya ");
     infotypeStackchar X;
     PopStackChar(History, &X);

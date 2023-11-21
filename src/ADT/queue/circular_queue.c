@@ -44,6 +44,26 @@ void enqueue(Queue *Q, ElTypeQueue X)
     Q->Tab[Q->idxTail] = X;
 }
 
+void insertHead(Queue *Q, ElTypeQueue X)
+{
+    int numElements = (Q->idxTail - Q->idxHead + IDX_MAX) % IDX_MAX + 1;
+    ElTypeQueue *tempElements = malloc(numElements * sizeof(ElTypeQueue));
+
+    for (int i = 0; i < numElements; i++) {
+        tempElements[i] = dequeue(Q);
+    }
+
+    // Enqueue the new element at the head
+    enqueue(Q, X);
+
+    // Enqueue the rest of the elements back
+    for (int i = 0; i < numElements; i++) {
+        enqueue(Q, tempElements[i]);
+    }
+
+    free(tempElements);
+}
+
 ElTypeQueue dequeue(Queue *Q)
 {
     ElTypeQueue X;

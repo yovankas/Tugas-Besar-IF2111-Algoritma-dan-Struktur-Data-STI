@@ -477,14 +477,14 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
 
 void status(Queue *Q, currentSong currentSong, currentPlaylist currentPlaylist)
 {
-    if (Q->Tab[Q->idxHead].idPlaylist != (-1))
+    if (!isEmptyCurrentPlaylist(currentPlaylist))
     {
         printf("Current Playlist: ");
         PrintCurrentPlaylist(currentPlaylist);
         printf("\n");
     }
 
-    printf("Now Playing: ");
+    printf("Now Playing:\n");
     if (isEmptyCurrentSong(currentSong))
     {
         printf("No songs have been played yet. Please search for a song to begin playback.");
@@ -553,7 +553,7 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong)
     }
     else
     {
-        PlayPrevSong(History, currentSong);
+        PlayPrevSong(History, currentSong, Q);
     }
 }
 
