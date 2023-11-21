@@ -30,7 +30,12 @@ int main()
     boolean startcheck = false;
     boolean isQuit = false;
 
-    printf("Pesan Selamat Datang (kalo rajin dibikin)\n");
+    printf("Welcome to\n");
+    printf("$$   $$  $$$$$$$  $$  $$  $$$$$$$  $$$   $$   $$$$     $$   $$  $$$$$$$  $$   $$  $$$$$$\n");
+    printf("$$   $$  $$   $$   $  $   $$   $$  $$$$  $$  $$        $$   $$  $$   $$  $$   $$  $$    \n");
+    printf("$$ $ $$  $$$$$$$    $$    $$$$$$$  $$ $  $$  $$  $$    $$ $ $$  $$$$$$$  $$   $$  $$$$$$\n");
+    printf("$$ $ $$  $$   $$    $$    $$   $$  $$  $$$$  $$   $    $$ $ $$  $$   $$   $$ $$   $$    \n");
+    printf(" $$ $$   $$   $$    $$    $$   $$  $$   $$$   $$$$      $$ $$   $$   $$     $     $$$$$$\n");
     printf("=========================================================[ Main Menu WayangWave ]=========================================================\n");
     printf("1. START\n");
     printf("2. LOAD <namafile>\n");
