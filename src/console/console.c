@@ -296,7 +296,7 @@ void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAl
         // Enqueue the element
         enqueue(Q, El);
 
-        displayQueue(*Q);
+        // displayQueue(*Q);
     }
 }
 
@@ -321,6 +321,8 @@ void queueSwap(Queue *Q, int x, int y)
         int ySong = (y + Q->idxHead - 1) % (IDX_MAX + 1);
 
         swapQueueElmt(Q, xSong, ySong);
+
+        printf("Queue berhasil ditukar!\n");
     }
 }
 
@@ -604,8 +606,9 @@ void PlaylistSwap(ListPlaylist *listPL, PlaylistManager *manager, int IDPlaylist
     else
     {
         char* namePlaylist = namePlaylistFromIndex(*listPL, IDPlaylist-1);
-        int totalsong = jumlahSongPlaylistFromIndex(*listPL, IDPlaylist-1);
-
+        Playlist PL = playlistFromPlaylistManager(manager, IDPlaylist-1);
+        int totalsong = PL.numSongs;
+        
         if (idxlagu1 > totalsong)
         {
             printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu1, namePlaylist);
@@ -616,7 +619,7 @@ void PlaylistSwap(ListPlaylist *listPL, PlaylistManager *manager, int IDPlaylist
             printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu2, namePlaylist);
             return;
         }
-        swapSongsInPlaylist(manager, IDPlaylist, idxlagu1, idxlagu2);
+        swapSongsInPlaylist(manager, IDPlaylist-1, idxlagu1-1, idxlagu2-1);
     }
 }
 

@@ -6,12 +6,12 @@
 #define InitialSizeListPL 100
 
 typedef char* namaPlaylist;
-typedef int countsongPlaylist;
+// typedef int countsongPlaylist;
 typedef int arraysize;
 
 typedef struct{
     namaPlaylist namePL;
-    countsongPlaylist countsongPL;
+    int countsongPL;
 } infotypePlaylist;
 
 typedef struct {

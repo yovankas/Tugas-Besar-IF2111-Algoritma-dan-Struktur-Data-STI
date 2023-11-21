@@ -205,7 +205,14 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST SWAP") == 0)
         {
-            printf("manggil playlist swap\n");
+            Word idid;
+            akuisisiCommandWord(&idid, currentWord, 3);
+            int IDPlaylist = wordToInt(idid);
+            akuisisiCommandWord(&idid, currentWord, 4);
+            int idxlagu1 = wordToInt(idid);
+            akuisisiCommandWord(&idid, currentWord, 5);
+            int idxlagu2 = wordToInt(idid);
+            PlaylistSwap(&ListPL, &manager, IDPlaylist, idxlagu1, idxlagu2);
         }
         else if (strCompare(com, "PLAYLIST REMOVE") == 0)
         {

@@ -129,7 +129,10 @@ void displayQueue(Queue Q)
         {
             for (i = Q.idxHead; i <= Q.idxTail; i++)
             {
-                printf("%d. %s - %s - %s\n", i - Q.idxHead + 1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+                if (strCompare(Q.Tab[i].album,"") != 0)
+                {
+                    printf("%d. %s - %s - %s\n", i - Q.idxHead + 1, Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+                }
             }
         }
         else

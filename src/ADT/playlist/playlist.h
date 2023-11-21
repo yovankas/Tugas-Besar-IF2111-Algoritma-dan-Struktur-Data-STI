@@ -60,4 +60,6 @@ void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIn
 
 void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songIndex);
 
+Playlist playlistFromPlaylistManager (PlaylistManager* manager, int playlistIndex);
+
 #endif

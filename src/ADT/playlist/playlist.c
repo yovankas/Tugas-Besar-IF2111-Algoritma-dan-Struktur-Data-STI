@@ -144,3 +144,11 @@ void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songI
     // Delete the song at the specified index in the specified playlist
     manager->playlists[playlistIndex].songs[songIndex] = (Song){ NULL, NULL, NULL };
 }
+
+Playlist playlistFromPlaylistManager (PlaylistManager* manager, int playlistIndex)
+{
+    if (!manager || playlistIndex < 0 || playlistIndex >= manager->numPlaylists) 
+    {
+        return manager->playlists[playlistIndex];
+    }
+}
