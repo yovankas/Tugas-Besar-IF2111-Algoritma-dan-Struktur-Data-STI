@@ -30,7 +30,10 @@ int main() {
     // printf("Song 2: %s - %s - %s\n", myManager.playlists[0].songs[1].lagu, myManager.playlists[0].songs[1].artist, myManager.playlists[0].songs[1].album);
 
     // // Delete a song and print the updated playlist
-    // deleteSongInPlaylist(&myManager, 0, 1);
+    deleteSongInPlaylist(&myManager, 0, 1);
+    displayPlaylist(&myManager, 0);
+    deleteSongInPlaylist(&myManager, 0, 0);
+    displayPlaylist(&myManager, 0);
     // printf("Updated Playlist after Deletion:\n");
     // printf("Song 1: %s - %s - %s\n", myManager.playlists[0].songs[0].lagu, myManager.playlists[0].songs[0].artist, myManager.playlists[0].songs[0].album);
     // printf("Song 2: %s - %s - %s\n", myManager.playlists[0].songs[1].lagu, myManager.playlists[0].songs[1].artist, myManager.playlists[0].songs[1].album);

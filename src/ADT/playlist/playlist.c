@@ -36,10 +36,17 @@ void addSong(Playlist* playlist, char* lagu, char* artist, char* album) {
 
 // Fungsi untuk menampilkan seluruh lagu dalam playlist
 void displayOnePlaylist(Playlist* playlist) {
-    for (int i = 0; i < playlist->numSongs; i++) {
-        if (strCompare(playlist->songs[i].album, "") != 0)
-        {
-            printf("%d. %s - %s - %s\n", i + 1, playlist->songs[i].lagu, playlist->songs[i].artist, playlist->songs[i].album);
+    if (playlist->numSongs == 0)
+    {
+        printf("Playlist kosong.\n");
+    }
+    else
+    {
+        for (int i = 0; i < playlist->numSongs; i++) {
+            if (strCompare(playlist->songs[i].album, "") != 0)
+            {
+                printf("%d. %s - %s - %s\n", i + 1, playlist->songs[i].lagu, playlist->songs[i].artist, playlist->songs[i].album);
+            }
         }
     }
 }
@@ -139,14 +146,29 @@ void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIn
 
 // Function to delete a song by index in a specific playlist
 void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songIndex) {
-    if (!manager || playlistIndex < 0 || playlistIndex >= manager->numPlaylists || songIndex < 0 || songIndex >= MAX_SONGS) {
+    if (!manager || playlistIndex < 0 || playlistIndex >= manager->numPlaylists || songIndex < 0 || songIndex >= manager->playlists[playlistIndex].numSongs) {
         printf("Invalid input parameters.\n");
         return;
     }
 
-    // Delete the song at the specified index in the specified playlist
-    manager->playlists[playlistIndex].songs[songIndex] = (Song){ NULL, NULL, NULL };
+    // Get the playlist and the number of songs in the specified playlist
+    Playlist* playlist = &(manager->playlists[playlistIndex]);
+    int numSongs = playlist->numSongs;
+
+    // Deallocate the memory for the song at the specified index
+    free(playlist->songs[songIndex].lagu);
+    free(playlist->songs[songIndex].artist);
+    free(playlist->songs[songIndex].album);
+
+    // Shift the remaining songs to fill the gap
+    for (int i = songIndex; i <= numSongs - 1; i++) {
+        playlist->songs[i] = playlist->songs[i + 1];
+    }
+
+    // Decrement the number of songs in the playlist
+    playlist->numSongs -= 1;
 }
+
 
 Playlist playlistFromPlaylistManager (PlaylistManager* manager, int playlistIndex)
 {

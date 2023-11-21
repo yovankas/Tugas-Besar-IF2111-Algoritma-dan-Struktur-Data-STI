@@ -76,10 +76,10 @@ void displayQueue(Queue Q)
         {
             if (strCompare(Q.Tab[i].album, "") != 0)
             {
-                printf("%d. %s - %s - %s\n", (i - Q.idxHead + 1 + IDX_MAX) % (IDX_MAX + 1), Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+                printf("%d. %s - %s - %s\n", (i - Q.idxHead + 1 + IDX_MAX + 1) % (IDX_MAX + 1), Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
             }
         }
-        printf("%d. %s - %s - %s\n", (i - Q.idxHead + 1 + IDX_MAX) % (IDX_MAX + 1), Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+        printf("%d. %s - %s - %s\n", (i - Q.idxHead + 1 + IDX_MAX + 1) % (IDX_MAX + 1), Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
     }
 }
 

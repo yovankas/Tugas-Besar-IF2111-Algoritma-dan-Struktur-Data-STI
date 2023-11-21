@@ -19,5 +19,8 @@ int main ()
     InsertInAlbum(&bum, "AM", isi);
     PrintAlbumLagu(bum, "AM");
 
+    infotype song = LaguFromAlbum(bum, "AM", 0);
+
+
     return 0;
 }

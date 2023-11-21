@@ -155,3 +155,18 @@ infotype LaguFromAlbum(Album M, keytype k, int id)
     infotype song = ValueSet(set, id);
     return song;
 }
+
+int IDAlbum (Album M, keytype k)
+{
+    int i = 0;
+    int ID;
+    while (strCompare(k, M.Elements[i].Key) != 0 && i < M.Count)
+    {
+        i +=1;
+    }
+    if (strCompare(k, M.Elements[i].Key) == 0)
+    {
+        ID = i;
+    }
+    return ID;
+}

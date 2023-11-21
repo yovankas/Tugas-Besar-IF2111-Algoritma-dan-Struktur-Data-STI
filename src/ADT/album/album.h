@@ -74,4 +74,5 @@ void PrintAlbumLagu(Album M, keytype k);
 
 infotype LaguFromAlbum(Album M, keytype k, int id);
 
+int IDAlbum (Album M, keytype k);
 #endif

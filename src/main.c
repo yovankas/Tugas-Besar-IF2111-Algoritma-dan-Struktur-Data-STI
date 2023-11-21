@@ -106,14 +106,15 @@ int main()
         printf("9. SONG NEXT\n");
         printf("10. SONG PREVIOUS\n");
         printf("11. PLAYLIST CREATE\n");
-        printf("12. PLAYLIST ADD\n");
-        printf("13. PLAYLIST SWAP <id> <x> <y>\n");
-        printf("14. PLAYLIST REMOVE <id> <n>\n");
-        printf("15. PLAYLIST DELETE\n");
-        printf("16. STATUS\n");
-        printf("17. SAVE <filename>\n");
-        printf("18. QUIT\n");
-        printf("19. HELP\n");
+        printf("12. PLAYLIST ADD SONG\n");
+        printf("13. PLAYLIST ADD ALBUM\n");
+        printf("14. PLAYLIST SWAP <id> <x> <y>\n");
+        printf("15. PLAYLIST REMOVE <id> <n>\n");
+        printf("16. PLAYLIST DELETE\n");
+        printf("17. STATUS\n");
+        printf("18. SAVE <filename>\n");
+        printf("19. QUIT\n");
+        printf("20. HELP\n");
 
         printf("\nENTER COMMAND: ");
         startInputWord();
@@ -205,7 +206,16 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST ADD") == 0)
         {
-            PlaylistAddSong(&ListPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
+            akuisisiCommandWord(&commandbefore, currentWord, 3);
+            string comcom = wordToString(commandbefore);
+            if (strCompare(comcom, "SONG") == 0)
+            {
+                PlaylistAddSong(&ListPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
+            }
+            else if (strCompare(comcom, "ALBUM") == 0)
+            {
+                PlaylistAddAlbum(&ListPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
+            }
         }
         else if (strCompare(com, "PLAYLIST SWAP") == 0)
         {
