@@ -429,8 +429,9 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
     (*currentSong).song = song;
 }
 
-void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPlaylist listPlaylist)
+void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPlaylist listPlaylist, currentSong *currentSong, currentPlaylist *currentPlaylist)
 {
+    printListPlaylist(listPlaylist);
     printf("Masukkan ID Playlist: ");
     startInputWord();
     Word IDplaylistWord;
@@ -451,6 +452,7 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
             queuePL.album = selectedSong.album;
             queuePL.artist = selectedSong.artist;
             queuePL.song = selectedSong.lagu;
+            queuePL.idPlaylist = IDplaylist;
             enqueue(Q, queuePL);
             ElTypeStackchar stackPL;
             stackPL.album = selectedSong.album;
@@ -461,9 +463,14 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
             selectedSong = LaguFromPlaylistManager(manager, IDplaylist, i);
         }
     }
+    ElTypeQueue firstSong = dequeue(Q);
+    currentSong->album = firstSong.album;
+    currentSong->artist = firstSong.artist;
+    currentSong->song = firstSong.song;
+    currentPlaylist->playlist = namePlaylist;
 }
 
-void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist)
+void status(Queue *Q, currentSong currentSong, currentPlaylist currentPlaylist)
 {
     if (Q->Tab[Q->idxHead].idPlaylist != (-1))
     {
@@ -482,7 +489,7 @@ void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPl
         PrintCurrentSong(currentSong);
     }
     printf("\n");
-    printf("Queue: ");
+    printf("Queue:\n");
     displayQueue(*Q);
     printf("\n");
 }
@@ -551,7 +558,8 @@ void CreatePlaylist(ListPlaylist *listPL, PlaylistManager* Manager)
     int countChar = 0;
 
     // ALGORITMA
-    addPlaylist(Manager);
+    Playlist playlist = createPlaylist();
+    addPlaylist(Manager, &playlist);
     printf("Masukkan nama playlist yang ingin dibuat : ");
     startInputWord();
     Word listPLinput;

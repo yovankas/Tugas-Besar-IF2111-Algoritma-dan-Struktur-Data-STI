@@ -16,7 +16,7 @@ int main()
     currentPlaylist currentPlaylist;
     nextSong nextSong;
     ListPlaylist ListPL = initListPlaylist();
-    PlaylistManager *Manager = createPlaylistManager();
+    PlaylistManager manager = createPlaylistManager();
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
     CreateEmptyStackChar(&history);
@@ -62,7 +62,7 @@ int main()
             akuisisiCommandWord(&namafile, currentWord, 2);
             if (namafile.Length > 0)
             {
-                // loadsaved(wordToString(namafile),&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &ListPL, &Manager);
+                // loadsaved(namafile, &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &History, manager);
                 if (!IsEmpty(arrPenyanyi))
                 {
                     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
@@ -144,7 +144,7 @@ int main()
         }
         else if (strCompare(com, "PLAY PLAYLIST") == 0)
         {
-            printf("manggil play playlist\n");
+            playPlaylist(&Q, &history, &manager, ListPL, &currentSong, &currentPlaylist);
         }
         else if (strCompare(com, "QUEUE SONG") == 0)
         {
@@ -197,12 +197,11 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {
-            // CreatePlaylist(&ListPL, playlistLagu);
+            CreatePlaylist(&ListPL, &manager);
         }
         else if (strCompare(com, "PLAYLIST ADD") == 0)
         {
-            // Playlist chosenPlaylist;
-            // PlaylistAddSong(&ListPL, &chosenPlaylist, arrPenyanyi, albumPenyanyi, laguAlbum);
+            PlaylistAddSong(&ListPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
         }
         else if (strCompare(com, "PLAYLIST SWAP") == 0)
         {
@@ -218,7 +217,7 @@ int main()
         }
         else if (strCompare(com, "STATUS") == 0)
         {
-            // status(&Q, &playlistLagu, currentSong, currentPlaylist);
+            status(&Q, currentSong, currentPlaylist);
         }
         else if (strCompare(com, "QUIT") == 0)
         {

@@ -66,9 +66,8 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
  *      Queue dan History kosong
  */
 
-void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPlaylist listPlaylist);
-
-void status(Queue *Q, Playlist *playlistLagu, currentSong currentSong, currentPlaylist currentPlaylist);
+void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPlaylist listPlaylist, currentSong *currentSong, currentPlaylist *currentPlaylist);
+void status(Queue *Q, currentSong currentSong, currentPlaylist currentPlaylist);
 /*
  * Konstruktor
  * I.S. Program berjalan, Queue dan Playlist mungkin kosong

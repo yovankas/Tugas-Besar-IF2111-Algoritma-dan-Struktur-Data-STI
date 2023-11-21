@@ -3,37 +3,37 @@
 #include <stdio.h>
 
 int main() {
-    // Create a playlist manager
-    PlaylistManager* myManager = createPlaylistManager();
+    // Example usage
+    PlaylistManager myManager = createPlaylistManager();
+    Playlist playlit = createPlaylist();
+    addPlaylist(&myManager, &playlit);
 
-    // Add playlists
-    addPlaylist(myManager);
-    addPlaylist(myManager);
+    addSongToPlaylist(&myManager, 0, "tes1", "tes2", "tesbabi");
+    addSongToPlaylist(&myManager, 0, "tes3", "tes4", "tesbabi");
+    displayPlaylist(&myManager, 0);
+    // Initialize songs in the playlist
+    // myManager.playlists[0].songs[0].lagu = "Song1";
+    // myManager.playlists[0].songs[0].artist = "Artist1";
+    // myManager.playlists[0].songs[0].album = "Album1";
 
-    // Add songs to playlists
-    addSongToPlaylist(myManager, 0, "Song1", "Artist1", "Album1");
-    addSongToPlaylist(myManager, 0, "Song2", "Artist2", "Album2");
-    addSongToPlaylist(myManager, 1, "Song3", "Artist3", "Album3");
+    // addSongToPlaylist(&myManager, 0, "song2", "artis2", "album2");
 
-    // Display playlists
-    displayPlaylist(myManager, 0);
-    displayPlaylist(myManager, 1);
+    // // Retrieve and print a song
+    // Song retrievedSong = LaguFromPlaylistManager(&myManager, 0, 0);
+    // printf("Retrieved Song: %s - %s - %s\n", retrievedSong.lagu, retrievedSong.artist, retrievedSong.album);
 
-    swapSongsInPlaylist(myManager, 0, 0, 1);
-    displayPlaylist(myManager, 0);
-    deleteSongInPlaylist(myManager, 0, 1);
-    displayPlaylist(myManager, 0);
-    // // Clear all playlists
-    // clearAllPlaylists(myManager);
+    // // Swap songs and print the updated playlist
+    swapSongsInPlaylist(&myManager, 0, 0, 1);
+    displayPlaylist(&myManager, 0);
+    // printf("Updated Playlist after Swap:\n");
+    // printf("Song 1: %s - %s - %s\n", myManager.playlists[0].songs[0].lagu, myManager.playlists[0].songs[0].artist, myManager.playlists[0].songs[0].album);
+    // printf("Song 2: %s - %s - %s\n", myManager.playlists[0].songs[1].lagu, myManager.playlists[0].songs[1].artist, myManager.playlists[0].songs[1].album);
 
-    // Display playlists after clearing
-    // printf("Playlist 1 after clearing:\n");
-    // displayPlaylist(myManager, 0);
-    // printf("Playlist 2 after clearing:\n");
-    // displayPlaylist(myManager, 1);
-
-    // // Free memory
-    // free(myManager);
+    // // Delete a song and print the updated playlist
+    // deleteSongInPlaylist(&myManager, 0, 1);
+    // printf("Updated Playlist after Deletion:\n");
+    // printf("Song 1: %s - %s - %s\n", myManager.playlists[0].songs[0].lagu, myManager.playlists[0].songs[0].artist, myManager.playlists[0].songs[0].album);
+    // printf("Song 2: %s - %s - %s\n", myManager.playlists[0].songs[1].lagu, myManager.playlists[0].songs[1].artist, myManager.playlists[0].songs[1].album);
 
     return 0;
 }
