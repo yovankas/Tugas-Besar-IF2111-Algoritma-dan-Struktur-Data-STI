@@ -125,15 +125,36 @@ Stackchar MergeStackChar(Stackchar s1, Stackchar s2)
     return s;
 }
 
-void printStackchar(Stackchar S) {
-    if (IsEmptyStackChar(S)) {
+void printStackchar(Stackchar S)
+{
+    if (IsEmptyStackChar(S))
+    {
         printf("Stackchar is empty.\n");
-    } else {
+    }
+    else
+    {
         InverseStackChar(&S);
         int j = 1;
-        for (int i = S.TOPSTACKCHAR; i >= 0; i--) {
+        for (int i = S.TOPSTACKCHAR; i >= 0; i--)
+        {
             printf("%d. %s - %s - %s\n", j, S.T[i].artist, S.T[i].album, S.T[i].song);
             j++;
+        }
+    }
+}
+
+void printStackcharToFile(FILE *f, Stackchar S)
+{
+    if (IsEmptyStackChar(S))
+    {
+        printf("Stackchar is empty.\n");
+    }
+    else
+    {
+        InverseStackChar(&S);
+        for (int i = S.TOPSTACKCHAR; i >= 0; i--)
+        {
+            fprintf(f, "%s;%s;%s\n", S.T[i].artist, S.T[i].album, S.T[i].song);
         }
     }
 }

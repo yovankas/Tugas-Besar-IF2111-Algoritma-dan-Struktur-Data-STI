@@ -14,7 +14,7 @@ void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *
     loaddefault("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
 }
 
-void quit()
+void quit (Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
 {
     printf("Apakah kamu ingin menyimpan data sesi sekarang?(Y/N) ");
     startInputWord();
@@ -24,8 +24,11 @@ void quit()
     confirm = wordToString(command);
     if (strCompare(confirm, "Y") == 0)
     {
-        printf("manggil save disini\n");
-        // save(); // BELUM ADA FUNCTIONNYA
+        startInputWord();
+        akuisisiCommandWord(&command, currentWord, 1);
+        confirm = wordToString(command);
+        save(confirm, arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu, currentSong, Q, History, manager, listPL);
+        printf("File berhasil disimpan!\n");
     }
     printf("Kamu keluar dari WayangWave.\n");
     printf("Dadah ^_^/\n");
@@ -466,7 +469,6 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
         }
     }
     ElTypeQueue firstSong = dequeue(Q);
-    printf("ini yg dequeue %s\n", firstSong.song);
     currentSong->album = firstSong.album;
     currentSong->artist = firstSong.artist;
     currentSong->song = firstSong.song;
@@ -507,6 +509,7 @@ void listPlaylist(ListPlaylist listPL)
 
 void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist)
 {
+    printListPlaylist(listPlaylist);
     printf("Masukkan ID Playlist: ");
     startInputWord();
     Word IDplaylistWord;
@@ -521,7 +524,7 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
         Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
         while (i < manager->playlists[IDplaylist-1].numSongs)
         {
-            printf("%s\n", selectedSong.lagu);
+            // printf("%s\n", selectedSong.lagu);
             ElTypeQueue queuePL;
             queuePL.album = selectedSong.album;
             queuePL.artist = selectedSong.artist;

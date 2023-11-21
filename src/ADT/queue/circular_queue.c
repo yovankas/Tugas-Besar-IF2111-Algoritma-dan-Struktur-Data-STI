@@ -49,7 +49,8 @@ void insertHead(Queue *Q, ElTypeQueue X)
     int numElements = (Q->idxTail - Q->idxHead + IDX_MAX) % IDX_MAX + 1;
     ElTypeQueue *tempElements = malloc(numElements * sizeof(ElTypeQueue));
 
-    for (int i = 0; i < numElements; i++) {
+    for (int i = 0; i < numElements; i++)
+    {
         tempElements[i] = dequeue(Q);
     }
 
@@ -57,7 +58,8 @@ void insertHead(Queue *Q, ElTypeQueue X)
     enqueue(Q, X);
 
     // Enqueue the rest of the elements back
-    for (int i = 0; i < numElements; i++) {
+    for (int i = 0; i < numElements; i++)
+    {
         enqueue(Q, tempElements[i]);
     }
 
@@ -100,6 +102,27 @@ void displayQueue(Queue Q)
             }
         }
         printf("%d. %s - %s - %s\n", (i - Q.idxHead + 1 + IDX_MAX + 1) % (IDX_MAX + 1), Q.Tab[i].artist, Q.Tab[i].song, Q.Tab[i].album);
+    }
+}
+
+void printQueueToFile(FILE *f, Queue Q)
+{
+
+    if (IsEmptyQueue(Q))
+    {
+        printf("Your queue is empty.\n");
+    }
+    else
+    {
+        int i;
+        for (i = Q.idxHead; i != Q.idxTail; i = (i + 1) % (IDX_MAX + 1))
+        {
+            if (strCompare(Q.Tab[i].album, "") != 0)
+            {
+                fprintf(f, "%s;%s;%s\n", Q.Tab[i].artist, Q.Tab[i].album, Q.Tab[i].song);
+            }
+        }
+        fprintf(f, "%s;%s;%s\n", Q.Tab[i].artist, Q.Tab[i].album, Q.Tab[i].song);
     }
 }
 

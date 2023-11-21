@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "./console/load.h"
 #include "./console/console.h"
+#include "./console/save.h"
 
 int main()
 {
@@ -15,7 +16,7 @@ int main()
     currentSong currentSong;
     currentPlaylist currentPlaylist;
     nextSong nextSong;
-    ListPlaylist ListPL = initListPlaylist();
+    ListPlaylist listPL = initListPlaylist();
     PlaylistManager manager = createPlaylistManager();
     CreateEmptyCurrentPlaylist(&currentPlaylist);
     CreateEmptyCurrentSong(&currentSong);
@@ -40,7 +41,6 @@ int main()
     printf("1. START\n");
     printf("2. LOAD <namafile>\n");
     printf("3. HELP\n");
-
     while (!isInputValid)
     {
         printf("ENTER COMMAND: ");
@@ -67,7 +67,13 @@ int main()
             akuisisiCommandWord(&namafile, currentWord, 2);
             if (namafile.Length > 0)
             {
-                // loadsaved(namafile, &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &History, manager);
+                loadsaved(wordToString(namafile), &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &manager, &listPL);
+                // TEST CODE to see if playlist loaded successfully
+                // printListPlaylist(listPL);
+                // for (int i = 0; i < manager.numPlaylists; i++)
+                // {
+                //     displayOnePlaylist(&manager.playlists[i]);
+                // }
                 if (!IsEmpty(arrPenyanyi))
                 {
                     printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
@@ -126,6 +132,13 @@ int main()
         Word commandbefore;
         akuisisiCommandWord(&command, currentWord, 1);
         akuisisiCommandWord(&commandbefore, currentWord, 2);
+
+        if (strCompare(wordToString(command), "SAVE") == 0)
+        {
+            save(wordToString(commandbefore), &arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &manager, &listPL);
+            continue;
+        }
+
         string com, comcharbefore, spasi = " ";
         com = wordToString(command);
         comcharbefore = wordToString(commandbefore);
@@ -142,7 +155,7 @@ int main()
         }
         else if (strCompare(com, "LIST PLAYLIST") == 0)
         {
-            listPlaylist(ListPL);
+            listPlaylist(listPL);
         }
         else if (strCompare(com, "PLAY SONG") == 0)
         {
@@ -150,7 +163,7 @@ int main()
         }
         else if (strCompare(com, "PLAY PLAYLIST") == 0)
         {
-            playPlaylist(&Q, &history, &manager, ListPL, &currentSong, &currentPlaylist);
+            playPlaylist(&Q, &history, &manager, listPL, &currentSong, &currentPlaylist);
         }
         else if (strCompare(com, "QUEUE SONG") == 0)
         {
@@ -158,7 +171,7 @@ int main()
         }
         else if (strCompare(com, "QUEUE PLAYLIST") == 0)
         {
-            queuePlaylist(&Q, &manager, ListPL);
+            queuePlaylist(&Q, &manager, listPL);
         }
         else if (strCompare(com, "QUEUE SWAP") == 0)
         {
@@ -199,7 +212,7 @@ int main()
         }
         else if (strCompare(com, "SONG NEXT") == 0)
         {
-            songNext(&Q, &currentSong, &nextSong, &history, &currentPlaylist, &ListPL);
+            songNext(&Q, &currentSong, &nextSong, &history, &currentPlaylist, &listPL);
         }
         else if (strCompare(com, "SONG PREVIOUS") == 0)
         {
@@ -207,7 +220,7 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST CREATE") == 0)
         {
-            CreatePlaylist(&ListPL, &manager);
+            CreatePlaylist(&listPL, &manager);
         }
         else if (strCompare(com, "PLAYLIST ADD") == 0)
         {
@@ -215,11 +228,11 @@ int main()
             string comcom = wordToString(commandbefore);
             if (strCompare(comcom, "SONG") == 0)
             {
-                PlaylistAddSong(&ListPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
+                PlaylistAddSong(&listPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
             }
             else if (strCompare(comcom, "ALBUM") == 0)
             {
-                PlaylistAddAlbum(&ListPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
+                PlaylistAddAlbum(&listPL, &manager, arrPenyanyi, albumPenyanyi, laguAlbum);
             }
         }
         else if (strCompare(com, "PLAYLIST SWAP") == 0)
@@ -231,7 +244,7 @@ int main()
             int idxlagu1 = wordToInt(idid);
             akuisisiCommandWord(&idid, currentWord, 5);
             int idxlagu2 = wordToInt(idid);
-            PlaylistSwap(&ListPL, &manager, IDPlaylist, idxlagu1, idxlagu2);
+            PlaylistSwap(&listPL, &manager, IDPlaylist, idxlagu1, idxlagu2);
         }
         else if (strCompare(com, "PLAYLIST REMOVE") == 0)
         {
@@ -240,11 +253,11 @@ int main()
             int IDPlaylist = wordToInt(iid);
             akuisisiCommandWord(&iid, currentWord, 4);
             int idxLagu = wordToInt(iid);
-            PlaylistRemove(&ListPL, &manager, IDPlaylist, idxLagu);
+            PlaylistRemove(&listPL, &manager, IDPlaylist, idxLagu);
         }
         else if (strCompare(com, "PLAYLIST DELETE") == 0)
         {
-            PlaylistDelete(&ListPL, &manager);
+            PlaylistDelete(&listPL, &manager);
         }
         else if (strCompare(com, "STATUS") == 0)
         {
@@ -252,7 +265,7 @@ int main()
         }
         else if (strCompare(com, "QUIT") == 0)
         {
-            quit();
+            quit (&arrPenyanyi, &arrAlbum, &albumPenyanyi, &laguAlbum, &lagu, &currentSong, &Q, &history, &manager, &listPL);
             isQuit = true;
         }
         else if (strCompare(com, "HELP") == 0)

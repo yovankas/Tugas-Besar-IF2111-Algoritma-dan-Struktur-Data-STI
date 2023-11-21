@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "load.h"
+#include "save.h"
 #include "../boolean.h"
 #include "../adt/array/array.h"
 #include "../ADT/word/word.h"
@@ -24,7 +25,7 @@ void Delay(unsigned int Sec);
 
 void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
 
-void quit();
+void quit (Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL);
 /*
  * Konstruktor
  * I.S. Program berjalan

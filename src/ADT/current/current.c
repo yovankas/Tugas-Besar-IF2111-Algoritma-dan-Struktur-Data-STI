@@ -45,7 +45,7 @@ void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackc
     next = dequeue(Q);
     nextSong->song = next.song;
     nextSong->artist = next.artist;   
-    nextSong->album = next.album;  
+    nextSong->album = next.album; 
     // char* nextid; 
     // intToString(next.idPlaylist, nextid);
     // if (nextid != '\0')
@@ -74,7 +74,7 @@ void ReplayCurrentSong(currentSong currentSong)
 
 void ReplaceNextSong(nextSong *nextSong, Queue *Q)
 {
-    ElTypeQueue next = dequeue(Q);
+    ElTypeQueue next = (*Q).Tab[(*Q).idxHead];
     nextSong->album = next.album;
     nextSong->artist = next.artist;
     nextSong->song = next.song;

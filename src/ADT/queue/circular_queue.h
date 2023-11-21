@@ -84,6 +84,8 @@ void displayQueue(Queue q);
 /* Jika Queue kosong : menulis [] */
 /* Note: Output mengandung newline */
 
+void printQueueToFile(FILE *f, Queue Q);
+
 void swapQueueElmt(Queue *Q, int x, int y);
 
 ElTypeQueue removeQueueElmtByIdx(Queue *Q, int idx);

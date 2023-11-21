@@ -14,9 +14,9 @@
 
 typedef struct
 {
-    char* artist;
-    char* album;
-    char* song;
+    char *artist;
+    char *album;
+    char *song;
 } infotypeStackchar;
 
 typedef infotypeStackchar ElTypeStackchar;
@@ -26,8 +26,8 @@ typedef int address; /* indeks tabel */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct
 {
-  ElTypeStackchar T[MaxElStackchar]; /* tabel penyimpan elemen */
-  address TOPSTACKCHAR;                /* alamat TOP: elemen puncak */
+    ElTypeStackchar T[MaxElStackchar]; /* tabel penyimpan elemen */
+    address TOPSTACKCHAR;              /* alamat TOP: elemen puncak */
 } Stackchar;
 /* Definisi stack S kosong : S.TOP = Nil */
 /* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxElStackchar-1] */
@@ -70,23 +70,24 @@ void PrintStackChar(Stackchar S);
 /* F.S. Jika S tidak kosong, semua elemen S diprint */
 /* Jika S kosong, hanya menuliskan "Stack kosong" */
 
-void CopyStackChar (Stackchar sIn, Stackchar * sOut);
-    /* Membuat salinan sOut */
-    /* I.S. sIn terdefinisi, sOut sembarang */
-    /* sOut berisi salinan sIn yang identik */
+void CopyStackChar(Stackchar sIn, Stackchar *sOut);
+/* Membuat salinan sOut */
+/* I.S. sIn terdefinisi, sOut sembarang */
+/* sOut berisi salinan sIn yang identik */
 
-void InverseStackChar (Stackchar *S);
-    /* Membalik isi suatu Stack */
-    /* I.S. s terdefinisi */
-    /* F.S. Isi s terbalik dari posisi semula */
+void InverseStackChar(Stackchar *S);
+/* Membalik isi suatu Stack */
+/* I.S. s terdefinisi */
+/* F.S. Isi s terbalik dari posisi semula */
 
-Stackchar MergeStackChar (Stackchar s1, Stackchar s2);
-    /* Menghasilkan sebuah stack yang merupakan hasil penggabungan s1
-       dengan s2 dengan s1 berada di posisi yang lebih "bawah". Urutan kedua
-       stack harus sama seperti aslinya. */
-    /* Stack baru diisi sampai seluruh elemen s1 dan s2 masuk ke dalam stack,
-       atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
-       secukupnya yang dapat ditampung. */
+Stackchar MergeStackChar(Stackchar s1, Stackchar s2);
+/* Menghasilkan sebuah stack yang merupakan hasil penggabungan s1
+   dengan s2 dengan s1 berada di posisi yang lebih "bawah". Urutan kedua
+   stack harus sama seperti aslinya. */
+/* Stack baru diisi sampai seluruh elemen s1 dan s2 masuk ke dalam stack,
+   atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
+   secukupnya yang dapat ditampung. */
 
 void printStackchar(Stackchar S);
+void printStackcharToFile(FILE *f, Stackchar S);
 #endif

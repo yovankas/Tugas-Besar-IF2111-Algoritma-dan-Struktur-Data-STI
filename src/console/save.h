@@ -1,5 +1,5 @@
-#ifndef load_H
-#define load_H
+#ifndef SAVE_H
+#define SAVE_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,10 +17,7 @@
 #include "../adt/stack/stackchar.h"
 #include "../ADT/playlist/playlist.h"
 #include "console.h"
-#include "../ADT/listplaylist/listplaylist.h"
 
-void loaddefault(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
-
-void loadsaved(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *playlist);
+void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL);
 
 #endif
