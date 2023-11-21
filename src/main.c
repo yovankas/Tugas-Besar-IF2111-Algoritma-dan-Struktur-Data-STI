@@ -199,7 +199,7 @@ int main()
         }
         else if (strCompare(com, "SONG NEXT") == 0)
         {
-            songNext(&Q, &currentSong, &nextSong, &history);
+            songNext(&Q, &currentSong, &nextSong, &history, &currentPlaylist, &ListPL);
         }
         else if (strCompare(com, "SONG PREVIOUS") == 0)
         {

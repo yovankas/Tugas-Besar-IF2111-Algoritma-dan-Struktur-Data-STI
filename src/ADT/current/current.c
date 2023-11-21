@@ -38,12 +38,21 @@ void PlayCurrentSong(currentSong currentSong)
     printf("%s oleh %s\n", currentSong.song, currentSong.artist);
 }
 
-void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History)
+void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History, currentPlaylist *currentPlaylist, ListPlaylist *ListLP)
 {
     printf("Memutar lagu selanjutnya ");
-    nextSong->song = Q->Tab[Q->idxHead].song;
-    nextSong->artist = Q->Tab[Q->idxHead].artist;
-    nextSong->album = Q->Tab[Q->idxHead].album;
+    ElTypeQueue next;
+    next = dequeue(Q);
+    nextSong->song = next.song;
+    nextSong->artist = next.artist;   
+    nextSong->album = next.album;  
+    // char* nextid; 
+    // intToString(next.idPlaylist, nextid);
+    // if (nextid != '\0')
+    // {
+    //     currentPlaylist->playlist = namePlaylistFromIndex(*ListLP, next.idPlaylist);
+    // }
+    // printf("ha gak jalan\n");
     // printf("%s oleh %s\n", nextSong->song, nextSong->artist);
     infotypeStackchar historysong;
     historysong.album = currentSong->album;

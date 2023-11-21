@@ -88,7 +88,7 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
  * F.S. Menambahkan playlist ke dalam queue
  */
 
-void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History);
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History, currentPlaylist *currentPlaylist, ListPlaylist *ListLP);
 /**
 * Konstruktor
 * I.S. Program berjalan, queue mungkin kosong

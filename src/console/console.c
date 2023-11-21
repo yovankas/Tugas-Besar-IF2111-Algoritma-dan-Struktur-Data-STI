@@ -519,9 +519,9 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
     {
         int i = 0;
         Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
-        printf("%s\n", selectedSong.lagu);
         while (i < manager->playlists[IDplaylist-1].numSongs)
         {
+            printf("%s\n", selectedSong.lagu);
             ElTypeQueue queuePL;
             queuePL.album = selectedSong.album;
             queuePL.artist = selectedSong.artist;
@@ -533,7 +533,7 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
     }
 }
 
-void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History)
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History, currentPlaylist *currentPlaylist, ListPlaylist *ListLP)
 {
     if (IsEmptyQueue(*Q))
     {
@@ -541,7 +541,7 @@ void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar 
     }
     else
     {
-        PlayNextSong(nextSong, currentSong, Q, History);
+        PlayNextSong(nextSong, currentSong, Q, History, currentPlaylist, ListLP);
     }
 }
 
@@ -923,8 +923,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
             i += 1;
             lagu = LaguFromAlbum(laguAlbum, album, i+1);
         }
-        printf("Album dengan judul %s berhasil ditambahkan ke dalam playlist pengguna %s.\n", album, namePlaylist);
-        
+        printf("Album dengan judul %s berhasil ditambahkan ke dalam playlist pengguna %s.\n", album, namePlaylist);        
     }
     else
     {
