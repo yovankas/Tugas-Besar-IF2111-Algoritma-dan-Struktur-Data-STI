@@ -150,6 +150,10 @@ int main()
         {
             queueSong(&Q, arrPenyanyi, albumPenyanyi, laguAlbum);
         }
+        else if (strCompare(com, "QUEUE PLAYLIST") == 0)
+        {
+            queuePlaylist(&Q, &manager, ListPL);
+        }
         else if (strCompare(com, "QUEUE SWAP") == 0)
         {
             Word xWord, yWord;
@@ -216,11 +220,16 @@ int main()
         }
         else if (strCompare(com, "PLAYLIST REMOVE") == 0)
         {
-            printf("manggil playlist remove\n");
+            Word iid;
+            akuisisiCommandWord(&iid, currentWord, 3);
+            int IDPlaylist = wordToInt(iid);
+            akuisisiCommandWord(&iid, currentWord, 4);
+            int idxLagu = wordToInt(iid);
+            PlaylistRemove(&ListPL, &manager, IDPlaylist, idxLagu);
         }
         else if (strCompare(com, "PLAYLIST DELETE") == 0)
         {
-            printf("manggil playlist delete\n");
+            PlaylistDelete(&ListPL, &manager);
         }
         else if (strCompare(com, "STATUS") == 0)
         {

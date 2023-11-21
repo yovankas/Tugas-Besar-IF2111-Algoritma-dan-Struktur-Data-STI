@@ -37,7 +37,10 @@ void addSong(Playlist* playlist, char* lagu, char* artist, char* album) {
 // Fungsi untuk menampilkan seluruh lagu dalam playlist
 void displayOnePlaylist(Playlist* playlist) {
     for (int i = 0; i < playlist->numSongs; i++) {
-        printf("%d. %s - %s - %s\n", i + 1, playlist->songs[i].lagu, playlist->songs[i].artist, playlist->songs[i].album);
+        if (strCompare(playlist->songs[i].album, "") != 0)
+        {
+            printf("%d. %s - %s - %s\n", i + 1, playlist->songs[i].lagu, playlist->songs[i].artist, playlist->songs[i].album);
+        }
     }
 }
 

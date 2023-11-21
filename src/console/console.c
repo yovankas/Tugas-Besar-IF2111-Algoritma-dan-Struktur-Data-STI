@@ -441,14 +441,14 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
     int IDplaylist = wordToInt(IDplaylistWord);
     char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist-1);
 
-    printf("Memutar playlist %s\n", namePlaylist);
     CreateQueue(Q); // Empty queue
     CreateEmptyStackChar(History); // Empty history
-    if (IDplaylist >= 0 && IDplaylist < manager->numPlaylists)
+    if (IDplaylist-1 >= 0 && IDplaylist-1 < manager->numPlaylists)
     {
         int i = 0;
-        Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist, i);
-        while (strCompare(selectedSong.album, "") != 0)
+        Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
+        printf("ini yg terpilih %s\n", selectedSong.lagu);
+        while (i <= manager->playlists[IDplaylist-1].numSongs)
         {
             ElTypeQueue queuePL;
             queuePL.album = selectedSong.album;
@@ -462,14 +462,17 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
             stackPL.song = selectedSong.album;
             PushStackChar(History, stackPL);
             i += 1;
-            selectedSong = LaguFromPlaylistManager(manager, IDplaylist, i);
+            selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
         }
     }
     ElTypeQueue firstSong = dequeue(Q);
+    printf("ini yg dequeue %s\n", firstSong.song);
     currentSong->album = firstSong.album;
     currentSong->artist = firstSong.artist;
     currentSong->song = firstSong.song;
     currentPlaylist->playlist = namePlaylist;
+    printf("Memutar playlist %s\n", currentPlaylist->playlist);
+    printf("Memutar lagu %s\n", currentSong->song);
 }
 
 void status(Queue *Q, currentSong currentSong, currentPlaylist currentPlaylist)
@@ -512,11 +515,11 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
     char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist-1);
 
     printf("Menambahkan playlist %s ke antrian\n", namePlaylist);
-    if (IDplaylist >= 0 && IDplaylist < manager->numPlaylists)
+    if (IDplaylist-1 >= 0 && IDplaylist-1 < manager->numPlaylists)
     {
         int i = 0;
-        Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist, i);
-        while (strCompare(selectedSong.album, "") != 0)
+        Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
+        while (i <= manager->playlists[IDplaylist-1].numSongs)
         {
             ElTypeQueue queuePL;
             queuePL.album = selectedSong.album;
@@ -524,7 +527,7 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
             queuePL.song = selectedSong.lagu;
             enqueue(Q, queuePL);
             i += 1;
-            selectedSong = LaguFromPlaylistManager(manager, IDplaylist, i);
+            selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
         }
     }
 }
@@ -608,7 +611,7 @@ void PlaylistSwap(ListPlaylist *listPL, PlaylistManager *manager, int IDPlaylist
         char* namePlaylist = namePlaylistFromIndex(*listPL, IDPlaylist-1);
         Playlist PL = playlistFromPlaylistManager(manager, IDPlaylist-1);
         int totalsong = PL.numSongs;
-        
+
         if (idxlagu1 > totalsong)
         {
             printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu1, namePlaylist);
@@ -640,11 +643,11 @@ void PlaylistDelete(ListPlaylist *listPL, PlaylistManager *manager)
     {
         printf("Playlist ID %d dengan judul %s berhasil dihapus.", id_playlist, listPL->playlist[id_playlist-1]);
         deleteAtIndex(listPL, id_playlist-1);
-        clearPlaylist(manager, id_playlist);
+        clearPlaylist(manager, id_playlist-1);
     }
 }
 
-void PlaylistRemove(ListPlaylist *listPL, PlaylistManager* manager, int IDPlaylist,  int idxlagu)
+void PlaylistRemove(ListPlaylist *listPL, PlaylistManager* manager, int IDPlaylist, int idxlagu)
 {
     if (IDPlaylist-1 > listPL->count)
     {
@@ -661,7 +664,8 @@ void PlaylistRemove(ListPlaylist *listPL, PlaylistManager* manager, int IDPlayli
             printf("Tidak ada lagu dengan urutan %d di playlist “%s”", idxlagu, namePlaylist);
             return;
         }
-        deleteSongInPlaylist(manager, IDPlaylist, idxlagu);
+        deleteSongInPlaylist(manager, IDPlaylist-1, idxlagu-1);
+        displayPlaylist(manager, IDPlaylist-1);
     }
 }
 
