@@ -5,11 +5,11 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
   FILE *f;
 
   f = fopen(concat("data/", namafile), "w");
-
+  printf("hahahihi\n");
   if (f == NULL)
   {
-    printf("Error on opening file data/%s!\n", namafile);
-    return;
+      printf("Tidak bisa membuka file %s\n", namafile);
+      return;
   }
 
   fprintf(f, "%d\n", NbElmt(*arrPenyanyi) + 1);
@@ -34,7 +34,6 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
       }
     }
   }
-
   fprintf(f, "%s;%s;%s\n", currentSong->artist, currentSong->album, currentSong->song);
   fprintf(f, "%d\n", Length(*Q) + 1);
 
@@ -56,4 +55,5 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
   }
 
   fclose(f);
+
 }

@@ -10,61 +10,48 @@
 #include "../word/word.h"
 
 #define MAX_STRING_LENGTH 100
-#define MAX_SONGS 100 // Adjust the maximum number of songs in a playlist as needed
 
-typedef struct
-{
-    char *lagu;
-    char *artist;
-    char *album;
+#define MAX_SONGS 100
+
+// Define Song type
+typedef struct {
+    char* lagu;
+    char* artist;
+    char* album;
 } Song;
 
-typedef struct
-{
-    Song songs[MAX_SONGS];
+// Node structure for the linked list of songs
+typedef struct SongNode {
+    Song data;
+    struct SongNode* next;
+} SongNode;
+
+typedef struct {
+    SongNode* head;
     int numSongs;
 } Playlist;
 
 #define MAX_PLAYLISTS 100
 
-typedef struct
-{
+typedef struct {
     Playlist playlists[MAX_PLAYLISTS];
     int numPlaylists;
 } PlaylistManager;
 
 Playlist createPlaylist();
-
-void addSong(Playlist *playlist, char *lagu, char *artist, char *album);
-
-void displayOnePlaylist(Playlist *playlist);
-
-void printPlaylistToFile(FILE *f, Playlist playlist);
-
-void clearOnePlaylist(Playlist *playlist);
-
+void addSong(Playlist* playlist, char* lagu, char* artist, char* album);
+void displayOnePlaylist(Playlist* playlist);
+void clearOnePlaylist(Playlist* playlist);
 PlaylistManager createPlaylistManager();
-
-void addPlaylist(PlaylistManager *manager, Playlist *playlist);
-
-// Fungsi untuk menambah lagu ke dalam playlist
-void addSongToPlaylist(PlaylistManager *manager, int playlistIndex, char *lagu, char *artist, char *album);
-
-// Fungsi untuk menampilkan seluruh lagu dalam playlist
-void displayPlaylist(PlaylistManager *manager, int playlistIndex);
-
-// Fungsi untuk membersihkan seluruh playlist (menghapus semua lagu)
-void clearPlaylist(PlaylistManager *manager, int playlistIndex);
-
-// Fungsi untuk membersihkan seluruh manajer playlist (menghapus semua playlist)
-void clearAllPlaylists(PlaylistManager *manager);
-
-Song LaguFromPlaylistManager(PlaylistManager *manager, int playlistIndex, int songIndex);
-
-void swapSongsInPlaylist(PlaylistManager *manager, int playlistIndex, int songIndex1, int songIndex2);
-
-void deleteSongInPlaylist(PlaylistManager *manager, int playlistIndex, int songIndex);
-
-Playlist playlistFromPlaylistManager(PlaylistManager *manager, int playlistIndex);
+void addPlaylist(PlaylistManager* manager, Playlist* playlist);
+void addSongToPlaylist(PlaylistManager* manager, int playlistIndex, char* lagu, char* artist, char* album);
+void displayPlaylist(PlaylistManager* manager, int playlistIndex);
+void clearPlaylist(PlaylistManager* manager, int playlistIndex);
+void clearAllPlaylists(PlaylistManager* manager);
+Song LaguFromPlaylistManager(PlaylistManager* manager, int playlistIndex, int songIndex);
+void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIndex1, int songIndex2);
+void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songIndex);
+Playlist playlistFromPlaylistManager(PlaylistManager* manager, int playlistIndex);
+void printPlaylistToFile(FILE *f, Playlist playlist);
 
 #endif
