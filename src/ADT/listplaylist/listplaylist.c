@@ -54,10 +54,9 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
 
 void printListPlaylist(ListPlaylist listPL) {
     if (listPL.count == 0){
-        printf("Your playlist is empty.\n");
+        printf("Kamu tidak memiliki playlist.\n");
     }
     else {
-        printf("Your playlist:\n");
         for (arraysize idxPLlist = 1; idxPLlist <= listPL.count; idxPLlist++) {
             printf("%d. %s\n", idxPLlist, listPL.playlist[idxPLlist-1].namePL);
         }
