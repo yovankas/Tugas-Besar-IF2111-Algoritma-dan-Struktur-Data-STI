@@ -24,6 +24,7 @@ void quit (Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *
     confirm = wordToString(command);
     if (strCompare(confirm, "Y") == 0)
     {
+        printf("File akan disimpan dengan nama : ");
         startInputWord();
         akuisisiCommandWord(&command, currentWord, 1);
         confirm = wordToString(command);
