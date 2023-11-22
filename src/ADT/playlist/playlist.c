@@ -459,23 +459,13 @@ Playlist playlistFromPlaylistManager(PlaylistManager* manager, int playlistIndex
 }
 
 void printPlaylistToFile(FILE *f, Playlist playlist) {
-    if (f == NULL) {
-        printf("Nama file tidak valid.\n");
-        return;
-    }
+    SongNode *current = playlist.head;
 
-    SongNode* current = playlist.head;
-    Song song = current->data;
-    for (int i = 0; i < playlist.numSongs; i++) {
-        if (song.artist != NULL && song.album != NULL && song.lagu != NULL) {
-            if (strCompare(song.album, "") != 0) {
-                fprintf(f, "%s;%s;%s\n", song.artist, song.album, song.lagu);
-            }
-        } else {
-            printf("Tidak ada isi file pada index %d.\n", i);
-        }
+    while (current != NULL) {
+        Song song = current->data;
+        fprintf(f, "%s;%s;%s\n", song.artist, song.album, song.lagu);
         current = current->next;
-        song = current->data;
     }
 }
+
 

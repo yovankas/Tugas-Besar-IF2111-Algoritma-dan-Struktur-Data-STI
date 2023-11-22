@@ -5,11 +5,11 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
   FILE *f;
 
   f = fopen(concat("data/", namafile), "w");
-  printf("hahahihi\n");
+
   if (f == NULL)
   {
-      printf("Tidak bisa membuka file %s\n", namafile);
-      return;
+    printf("File tidak dapat ditemukan!\n", namafile);
+    return;
   }
 
   fprintf(f, "%d\n", NbElmt(*arrPenyanyi) + 1);
@@ -34,6 +34,7 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
       }
     }
   }
+
   fprintf(f, "%s;%s;%s\n", currentSong->artist, currentSong->album, currentSong->song);
   fprintf(f, "%d\n", Length(*Q) + 1);
 
@@ -44,16 +45,11 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
 
   fprintf(f, "%d\n", manager->numPlaylists);
 
-  for (i = 0; i < manager->numPlaylists; i++)
-  {
+  for (int i = 0; i < manager->numPlaylists; i++) {
     string playlistTitle = listPL->playlist[i].namePL;
-    int countPlaylistSong = manager->playlists[i].numSongs;
-
-    fprintf(f, "%d %s\n", countPlaylistSong, playlistTitle);
-
+    fprintf(f, "%s\n", playlistTitle);
     printPlaylistToFile(f, manager->playlists[i]);
   }
 
-  fclose(f);
-
+    fclose(f);
 }
