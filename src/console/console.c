@@ -98,21 +98,24 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
             com = concat(com, penyanyi2);
         }
 
-        printf("Daftar Album oleh %s :\n", com);
         if (strCompare(com, "BLACKPINK") == 0)
         {
+            printf("Daftar Album oleh %s :\n", com);
             PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
         }
         else if (strCompare(com, "Arctic Monkeys") == 0)
         {
+            printf("Daftar Album oleh %s :\n", com);
             PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
         }
         else if (strCompare(com, "NewJeans") == 0)
         {
+            printf("Daftar Album oleh %s :\n", com);
             PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
         }
         else if (strCompare(com, "Hivi!") == 0)
         {
+            printf("Daftar Album oleh %s :\n", com);
             PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
         }
         else
@@ -152,61 +155,74 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
                     com = concat(com, album3);
                 }
 
-                printf("Daftar Lagu di %s:\n", com);
                 if (strCompare(com, "BORN PINK") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "BORN PINK");
                 }
                 else if (strCompare(com, "THE ALBUM") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "THE ALBUM");
                 }
                 else if (strCompare(com, "SQUARE ONE") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "SQUARE ONE");
                 }
                 else if (strCompare(com, "SQUARE TWO") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "SQUARE TWO");
                 }
                 else if (strCompare(com, "SQUARE UP") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "SQUARE UP");
                 }
                 else if (strCompare(com, "Favourite Worst Nightmare") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "Favourite Worst Nightmare");
                 }
                 else if (strCompare(com, "Humbug") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "Humbug");
                 }
                 else if (strCompare(com, "AM") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "AM");
                 }
                 else if (strCompare(com, "New Jeans") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "New Jeans");
                 }
                 else if (strCompare(com, "OMG") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "OMG");
                 }
                 else if (strCompare(com, "Get Up") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "Get Up");
                 }
                 else if (strCompare(com, "CERITERA") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "CERITERA");
                 }
                 else if (strCompare(com, "Kereta Kencan") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "Kereta Kencan");
                 }
                 else if (strCompare(com, "Say Hi To Hivi!") == 0)
                 {
+                    printf("Daftar Lagu di %s:\n", com);
                     PrintAlbumLagu(laguAlbum, "Say Hi To Hivi!");
                 }
                 else
@@ -427,13 +443,21 @@ void playSong(Queue *Q, Stackchar *History, Array arrPenyanyi, Penyanyi albumPen
     akuisisiCommandWord(&IDs, currentWord, 1);
     int IDsong = wordToInt(IDs);
     infotype song = LaguFromAlbum(laguAlbum, album, IDsong);
+    int IDAlbum = GenerateIDAlbum(laguAlbum, album);
 
-    printf("Memutar lagu %s oleh %s\n", song, penyanyi);
-    CreateQueue(Q);
-    CreateEmptyStackChar(History);
-    (*currentSong).album = album;
-    (*currentSong).artist = penyanyi;
-    (*currentSong).song = song;
+    if (IDsong <= laguAlbum.Elements[IDAlbum].Value.Count)
+    {
+        printf("Memutar lagu %s oleh %s\n", song, penyanyi);
+        CreateQueue(Q);
+        CreateEmptyStackChar(History);
+        (*currentSong).album = album;
+        (*currentSong).artist = penyanyi;
+        (*currentSong).song = song;
+    }
+    else
+    {
+        printf("Tidak ada lagu dengan ID %d\n", IDsong);
+    }
 }
 
 void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPlaylist listPlaylist, currentSong *currentSong, currentPlaylist *currentPlaylist)
@@ -504,7 +528,10 @@ void status(Queue *Q, currentSong currentSong, currentPlaylist currentPlaylist)
 
 void listPlaylist(ListPlaylist listPL)
 {
-    printf("Daftar Playlist yang kamu miliki:\n");
+    if (listPL.count != 0)
+    {
+        printf("Daftar Playlist yang kamu miliki:\n");
+    }
     printListPlaylist(listPL);
 }
 
@@ -920,7 +947,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
     {
         int i = 0;
         char* lagu = LaguFromAlbum(laguAlbum, album, i+1);
-        int ID = IDAlbum(laguAlbum, album);
+        int ID = GenerateIDAlbum(laguAlbum, album);
         while (i < laguAlbum.Elements[ID].Value.Count)
         {
             addSongToPlaylist(manager, id_playlist-1, lagu, com, album);

@@ -156,7 +156,7 @@ infotype LaguFromAlbum(Album M, keytype k, int id)
     return song;
 }
 
-int IDAlbum (Album M, keytype k)
+int GenerateIDAlbum (Album M, keytype k)
 {
     int i = 0;
     int ID;
