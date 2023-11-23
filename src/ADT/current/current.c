@@ -34,11 +34,18 @@ void PrintCurrentSong(currentSong currentSong)
 
 void PlayCurrentSong(currentSong currentSong)
 {
-    printf("Queue kosong, memutar kembali lagu ");
-    printf("%s oleh %s\n", currentSong.song, currentSong.artist);
+    if (!isEmptyCurrentSong(currentSong))
+    {
+        printf("Queue kosong, memutar kembali lagu ");
+        printf("%s oleh %s\n", currentSong.song, currentSong.artist);
+    }
+    else 
+    {
+        printf("Kamu belum memutar lagu apapun!\n");
+    }
 }
 
-void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History, currentPlaylist *currentPlaylist, ListPlaylist *ListLP)
+void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackchar *History, currentPlaylist *currentPlaylist)
 {
     printf("Memutar lagu selanjutnya ");
     ElTypeQueue next;

@@ -43,23 +43,23 @@ void PopStackChar(Stackchar *S, ElTypeStackchar *X)
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen StackTopStackchar yang lama, TOP berkurang 1 */
 
-void PrintStackChar(Stackchar S)
-{
-    int i;
-    if (!IsEmptyStackChar(S))
-    {
-        for (i = TopStackchar(S); i >= 0; i--)
-        {
-            printf("%s\n", S.T[i]);
-        }
-    }
-    else
-    {
-        printf("Stack kosong");
-    }
+// void PrintStackChar(Stackchar S)
+// {
+//     int i;
+//     if (!IsEmptyStackChar(S))
+//     {
+//         for (i = TopStackchar(S); i >= 0; i--)
+//         {
+//             printf("%s\n", S.T[i]);
+//         }
+//     }
+//     else
+//     {
+//         printf("Stack kosong");
+//     }
 
-    printf("\n");
-}
+//     printf("\n");
+// }
 
 void CopyStackChar(Stackchar sIn, Stackchar *sOut)
 {
@@ -111,7 +111,6 @@ Stackchar MergeStackChar(Stackchar s1, Stackchar s2)
     /* Stack baru diisi sampai seluruh elemen s1 dan s2 masuk ke dalam stack,
        atau jika stack baru sudah penuh, maka elemen yang dimasukkan adalah
        secukupnya yang dapat ditampung. */
-    int i;
     Stackchar s;
     infotypeStackchar x;
     CreateEmptyStackChar(&s);

@@ -1,6 +1,6 @@
 #include "./save.h"
 
-void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
+void save(char *namafile, Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *laguAlbum, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
 {
   FILE *f;
 
@@ -8,7 +8,7 @@ void save(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPe
 
   if (f == NULL)
   {
-    printf("File tidak dapat ditemukan!\n", namafile);
+    printf("File %s tidak dapat ditemukan!\n", namafile);
     return;
   }
 

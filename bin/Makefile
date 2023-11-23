@@ -1,20 +1,20 @@
 load: 
-	gcc ../src/adt/array/array.c ../src/adt/set/set.c ../src/adt/mesin/mesinkarakter.c ../src/adt/mesin/mesinkata.c ../src/adt/penyanyi/penyanyi.c ../src/adt/album/album.c ../src/adt/word/word.c ../src/adt/string/string.c ../src/adt/queue/circular_queue.c ../src/adt/stack/stackchar.c ../src/adt/current/current.c ../src/adt/playlist/playlist.c ../src/adt/listplaylist/listplaylist.c ../src/console.c ../src/load.c -o load.exe
+	gcc -o load ../src/adt/array/array.c ../src/adt/set/set.c ../src/adt/mesin/mesinkarakter.c ../src/adt/mesin/mesinkata.c ../src/adt/penyanyi/penyanyi.c ../src/adt/album/album.c ../src/adt/word/word.c ../src/adt/string/string.c ../src/adt/queue/circular_queue.c ../src/adt/stack/stackchar.c ../src/adt/current/current.c ../src/adt/playlist/playlist.c ../src/adt/listplaylist/listplaylist.c ../src/console.c ../src/load.c
 
 driverset:
-	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/set/driverset.c -o driverset.exe
+	gcc -o driverset ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/set/driverset.c
 
 console:
-	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/adt/stack/stackchar.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/adt/queue/circular_queue.c ../src/adt/current/current.c ../src/adt/playlist/playlist.c ../src/adt/listplaylist/listplaylist.c ../src/console.c -o console.exe
+	gcc -o console ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/adt/stack/stackchar.c ../src/console.c
 
 driveralbum:
-	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/album/driveralbum.c -o driveralbum.exe
+	gcc -o driveralbum ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/album/driveralbum.c
 
 driverqueue:
-	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/string/string.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/queue/circular_queue.c ../src/ADT/queue/driverqueue.c -o driverqueue.exe
+	gcc -o driverqueue ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/string/string.c ../src/ADT/mesin/mesinkata.c ../src/ADT/penyanyi/penyanyi.c ../src/ADT/album/album.c ../src/ADT/word/word.c ../src/ADT/queue/circular_queue.c ../src/ADT/queue/driverqueue.c
 
 main: 
-	gcc ../src/adt/array/array.c ../src/adt/set/set.c ../src/adt/mesin/mesinkarakter.c ../src/adt/mesin/mesinkata.c ../src/adt/penyanyi/penyanyi.c ../src/adt/album/album.c ../src/adt/word/word.c ../src/adt/string/string.c ../src/adt/queue/circular_queue.c ../src/adt/stack/stackchar.c ../src/adt/current/current.c ../src/adt/playlist/playlist.c ../src/console/console.c ../src/adt/listplaylist/listplaylist.c ../src/console/load.c ../src/console/save.c ../src/main.c -o main.exe
+	gcc -o main ../src/adt/array/array.c ../src/adt/set/set.c ../src/adt/mesin/mesinkarakter.c ../src/adt/mesin/mesinkata.c ../src/adt/penyanyi/penyanyi.c ../src/adt/album/album.c ../src/adt/word/word.c ../src/adt/string/string.c ../src/adt/queue/circular_queue.c ../src/adt/stack/stackchar.c ../src/adt/current/current.c ../src/adt/playlist/playlist.c ../src/console/console.c ../src/adt/listplaylist/listplaylist.c ../src/console/load.c ../src/console/save.c ../src/main.c
 
 driverplaylist:
-	gcc ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/word/word.c ../src/ADT/string/string.c ../src/ADT/playlist/playlist.c ../src/ADT/playlist/driverplaylist.c -o driverplaylist.exe
+	gcc -o driverplaylist ../src/ADT/array/array.c ../src/ADT/set/set.c ../src/ADT/mesin/mesinkarakter.c ../src/ADT/mesin/mesinkata.c ../src/ADT/word/word.c ../src/ADT/string/string.c ../src/ADT/playlist/playlist.c ../src/ADT/playlist/driverplaylist.c

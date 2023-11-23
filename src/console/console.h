@@ -25,7 +25,7 @@ void Delay(unsigned int Sec);
 
 void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu);
 
-void quit (Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL);
+void quit (Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *laguAlbum, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL);
 /*
  * Konstruktor
  * I.S. Program berjalan
@@ -89,7 +89,7 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
  * F.S. Menambahkan playlist ke dalam queue
  */
 
-void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History, currentPlaylist *currentPlaylist, ListPlaylist *ListLP);
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History, currentPlaylist *currentPlaylist);
 /**
 * Konstruktor
 * I.S. Program berjalan, queue mungkin kosong

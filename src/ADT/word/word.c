@@ -5,6 +5,8 @@ Word CreateWord()
     Word w;
 
     w.Length = 0;
+
+    return w;
 }
 
 int wordToInt(Word w)

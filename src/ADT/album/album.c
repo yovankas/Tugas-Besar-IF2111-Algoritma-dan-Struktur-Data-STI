@@ -19,7 +19,7 @@ boolean IsFullAlbum(Album M)
 valuetype ValueInAlbum(Album M, keytype k)
 {
     boolean found = false;
-    addressAlbum idx = 0, iterator;
+    addressAlbum idx = 0;
 
     while (!found && idx < M.Count)
     {
@@ -93,7 +93,7 @@ boolean IsMemberInAlbum(Album M, keytype k)
 /* Mengembalikan true jika k adalah member dari M. Pengecekan member dilakukan dengan case insensitive */
 {
     boolean found = false;
-    addressAlbum idx = 0, iterator;
+    addressAlbum idx = 0;
 
     while (!found && idx < M.Count)
     {

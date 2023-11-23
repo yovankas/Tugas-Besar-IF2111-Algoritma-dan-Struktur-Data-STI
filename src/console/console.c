@@ -14,7 +14,7 @@ void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *
     loaddefault("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
 }
 
-void quit (Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *laguAlbum, Set *lagu, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
+void quit (Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *laguAlbum, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
 {
     printf("Apakah kamu ingin menyimpan data sesi sekarang?(Y/N) ");
     startInputWord();
@@ -28,7 +28,7 @@ void quit (Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *
         startInputWord();
         akuisisiCommandWord(&command, currentWord, 1);
         confirm = wordToString(command);
-        save(confirm, arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu, currentSong, Q, History, manager, listPL);
+        save(confirm, arrPenyanyi, albumPenyanyi, laguAlbum, currentSong, Q, History, manager, listPL);
         printf("File berhasil disimpan!\n");
     }
     printf("Kamu keluar dari WayangWave.\n");
@@ -311,11 +311,11 @@ void queueSwap(Queue *Q, int x, int y)
     {
         printf("Queue lagu kosong!\n");
     }
-    else if (x < 1 || x > countQueueSong)
+    else if (x < 1 || x-1 > countQueueSong)
     {
         printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", x);
     }
-    else if (y < 1 || y > countQueueSong)
+    else if (y < 1 || y-1 > countQueueSong)
     {
         printf("Lagu dengan urutan ke %d tidak terdapat dalam queue!\n", y);
     }
@@ -537,7 +537,7 @@ void queuePlaylist(Queue *Q, PlaylistManager* manager, ListPlaylist listPlaylist
     }
 }
 
-void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History, currentPlaylist *currentPlaylist, ListPlaylist *ListLP)
+void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar *History, currentPlaylist *currentPlaylist)
 {
     if (IsEmptyQueue(*Q))
     {
@@ -545,7 +545,7 @@ void songNext(Queue *Q, currentSong *currentSong, nextSong *nextSong, Stackchar 
     }
     else
     {
-        PlayNextSong(nextSong, currentSong, Q, History, currentPlaylist, ListLP);
+        PlayNextSong(nextSong, currentSong, Q, History, currentPlaylist);
     }
 }
 
@@ -563,10 +563,6 @@ void songPrevious(Queue *Q, Stackchar *History, currentSong *currentSong)
 
 void CreatePlaylist(ListPlaylist *listPL, PlaylistManager* Manager)
 {
-    // KAMUS
-    char CharPL1, CharPL2, CharPL3;
-    int countChar = 0;
-
     // ALGORITMA
     Playlist playlist = createPlaylist();
     addPlaylist(Manager, &playlist);
@@ -816,7 +812,7 @@ void PlaylistAddSong(ListPlaylist *listPL, PlaylistManager* manager, Array arrPe
     akuisisiCommandWord(&idplaylist, currentWord, 1);
     int id_playlist = wordToInt(idplaylist);
     char* namePlaylist = "";
-    int totalsong = 0;
+    // int totalsong = 0;
 
     if (id_playlist-1 > listPL->count)
     {
@@ -826,7 +822,7 @@ void PlaylistAddSong(ListPlaylist *listPL, PlaylistManager* manager, Array arrPe
     else
     {
         namePlaylist = namePlaylistFromIndex(*listPL, id_playlist-1);
-        totalsong = jumlahSongPlaylistFromIndex(*listPL, id_playlist-1);
+        // totalsong = jumlahSongPlaylistFromIndex(*listPL, id_playlist-1);
     }
 
     if (strCompare(namePlaylist, "") != 0)
@@ -907,7 +903,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
     akuisisiCommandWord(&idplaylist, currentWord, 1);
     int id_playlist = wordToInt(idplaylist);
     char* namePlaylist = "";
-    int totalsong = 0;
+    // int totalsong = 0;
 
     if (id_playlist-1 > listPL->count)
     {
@@ -917,7 +913,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
     else
     {
         namePlaylist = namePlaylistFromIndex(*listPL, id_playlist-1);
-        totalsong = jumlahSongPlaylistFromIndex(*listPL, id_playlist-1);
+        // totalsong = jumlahSongPlaylistFromIndex(*listPL, id_playlist-1);
     }
 
     if (strCompare(namePlaylist, "") != 0)

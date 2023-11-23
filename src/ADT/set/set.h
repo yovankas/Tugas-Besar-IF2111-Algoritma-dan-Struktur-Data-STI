@@ -76,9 +76,9 @@ Set SetSubtract(Set s1, Set s2);
 // s1 = [1, 2] s2 = [2, 3]
 // s1 - s2 = [1]
 
-/* Melakukan copy Elmt dari Set s2 ke s1. */
-/* I.S. s1 dan s2 terdefinisi
-/* F.S. elemen dari s2 dicopy ke s1 */
+// Melakukan copy Elmt dari Set s2 ke s1.
+// I.S. s1 dan s2 terdefinisi
+// F.S. elemen dari s2 dicopy ke s1
 void CopySet(Set *s1, Set s2);
 
 void PrintSet(Set s);

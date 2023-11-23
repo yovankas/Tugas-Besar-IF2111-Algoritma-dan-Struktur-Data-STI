@@ -12,16 +12,18 @@ boolean IsFullQueue(Queue Q)
     return (Length(Q) == IDX_MAX);
 }
 
-int Length(Queue Q)
-{
-    if (IsEmptyQueue(Q))
-    {
-        return 0;
+int Length (Queue Q) {
+    int length;
+    if (IsEmptyQueue(Q)) {
+        length = 0;
     }
-    else
-    {
-        return (Q.idxTail - Q.idxHead + 1 + IDX_MAX) % (IDX_MAX + 1);
+    else if (IDX_HEAD(Q) <= IDX_TAIL(Q)) {
+        length = IDX_TAIL(Q) - IDX_HEAD(Q) + 1;
     }
+    else if (IDX_HEAD(Q) > IDX_TAIL(Q)) {
+        length = ((IDX_MAX+1) - IDX_HEAD(Q)) + (IDX_TAIL(Q) + 1);
+    }
+    return length;
 }
 
 void CreateQueue(Queue *Q)

@@ -30,6 +30,7 @@ int NbElmt(Array T)
 /* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
 int MaxNbEl(Array T)
 {
+    (void) T; // T tidak digunakan dalam mengembalikan hasil maksimum elemen
     return IdxMax - IdxMin + 1;
 }
 
@@ -38,6 +39,7 @@ int MaxNbEl(Array T)
 /* Mengirimkan indeks elemen pertama */
 IdxType GetFirstIdx(Array T)
 {
+    (void) T; // T tidak digunakan dalam mengembalikan indeks pertama
     return IdxMin;
 }
 
@@ -100,6 +102,7 @@ void SetNeff(Array *T, IdxType N)
 /* yaitu antara indeks yang terdefinisi utk container*/
 boolean IsIdxValid(Array T, IdxType i)
 {
+    (void) T; // T tidak digunakan dalam mengembailikan hasil indeks valid
     return IdxMax >= i && IdxMin <= i;
 }
 

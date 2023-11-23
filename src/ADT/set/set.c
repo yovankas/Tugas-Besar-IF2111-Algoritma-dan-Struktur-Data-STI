@@ -88,7 +88,7 @@ void DeleteSetElement(Set *S, infotype Elmt)
 boolean IsMemberSet(Set S, infotype Elmt)
 {
     boolean found = false;
-    address idx = 0, iterator;
+    address idx = 0;
     while (!found && idx < S.Count)
     {
         if (strCompare(S.Elements[idx], Elmt) == 0)

@@ -21,7 +21,7 @@ boolean IsFullPenyanyi(Penyanyi M)
 valuetypePenyanyi ValueInPenyanyi(Penyanyi M, keytype k)
 {
     boolean found = false;
-    addressPenyanyi idx = 0, iterator;
+    addressPenyanyi idx = 0;
 
     while (!found && idx < M.Count)
     {
@@ -85,7 +85,7 @@ boolean IsMemberInPenyanyi(Penyanyi M, keytype k)
 /* Mengembalikan true jika k adalah member dari M. Pengecekan member dilakukan dengan case insensitive */
 {
     boolean found = false;
-    addressPenyanyi idx = 0, iterator;
+    addressPenyanyi idx = 0;
 
     while (!found && idx < M.Count)
     {
