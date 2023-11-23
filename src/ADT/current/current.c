@@ -48,11 +48,11 @@ void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackc
     nextSong->album = next.album; 
     // char* nextid; 
     // intToString(next.idPlaylist, nextid);
-    // if (nextid != '\0')
-    // {
-    //     currentPlaylist->playlist = namePlaylistFromIndex(*ListLP, next.idPlaylist);
-    // }
-    // printf("ha gak jalan\n");
+    if (next.idPlaylist > 100)
+    {
+        CreateEmptyCurrentPlaylist(currentPlaylist);
+    }
+    // printf("%S\n", currentPlaylist->playlist);
     // printf("%s oleh %s\n", nextSong->song, nextSong->artist);
     infotypeStackchar historysong;
     historysong.album = currentSong->album;
@@ -63,6 +63,7 @@ void PlayNextSong(nextSong *nextSong, currentSong *currentSong, Queue *Q, Stackc
     currentSong->artist = nextSong->artist;
     currentSong->song = nextSong->song;
     printf("%s oleh %s\n", currentSong->song, currentSong->artist);
+    // printf("%d\n", next.idPlaylist);
     ReplaceNextSong(nextSong, Q);
 }
 

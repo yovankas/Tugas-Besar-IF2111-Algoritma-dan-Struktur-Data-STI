@@ -362,7 +362,7 @@ Song LaguFromPlaylistManager(PlaylistManager* manager, int playlistIndex, int so
 
     // Check if the songIndex is valid
     if (current == NULL) {
-        printf("Invalid song index.\n");
+        // printf("Invalid song index.\n");
         return emptySong;
     }
 
@@ -390,7 +390,7 @@ void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIn
             node2 = current;
         }
         if (current == NULL) {
-            printf("Invalid song index.\n");
+            // printf("Invalid song index.\n");
             return;
         }
         current = current->next;
@@ -435,7 +435,7 @@ void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songI
         }
 
         if (current == NULL) {
-            printf("Invalid song index.\n");
+            // printf("Invalid song index.\n");
             return;
         }
 
