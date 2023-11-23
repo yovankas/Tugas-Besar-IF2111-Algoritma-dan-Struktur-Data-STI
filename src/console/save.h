@@ -19,4 +19,5 @@
 #include "console.h"
 
 void save(char *namafile, Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *laguAlbum, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL);
+
 #endif

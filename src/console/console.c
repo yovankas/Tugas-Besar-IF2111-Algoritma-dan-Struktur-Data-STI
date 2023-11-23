@@ -14,7 +14,7 @@ void start(Array *arrPenyanyi, Array *arrAlbum, Penyanyi *albumPenyanyi, Album *
     loaddefault("default.txt", arrPenyanyi, arrAlbum, albumPenyanyi, laguAlbum, lagu);
 }
 
-void quit (Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *laguAlbum, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
+void quit(Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *laguAlbum, currentSong *currentSong, Queue *Q, Stackchar *History, PlaylistManager *manager, ListPlaylist *listPL)
 {
     printf("Apakah kamu ingin menyimpan data sesi sekarang?(Y/N) ");
     startInputWord();
@@ -444,7 +444,7 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
     Word IDplaylistWord;
     akuisisiCommandWord(&IDplaylistWord, currentWord, 1);
     int IDplaylist = wordToInt(IDplaylistWord);
-    char* namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist-1);
+    char *namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist-1);
 
     CreateQueue(Q); 
     CreateEmptyStackChar(History); 
@@ -462,8 +462,8 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
             enqueue(Q, queuePL);
             ElTypeStackchar stackPL;
             stackPL.album = selectedSong.album;
-            stackPL.artist = selectedSong.album;
-            stackPL.song = selectedSong.album;
+            stackPL.artist = selectedSong.artist;
+            stackPL.song = selectedSong.lagu;
             PushStackChar(History, stackPL);
             i += 1;
             selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);

@@ -36,7 +36,15 @@ void save(char *namafile, Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *la
   }
 
   fprintf(f, "%s;%s;%s\n", currentSong->artist, currentSong->album, currentSong->song);
-  fprintf(f, "%d\n", Length(*Q) + 1);
+
+  if (!IsEmptyQueue(*Q))
+  {
+    fprintf(f, "%d\n", Length(*Q) + 1);
+  }
+  else
+  {
+    fprintf(f, "%d\n", 0);
+  }
 
   printQueueToFile(f, *Q);
 
@@ -45,11 +53,13 @@ void save(char *namafile, Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *la
 
   fprintf(f, "%d\n", manager->numPlaylists);
 
-  for (int i = 0; i < manager->numPlaylists; i++) {
+  for (int i = 0; i < manager->numPlaylists; i++)
+  {
+    int countSong = manager->playlists[i].numSongs;
     string playlistTitle = listPL->playlist[i].namePL;
-    fprintf(f, "%s\n", playlistTitle);
+    fprintf(f, "%d %s\n", countSong, playlistTitle);
     printPlaylistToFile(f, manager->playlists[i]);
   }
 
-    fclose(f);
+  fclose(f);
 }
