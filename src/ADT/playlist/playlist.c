@@ -254,11 +254,28 @@ Playlist createPlaylist() {
     return playlist;
 }
 
+boolean isEmptyPlaylist(Playlist playlist)
+{
+    return playlist.head == NULL && playlist.numSongs == 0;
+}
+
 void addSong(Playlist* playlist, char* lagu, char* artist, char* album) {
     SongNode* newSong = createSongNode(lagu, artist, album);
-
-    newSong->next = playlist->head;
-    playlist->head = newSong;
+    SongNode* P = playlist->head;
+    if (isEmptyPlaylist(*playlist))
+    {
+        newSong->next = NULL;
+        playlist->head = newSong;
+    }
+    else
+    {
+        while (P->next != NULL)
+        {
+            P = P->next;
+        }
+        newSong->next = P->next;
+        P->next = newSong;
+    }
     playlist->numSongs++;
 }
 

@@ -53,5 +53,5 @@ void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIn
 void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songIndex);
 Playlist playlistFromPlaylistManager(PlaylistManager* manager, int playlistIndex);
 void printPlaylistToFile(FILE *f, Playlist playlist);
-
+boolean isEmptyPlaylist(Playlist playlist);
 #endif

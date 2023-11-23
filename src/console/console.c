@@ -140,19 +140,15 @@ void listDefault(Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAlbum)
                 char *com = wordToString(nameAlbum);
                 akuisisiCommandWord(&nameAlbum, currentWord, 2);
                 char *album2 = wordToString(nameAlbum);
-                akuisisiCommandWord(&nameAlbum, currentWord, 3);
-                char *album3 = wordToString(nameAlbum);
 
-                if (strCompare(album2, "") != 0)
+                int i = 2;
+                while (strCompare(album2, "") != 0)
                 {
                     com = concat(com, spasi);
                     com = concat(com, album2);
-                }
-
-                if (strCompare(album3, "") != 0)
-                {
-                    com = concat(com, spasi);
-                    com = concat(com, album3);
+                    i += 1;
+                    akuisisiCommandWord(&nameAlbum, currentWord, i);
+                    album2 = wordToString(nameAlbum);
                 }
 
                 if (strCompare(com, "BORN PINK") == 0)
@@ -470,36 +466,43 @@ void playPlaylist(Queue *Q, Stackchar *History, PlaylistManager* manager, ListPl
     int IDplaylist = wordToInt(IDplaylistWord);
     char *namePlaylist = namePlaylistFromIndex(listPlaylist, IDplaylist-1);
 
-    CreateQueue(Q); 
-    CreateEmptyStackChar(History); 
-    if (IDplaylist-1 >= 0 && IDplaylist-1 < manager->numPlaylists)
+    if (IDplaylist-1 < listPlaylist.count)
     {
-        int i = 0;
-        Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
-        while (i < manager->playlists[IDplaylist-1].numSongs)
+        CreateQueue(Q); 
+        CreateEmptyStackChar(History); 
+        if (IDplaylist-1 >= 0 && IDplaylist-1 < manager->numPlaylists)
         {
-            ElTypeQueue queuePL;
-            queuePL.album = selectedSong.album;
-            queuePL.artist = selectedSong.artist;
-            queuePL.song = selectedSong.lagu;
-            queuePL.idPlaylist = IDplaylist;
-            enqueue(Q, queuePL);
-            ElTypeStackchar stackPL;
-            stackPL.album = selectedSong.album;
-            stackPL.artist = selectedSong.artist;
-            stackPL.song = selectedSong.lagu;
-            PushStackChar(History, stackPL);
-            i += 1;
-            selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
+            int i = 0;
+            Song selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
+            while (i < manager->playlists[IDplaylist-1].numSongs)
+            {
+                ElTypeQueue queuePL;
+                queuePL.album = selectedSong.album;
+                queuePL.artist = selectedSong.artist;
+                queuePL.song = selectedSong.lagu;
+                queuePL.idPlaylist = IDplaylist;
+                enqueue(Q, queuePL);
+                ElTypeStackchar stackPL;
+                stackPL.album = selectedSong.album;
+                stackPL.artist = selectedSong.artist;
+                stackPL.song = selectedSong.lagu;
+                PushStackChar(History, stackPL);
+                i += 1;
+                selectedSong = LaguFromPlaylistManager(manager, IDplaylist-1, i);
+            }
         }
+        ElTypeQueue firstSong = dequeue(Q);
+        currentSong->album = firstSong.album;
+        currentSong->artist = firstSong.artist;
+        currentSong->song = firstSong.song;
+        currentPlaylist->playlist = namePlaylist;
+        printf("Memutar playlist %s\n", currentPlaylist->playlist);
+        // printf("Memutar lagu %s\n", currentSong->song);
     }
-    ElTypeQueue firstSong = dequeue(Q);
-    currentSong->album = firstSong.album;
-    currentSong->artist = firstSong.artist;
-    currentSong->song = firstSong.song;
-    currentPlaylist->playlist = namePlaylist;
-    printf("Memutar playlist %s\n", currentPlaylist->playlist);
-    // printf("Memutar lagu %s\n", currentSong->song);
+    else 
+    {
+        printf("Tidak terdapat playlist dengan ID %d\n", IDplaylist);
+    }
 }
 
 void status(Queue *Q, currentSong currentSong, currentPlaylist currentPlaylist)
@@ -856,7 +859,7 @@ void PlaylistAddSong(ListPlaylist *listPL, PlaylistManager* manager, Array arrPe
     {
         addSongToPlaylist(manager, id_playlist-1, lagu, penyanyi, album);
         listPL->playlist[id_playlist-1].countsongPL +=1;
-        printf("Lagu dengan judul %s pada album %s oleh penyanyi %s berhasil ditambahkan ke dalam playlist %s.\n", lagu, penyanyi, album, namePlaylist);
+        printf("Lagu dengan judul %s pada album %s oleh penyanyi %s berhasil ditambahkan ke dalam playlist %s.\n", lagu, album, penyanyi, namePlaylist);
     }
     else
     {
