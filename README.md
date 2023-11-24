@@ -17,3 +17,34 @@ Berikut adalah struktur folder dari WayangWave kami:
   - Folder `console` yang digunakan untuk menyimpan seluruh utilities dalam WayangWave yang diperlukan (start, load, list, play, queue, song, playlist, status, save, quit, help)
   - File `main.c` yang merupakan program utama
   - File `boolean.h` sebagai header boolean
+
+# Prosedur Penggunaan
+Windows
+Program dapat dijalankan di command prompt dengan memiliki package make
+
+Package make didapatkan dengan menginstall chocolatey terlebih dahulu. Untuk langkah-langkah menginstall chocolatey dapat mengikuti link berikut: [https://chocolatey.org/install](url)
+
+Jika chocolatey telah terinstall pada PATH dalam Environmental Variables Device, dapat melakukan prosedur berikut:
+
+1. Buka Windows powershell dalam device dan _run as administrator_
+2. Untuk menginstall package make : **choco install make**
+3. Tunggu hingga package make selesai diinstall.
+
+Setelah package make terinstall, anda dapat mengompilasi program dengan menjalankan prosedur berikut:
+
+1. Masuk ke folder IF2111 yang telah di download / clone dari github repositorynya.
+2. Buka windows terminal dalam folder tersebut.
+3. Untuk mengompilasi program ini, dapat mengetik : **make compile**
+4. Setelah program selesai di-compile, anda dapat mengetik : **./main**
+5. Program telah berjalan dan silahkan nikmati programnya
+
+# Anggota Kelompok
+Program WayangWave ini dikembangkan oleh Kelompok 01-Brot (K2)
+1. Muhammad Daffa Ikram `18222020`
+   START, QUEUE SWAP, QUEUE REMOVE, QUEUE CLEAR, SAVE, dan INVALID COMMAND.
+2. Christoper Daniel `18222034`
+   PLAYLIST CREATE, PLAYLIST ADD, PLAYLIST SWAP, PLAYLIST REMOVE, dan PLAYLIST DELETE.
+3. Yovanka Sandrina Maharaja `18222094`
+   LOAD, LIST DEFAULT, LIST PLAYLIST, PLAY SONG, QUEUE SONG, QUIT, dan HELP.
+4. Ervina Limka `18222100`
+   PLAY PLAYLIST, QUEUE PLAYLIST, SONG NEXT, SONG PREVIOUS, dan STATUS.
