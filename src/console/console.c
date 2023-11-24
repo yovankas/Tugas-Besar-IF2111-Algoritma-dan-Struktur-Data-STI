@@ -900,25 +900,29 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
         com = concat(com, penyanyi2);
     }
 
-    printf("Daftar Album oleh %s :\n", com);
     if (strCompare(com, "BLACKPINK") == 0)
     {
+        printf("Daftar Album oleh %s :\n", com);
         PrintAlbumPenyanyi(albumPenyanyi, "BLACKPINK");
     }
     else if (strCompare(com, "Arctic Monkeys") == 0)
     {
+        printf("Daftar Album oleh %s :\n", com);
         PrintAlbumPenyanyi(albumPenyanyi, "Arctic Monkeys");
     }
     else if (strCompare(com, "NewJeans") == 0)
     {
+        printf("Daftar Album oleh %s :\n", com);
         PrintAlbumPenyanyi(albumPenyanyi, "NewJeans");
     }
     else if (strCompare(com, "Hivi!") == 0)
     {
+        printf("Daftar Album oleh %s :\n", com);
         PrintAlbumPenyanyi(albumPenyanyi, "Hivi!");
     }
     else
     {
+        printf("Daftar Album oleh %s :\n", com);
         printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n", com);
         return;
     }
