@@ -55,6 +55,7 @@ void loadsaved(char *namafile, Array *arrPenyanyi, Array *arrAlbum, Penyanyi *al
 
     if (!EOP)
     {
+        // printWord(currentWord);
         int countPenyanyi = wordToInt(ambilKataKe(currentWord, 1));
 
         // Bikin list buat semua penyanyi

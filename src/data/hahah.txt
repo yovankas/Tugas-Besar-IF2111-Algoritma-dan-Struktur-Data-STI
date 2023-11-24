@@ -114,26 +114,10 @@ Lovesick Girls
 Crazy Over You
 Love To Hate Me
 You Never Know
-Hivi!;CERITERA;Teman Sejati
-9
 Hivi!;CERITERA;Satu-Satunya
-Hivi!;CERITERA;Bumi Dan Bulan
-Hivi!;CERITERA;Tersenyum, Untuk Siapa?
-Hivi!;CERITERA;Musim Hujan
-Hivi!;CERITERA;Patung Batu
-Hivi!;CERITERA;Bahagia
-Hivi!;CERITERA;Pemuda
-Hivi!;CERITERA;Jatuh, Bangkit Kembali!
-1
+2
+Arctic Monkeys;AM;Why'd You Only Call Me When You're High?
+2
 ;;
-1
-9 SJDIF
-Hivi!;CERITERA;Teman Sejati
-Hivi!;CERITERA;Pemuda
-Hivi!;CERITERA;Bumi Dan Bulan
-Hivi!;CERITERA;Tersenyum, Untuk Siapa?
-Hivi!;CERITERA;Musim Hujan
-Hivi!;CERITERA;Patung Batu
-Hivi!;CERITERA;Bahagia
-Hivi!;CERITERA;Satu-Satunya
-Hivi!;CERITERA;Jatuh, Bangkit Kembali!
+BLACKPINK;THE ALBUM;You Never Know
+0

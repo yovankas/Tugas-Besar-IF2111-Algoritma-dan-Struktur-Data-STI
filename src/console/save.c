@@ -39,17 +39,23 @@ void save(char *namafile, Array *arrPenyanyi, Penyanyi *albumPenyanyi, Album *la
 
   if (!IsEmptyQueue(*Q))
   {
-    fprintf(f, "%d\n", Length(*Q) + 1);
+    fprintf(f, "%d\n", Length(*Q));
+    printQueueToFile(f, *Q);
   }
   else
   {
     fprintf(f, "%d\n", 0);
   }
 
-  printQueueToFile(f, *Q);
-
-  fprintf(f, "%d\n", TopStackchar(*History) + 1);
-  printStackcharToFile(f, *History);
+  if (!IsEmptyStackChar(*History))
+  {
+    fprintf(f, "%d\n", TopStackchar(*History)+1);
+    printStackcharToFile(f, *History);
+  }
+  else
+  {
+    fprintf(f, "%d\n", 0);
+  }
 
   fprintf(f, "%d\n", manager->numPlaylists);
 
