@@ -690,7 +690,7 @@ void PlaylistDelete(ListPlaylist *listPL, PlaylistManager *manager)
 
 void PlaylistRemove(ListPlaylist *listPL, PlaylistManager* manager, int IDPlaylist, int idxlagu)
 {
-    if (IDPlaylist-1 > listPL->count)
+    if (IDPlaylist-1 >= listPL->count)
     {
         printf("Tidak ada playlist dengan playlist ID %d", IDPlaylist);
         return;
@@ -705,10 +705,10 @@ void PlaylistRemove(ListPlaylist *listPL, PlaylistManager* manager, int IDPlayli
             printf("Tidak ada lagu dengan urutan %d di playlist %s!", idxlagu, namePlaylist);
             return;
         }
-        deleteSongInPlaylist(manager, IDPlaylist-1, idxlagu-1);
         // displayPlaylist(manager, IDPlaylist-1);
         Song song1 = LaguFromPlaylistManager(manager, IDPlaylist-1, idxlagu-1);
         printf("Lagu %s oleh %s telah dihapus dari playlist %s!\n", song1.lagu, song1.artist, namePlaylist);
+        deleteSongInPlaylist(manager, IDPlaylist-1, idxlagu-1);
     }
 }
 
