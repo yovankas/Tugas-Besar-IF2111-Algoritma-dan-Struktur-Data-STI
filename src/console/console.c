@@ -297,6 +297,13 @@ void queueSong(Queue *Q, Array arrPenyanyi, Penyanyi albumPenyanyi, Album laguAl
     akuisisiCommandWord(&IDs, currentWord, 1);
     int IDsong = wordToInt(IDs);
     infotype song = LaguFromAlbum(laguAlbum, album, IDsong);
+    int IDAlbum = GenerateIDAlbum(laguAlbum, album);
+    if (IDsong > laguAlbum.Elements[IDAlbum].Value.Count)
+    {
+        printf("Tidak ada lagu dengan ID %d\n", IDsong);
+        return;
+    }
+
     printf("Berhasil menambahkan lagu %s oleh %s ke queue.\n", song, penyanyi);
     ElTypeQueue El;
     El.artist = (char *)malloc(strLength(penyanyi) + 1);
@@ -834,6 +841,12 @@ void PlaylistAddSong(ListPlaylist *listPL, PlaylistManager* manager, Array arrPe
     akuisisiCommandWord(&IDs, currentWord, 1);
     int IDsong = wordToInt(IDs);
     char* lagu = LaguFromAlbum(laguAlbum, album, IDsong);
+    int IDAlbum = GenerateIDAlbum(laguAlbum, album);
+    if (IDsong > laguAlbum.Elements[IDAlbum].Value.Count)
+    {
+        printf("Tidak ada lagu dengan ID %d\n", IDsong);
+        return;
+    }
 
     printListPlaylist(*listPL);
     printf("Masukkan ID Playlist yang dipilih : ");
@@ -907,6 +920,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
     else
     {
         printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n", com);
+        return;
     }
 
     printf("Masukkan Judul Album yang dipilih: ");
@@ -924,6 +938,12 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
         i += 1;
         akuisisiCommandWord(&nameAlbum, currentWord, i);
         album2 = wordToString(nameAlbum);
+    }
+
+    if (!IsMemberInAlbum(laguAlbum, album))
+    {
+        printf("Album %s tidak ada dalam daftar. Silakan coba lagi.\n", album);
+        return;
     }
 
     printListPlaylist(*listPL);

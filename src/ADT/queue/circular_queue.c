@@ -62,7 +62,10 @@ void insertHead(Queue *Q, ElTypeQueue X)
     // Enqueue the rest of the elements back
     for (int i = 0; i < numElements; i++)
     {
-        enqueue(Q, tempElements[i]);
+        if(tempElements[i].song != NULL)
+        {
+            enqueue(Q, tempElements[i]);
+        }
     }
 
     free(tempElements);
