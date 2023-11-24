@@ -1,6 +1,6 @@
 #include "playlist.h"
 
-// Helper function to allocate memory for a new SongNode
+// Fungsi untuk mengalokasi songNode
 static SongNode* createSongNode(char* lagu, char* artist, char* album) {
     SongNode* newSong = (SongNode*)malloc(sizeof(SongNode));
     if (!newSong) {
@@ -13,7 +13,7 @@ static SongNode* createSongNode(char* lagu, char* artist, char* album) {
     newSong->data.album = malloc(MAX_STRING_LENGTH);
 
     if (!newSong->data.lagu || !newSong->data.artist || !newSong->data.album) {
-        // Handle allocation failure
+        // Kalo gagal
         free(newSong->data.lagu);
         free(newSong->data.artist);
         free(newSong->data.album);
@@ -153,19 +153,16 @@ Song LaguFromPlaylistManager(PlaylistManager* manager, int playlistIndex, int so
     SongNode* current = playlist->head;
     int currentIndex = 0;
 
-    // Traverse the linked list to the specified songIndex
     while (current != NULL && currentIndex < songIndex) {
         current = current->next;
         currentIndex++;
     }
 
-    // Check if the songIndex is valid
     if (current == NULL) {
         // printf("Invalid song index.\n");
         return emptySong;
     }
 
-    // Return the song data at the specified songIndex
     return current->data;
 }
 
@@ -180,7 +177,7 @@ void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIn
     SongNode* node1 = NULL;
     SongNode* node2 = NULL;
 
-    // Find the nodes to swap
+    // Mencari node
     for (int i = 0; i <= songIndex2; i++) {
         if (i == songIndex1) {
             node1 = current;
@@ -195,7 +192,7 @@ void swapSongsInPlaylist(PlaylistManager* manager, int playlistIndex, int songIn
         current = current->next;
     }
 
-    // Swap the songs by swapping the data within the nodes
+    // Menukar data song antarnode
     Song temp = node1->data;
     node1->data = node2->data;
     node2->data = temp;
@@ -205,7 +202,7 @@ void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songI
 {
     if (!manager || playlistIndex < 0 || playlistIndex >= manager->numPlaylists || songIndex < 0 || songIndex >= MAX_SONGS) 
     {
-        printf("Invalid input parameters.\n");
+        // printf("Invalid input parameters.\n");
         return;
     }
 
@@ -230,19 +227,6 @@ void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songI
         previous->next = current->next;
     }
 
-    // // Traverse the linked list to the specified songIndex
-    // for (int i = 0; i <= songIndex; i++) {
-    //     if (i == songIndex) {
-    //         // Found the node to delete
-    //         if (previous == NULL) {
-    //             // Deleting the head node
-    //             playlist->head = current->next;
-    //         } else {
-    //             // Deleting a non-head node
-    //             previous->next = current->next;
-    //         }
-
-    //         // Free the memory for the deleted node
     free(current->data.lagu);
     free(current->data.artist);
     free(current->data.album);
@@ -257,10 +241,6 @@ void deleteSongInPlaylist(PlaylistManager* manager, int playlistIndex, int songI
         printf("Invalid song index.\n");
         return;
     }
-
-    //     previous = current;
-    //     current = current->next;
-    
 }
 
 
@@ -270,7 +250,7 @@ Playlist playlistFromPlaylistManager(PlaylistManager* manager, int playlistIndex
     emptyPlaylist.numSongs = 0;
 
     if (!manager || playlistIndex < 0 || playlistIndex >= manager->numPlaylists) {
-        printf("Invalid input parameters.\n");
+        // printf("Invalid input parameters.\n");
         return emptyPlaylist;
     }
 

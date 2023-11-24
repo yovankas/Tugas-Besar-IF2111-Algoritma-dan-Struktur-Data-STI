@@ -1,49 +1,57 @@
 #include "word.h"
 #include "../mesin/mesinkata.h"
+#include <stdio.h>
 
-int main()
-{
+int main() {
     Word w = CreateWord();
     char *string;
     int integer;
 
-    printf("\nMasukan string: \n");
+    // Input untuk kata pertama
+    printf("\nMasukkan string: \n");
     startInputWord();
     printf("AKUISISI kata ke-1\n");
     akuisisiCommandWord(&w, currentWord, 1);
 
-    if (stringEQWord(w, "hehe"))
+    // Periksa apakah kata tersebut sama dengan "hehe"
+    if (IsEQWord(w, StringToWord("hehe")))
     {
         printf("Sama\n");
     }
 
-    printf("\nConvert to string\n");
-    string = wordToString(w);
-    printf("Ini bertipe string lo ya : %s\n", string);
+    // Konversi kata ke dalam bentuk string
+    printf("\nKonversi ke string\n");
+    string = WordToString(w);
+    printf("Ini tipe string: %s\n", string);
 
-    printf("\nMasukan integer positif: \n");
+    // Masukkan integer positif
+    printf("\nMasukkan integer positif: \n");
     startInputWord();
-    integer = wordToInt(currentWord);
-    printf("Ini bertipe int lo ya : %d\n", integer);
+    integer = WordToInt(currentWord);
+    printf("Ini tipe int: %d\n", integer);
 
-    printf("\nMasukan integer negatif: \n");
+    // Masukkan integer negatif
+    printf("\nMasukkan integer negatif: \n");
     startInputWord();
-    integer = wordToInt(currentWord);
-    printf("Ini bertipe int lo ya : %d\n", integer);
+    integer = WordToInt(currentWord);
+    printf("Ini tipe int: %d\n", integer);
 
-    printf("\nCEK STRING TO WORD (buat variable Word iniW dan masukan string)\n");
-    Word iniW = stringToWord("HALOO AKU DARI STRING");
-    printf("INI PRINT WORD :\n");
-    printWord(iniW);
+    // Periksa fungsi stringToWord
+    printf("\nCEK STRING TO WORD (buat variabel Word iniW dan masukkan string)\n");
+    Word iniW = StringToWord("HALOO AKU DARI STRING");
+    printf("INI PRINT WORD:\n");
+    PrintWord(iniW);
     printf("\n");
 
+    // Periksa fungsi CopyWord
     printf("\nCEK COPY word iniw tadi ke iniW2\n");
     Word iniW2;
     CopyWord(&iniW2, iniW);
-    printf("INI PRINT WORD :\n");
-    printWord(iniW2);
+    printf("INI PRINT WORD:\n");
+    PrintWord(iniW2);
     printf("\n");
 
+    // Periksa fungsi IsEQWord
     printf("\nCEK IsEQWord\n");
     if (IsEQWord(iniW, iniW2))
     {
@@ -54,15 +62,16 @@ int main()
         printf("Yahh kita berbeda...\n");
     }
 
+    // Periksa fungsi lowerWord
     printf("\nCEK lowerWord");
-    printf("\nMasukan kata: ");
+    printf("\nMasukkan kata: ");
     startInputWord();
     printf("Sebelum lower: ");
-    printWord(currentWord);
+    PrintWord(currentWord);
     printf("\nSetelah lower: ");
-    printWord(lowerWord(currentWord));
+    PrintWord(lowerWord(currentWord));
     printf("\nSetelah upper: ");
-    printWord(upperWord(currentWord));
+    PrintWord(upperWord(currentWord));
     printf("\n");
 
     return 0;

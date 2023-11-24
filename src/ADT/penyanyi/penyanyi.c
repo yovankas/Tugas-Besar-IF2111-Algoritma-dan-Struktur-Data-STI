@@ -102,27 +102,6 @@ boolean IsMemberInPenyanyi(Penyanyi M, keytype k)
     return found;
 }
 
-// boolean IsEQPenyanyi(Penyanyi m1, Penyanyi m2)
-// {
-//     if (m1.Count != m2.Count)
-//     {
-//         return false;
-//     }
-//     else
-//     {
-//         boolean cek = true;
-//         int i = 0;
-//         while (cek && i < m1.Count)
-//         {
-//             if (!IsEQWord(m1.Elements[i].Key, m2.Elements[i].Key) || !IsEQWord(m1.Elements[i].Value, m2.Elements[i].Value))
-//             {
-//                 cek = false;
-//             }
-//         }
-//         return cek;
-//     }
-// }
-
 void CopyPenyanyi(Penyanyi *m1, Penyanyi m2)
 {
     for (int i = 0; i < (*m1).Count; i++)

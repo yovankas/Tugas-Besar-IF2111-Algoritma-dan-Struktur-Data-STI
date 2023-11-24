@@ -56,10 +56,8 @@ void insertHead(Queue *Q, ElTypeQueue X)
         tempElements[i] = dequeue(Q);
     }
 
-    // Enqueue the new element at the head
     enqueue(Q, X);
 
-    // Enqueue the rest of the elements back
     for (int i = 0; i < numElements; i++)
     {
         if(tempElements[i].song != NULL)

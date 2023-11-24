@@ -19,13 +19,13 @@ int main()
     printf("\nHasil copy kata2 ke kata3: ");
     printf("%s\n", kata3);
 
-    printf("\nMenunjukkan bahwa kata2 dan kata3 bukan entitas yang sama:\n");
+    printf("\nKata 3 dan 2 sama gak:\n");
     kata2[0] = 'a';
     printf("Kata2: %s\n", kata2);
     printf("Kata3: %s\n", kata3);
 
-    char dumChar = 'a';
-    if (isCharInString(kata3, dumChar))
+    char brot = 'a';
+    if (isCharInString(kata3, brot))
     {
         printf("ada");
     }

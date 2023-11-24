@@ -1,50 +1,47 @@
-#include "array.h"
 #include <stdio.h>
+#include "array.h"
 
-int main()
-{
-    Array arr;
-    Masakan m;
+int main() {
+    // Membuat/inisialisasi Array
+    Array penyanyiArray = CreateArray();
 
-    CreateArray(&arr);
+    // Memasukkan elemen ke Array
+    SetEl(&penyanyiArray, 1, "Adele");
+    SetEl(&penyanyiArray, 2, "Ed Sheeran");
+    SetEl(&penyanyiArray, 3, "Beyonce");
 
-    if (IsArrayEmpty(arr))
-    {
-        printf("arr kosong!\n");
+    // Print Array
+    printf("Isi Array :\n");
+    PrintArrayPenyanyi(penyanyiArray);
+
+    // Mengecek apakah Array kosong
+    if (IsEmpty(penyanyiArray)) {
+        printf("Array kosong.\n");
+    } else {
+        printf("Array tidak kosong.\n");
     }
 
-    for (int i = 0; i < MaxArrayEl; i++)
-    {
-        CreateMasakan(&m, i);
-        Insert(&arr, m);
+    // Mengecek apakah Array kosong
+    if (IsFull(penyanyiArray)) {
+        printf("Array penuh.\n");
+    } else {
+        printf("Array tidak penuh.\n");
     }
 
-    if (IsArrayFull(arr))
-    {
-        printf("arr nya full gan\n");
-    }
-    else
-    {
-        printf("arr nya blom full gan\n");
+    // Mengecek apakah terdapat elemen di Array
+    if (IsElmtExist(penyanyiArray, "Ed Sheeran")) {
+        printf("Ed Sheeran ada array.\n");
+    } else {
+        printf("Ed Sheeran tidak ada di array.\n");
     }
 
-    DeleteArrayAt(&arr, &m, 0);
-    if (!IsArrayFull(arr))
-    {
-        printf("arr nya blom full gan, soalnya dah didelete\n");
-    }
+    // Menyalin Array
+    Array copyArray;
+    copyArray(&copyArray, penyanyiArray);
 
-    Insert(&arr, m);
-
-    if (isMember(arr, NOMOR(m)))
-    {
-        printf("Indeks dari M%d adalah %d\n", NOMOR(m), indexOf(arr, NOMOR(m)));
-    }
-    if (isMember(arr, 2))
-    {
-        Masakan m_cari = find(arr, 2);
-        printf("Indeks dari masakan yang dicari (M2) adalah %d\n", indexOf(arr, NOMOR(m_cari)));
-    }
+    // Print copyArray
+    printf("Array hasil Copy:\n");
+    PrintArrayPenyanyi(copyArray);
 
     return 0;
 }

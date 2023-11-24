@@ -831,7 +831,7 @@ void PlaylistAddSong(ListPlaylist *listPL, PlaylistManager* manager, Array arrPe
     }
     else
     {
-        printf("Album %s tidak ada dalam daftar. Silakan coba lagi.\n", album);
+        printf("Album %s tidak ada dalam daftar.\n", album);
         return;
     }
 
@@ -922,7 +922,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
     }
     else
     {
-        printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n", com);
+        printf("Penyanyi %s tidak ada dalam daftar.\n", com);
         return;
     }
 
@@ -945,7 +945,7 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
 
     if (!IsMemberInAlbum(laguAlbum, album))
     {
-        printf("Album %s tidak ada dalam daftar. Silakan coba lagi.\n", album);
+        printf("Album %s tidak ada dalam daftar.\n", album);
         return;
     }
 

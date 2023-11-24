@@ -13,14 +13,12 @@
 
 #define MAX_SONGS 100
 
-// Define Song type
 typedef struct {
     char* lagu;
     char* artist;
     char* album;
 } Song;
 
-// Node structure for the linked list of songs
 typedef struct SongNode {
     Song data;
     struct SongNode* next;

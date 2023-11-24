@@ -144,6 +144,7 @@ int main()
         if (strCompare(wordToString(command), "SAVE") == 0)
         {
             save(wordToString(commandbefore), &arrPenyanyi, &albumPenyanyi, &laguAlbum, &currentSong, &Q, &history, &manager, &listPL);
+            printf("File berhasil disimpan!\n");
             continue;
         }
 

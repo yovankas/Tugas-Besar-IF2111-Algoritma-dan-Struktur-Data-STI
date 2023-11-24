@@ -34,14 +34,12 @@ void deleteAtIndex(ListPlaylist *listPL, arraysize index) {
         exit(EXIT_FAILURE);
     }
 
-    // Shift elements to remove the desired index
     for (arraysize i = index; i < listPL->count - 1; i++) {
         listPL->playlist[i] = listPL->playlist[i + 1];
     }
 
     listPL->count--;
 
-    // Check if the playlist is less than half full, and reduce its size
     if (listPL->count > 0 && listPL->count <= listPL->capacity / 2) {
         listPL->capacity /= 2;
         listPL->playlist = (infotypePlaylist*)realloc(listPL->playlist, listPL->capacity * sizeof(infotypePlaylist));

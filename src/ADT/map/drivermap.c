@@ -1,46 +1,22 @@
-#include "map.h"
 #include <stdio.h>
+#include "map.h"
 
 int main() {
-    //buat map baru
-    Map newMap;
-    CreateEmptyMap(&newMap);
+    // Membuat map
+    Map penyanyi;
+    CreateEmptyMap(&penyanyi);
 
-    // masukkan key-value ke map
-    InsertInMap(&newMap, stringToWord("Alice"), 25);
-    InsertInMap(&newMap, stringToWord("Bob"), 30);
-    InsertInMap(&newMap, stringToWord("Charlie"), 20);
+    // Memasukkan elemen ke map
+    InsertInMap(&penyanyi, StringToWord("Penyanyi1"), 20);
+    InsertInMap(&penyanyi, StringToWord("Penyanyi2"), 4);
+    InsertInMap(&penyanyi, StringToWord("Penyanyi3"), 15);
 
-    // Print map
-    printf("Initial Map:\n");
-    PrintMap(newMap);
-
-    // Tes IsMemberInMap
-    Word searchKey = stringToWord("Bob");
-    if (IsMemberInMap(newMap, searchKey)) {
-        printf("%s adalah member dari map.\n", WordToString(searchKey));
+    // Mengecek apakah terdapat elemen
+    Word penyanyiToCheck = StringToWord("Penyanyi2");
+    if (IsMemberInMap(penyanyi, penyanyiToCheck)) {
+        printf("%s terdapat dalam list.\n", WordToString(penyanyiToCheck));
     } else {
-        printf("%s bukan member dari map.\n", WordToString(searchKey));
-    }
-
-    // Test ValueInMap
-    printf("Value %s: %d\n", WordToString(searchKey), ValueInMap(newMap, searchKey));
-
-    // Tes DeleteInMap
-    DeleteInMap(&newMap, searchKey);
-    printf("Map setelah penghapusan %s:\n", WordToString(searchKey));
-    PrintMap(newMap);
-
-    // Tes IsEQMap
-    Map anotherMap;
-    CreateEmptyMap(&anotherMap);
-    InsertInMap(&anotherMap, stringToWord("Alice"), 25);
-    InsertInMap(&anotherMap, stringToWord("Charlie"), 20);
-
-    if (IsEQMap(newMap, anotherMap)) {
-        printf("Map nya equal.\n");
-    } else {
-        printf("Map nya tidak equal.\n");
+        printf("%s tidak terdapat dalam list.\n", WordToString(penyanyiToCheck));
     }
 
     return 0;

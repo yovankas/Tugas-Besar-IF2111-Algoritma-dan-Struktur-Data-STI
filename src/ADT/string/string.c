@@ -62,14 +62,13 @@ int strCompare(char *s1, char *s2) {
         s2++;
     }
 
-    // Check for the case where one string is shorter than the other
     if (*s1 != '\0') {
-        return 1; // s1 is longer
+        return 1; // s1 lebih panjang
     } else if (*s2 != '\0') {
-        return -1; // s2 is longer
+        return -1; // s2 lebih panjang
     }
 
-    return 0; // Both strings are equal
+    return 0; // Equal
 }
 
 void intToString(int num, char *str) {

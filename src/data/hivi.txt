@@ -114,34 +114,34 @@ Lovesick Girls
 Crazy Over You
 Love To Hate Me
 You Never Know
-Hivi!;CERITERA;Patung Batu
-5
-Hivi!;CERITERA;Musim Hujan
-Hivi!;CERITERA;Tersenyum, Untuk Siapa?
-Hivi!;CERITERA;Bumi Dan Bulan
-Hivi!;CERITERA;Pemuda
-Hivi!;CERITERA;Teman Sejati
-12
-Hivi!;CERITERA;Jatuh, Bangkit Kembali!
-Hivi!;CERITERA;Satu-Satunya
-Hivi!;CERITERA;Bahagia
-Hivi!;CERITERA;Patung Batu
-Hivi!;CERITERA;Musim Hujan
-Hivi!;CERITERA;Tersenyum, Untuk Siapa?
-Hivi!;CERITERA;Bumi Dan Bulan
-Hivi!;CERITERA;Pemuda
-Hivi!;CERITERA;Teman Sejati
-Hivi!;CERITERA;Jatuh, Bangkit Kembali!
-Hivi!;CERITERA;Satu-Satunya
-Hivi!;CERITERA;Bahagia
+Hivi!;Say Hi To Hivi!;Selalu Dihati
+6
+Hivi!;Say Hi To Hivi!;Curi - Curi
+Hivi!;Say Hi To Hivi!;Dear Friends
+Hivi!;Say Hi To Hivi!;Mata Ke Hati
+Hivi!;Say Hi To Hivi!;Orang Ke 3
+Hivi!;Say Hi To Hivi!;Khayalan
+Hivi!;Say Hi To Hivi!;Heartbeat
+11
+Hivi!;Say Hi To Hivi!;Lihatlah Dunia
+Hivi!;Say Hi To Hivi!;Indahnya Dirimu
+Hivi!;Say Hi To Hivi!;Selalu Dihati
+Hivi!;Say Hi To Hivi!;Curi - Curi
+Hivi!;Say Hi To Hivi!;Dear Friends
+Hivi!;Say Hi To Hivi!;Mata Ke Hati
+Hivi!;Say Hi To Hivi!;Orang Ke 3
+Hivi!;Say Hi To Hivi!;Khayalan
+Hivi!;Say Hi To Hivi!;Heartbeat
+Hivi!;Say Hi To Hivi!;Lihatlah Dunia
+Hivi!;Say Hi To Hivi!;Indahnya Dirimu
 1
-9 HUH
-Hivi!;CERITERA;Jatuh, Bangkit Kembali!
-Hivi!;CERITERA;Satu-Satunya
-Hivi!;CERITERA;Bahagia
-Hivi!;CERITERA;Patung Batu
-Hivi!;CERITERA;Musim Hujan
-Hivi!;CERITERA;Tersenyum, Untuk Siapa?
-Hivi!;CERITERA;Bumi Dan Bulan
-Hivi!;CERITERA;Pemuda
-Hivi!;CERITERA;Teman Sejati
+9 Hivi Kapan Konser
+Hivi!;Say Hi To Hivi!;Lihatlah Dunia
+Hivi!;Say Hi To Hivi!;Indahnya Dirimu
+Hivi!;Say Hi To Hivi!;Selalu Dihati
+Hivi!;Say Hi To Hivi!;Curi - Curi
+Hivi!;Say Hi To Hivi!;Dear Friends
+Hivi!;Say Hi To Hivi!;Mata Ke Hati
+Hivi!;Say Hi To Hivi!;Orang Ke 3
+Hivi!;Say Hi To Hivi!;Khayalan
+Hivi!;Say Hi To Hivi!;Heartbeat

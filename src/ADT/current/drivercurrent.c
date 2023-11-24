@@ -7,67 +7,67 @@ int main() {
     currentPlaylist playlist;
     Stackchar History;
 
-    // Initialize current song
+    // Inisialisasi current song
     CreateEmptyCurrentSong(&current);
 
-    // Initialize current playlist
+    // Inisialisasi current playlist
     CreateEmptyCurrentPlaylist(&playlist);
 
-    // Initialize history stack
+    // Inisialisasi stack history
     CreateEmptyStackChar(&History);
 
     // Print current playlist
     printf("Current Playlist:\n");
     PrintCurrentPlaylist(playlist);
 
-    // Check if current song is empty
+    // Mengecek apakah current song kosong
     if (isEmptyCurrentSong(current)) {
-        printf("No song is currently playing.\n");
+        printf("Kamu belum memutar lagu.\n");
     }
 
     // Print current song
     printf("Current Song:\n");
     PrintCurrentSong(current);
 
-    // Play the current song
+    // Play current song
     PlayCurrentSong(current);
 
-    // Create a circular queue
+    // Membuat circular queue
     Queue Q;
     CreateEmptyQueue(&Q, 5);
 
-    // Enqueue songs to the queue
+    // Enqueue lagu ke queue
     enqueue(&Q, "Artist1", "Album1", "Song1");
     enqueue(&Q, "Artist2", "Album2", "Song2");
     enqueue(&Q, "Artist3", "Album3", "Song3");
 
-    // Print the current playlist
+    // Print current playlist
     printf("\nUpdated Playlist:\n");
     PrintCurrentPlaylist(playlist);
 
-    // Play the next song
+    // Play next song
     PlayNextSong(&next, &current, &Q, &History);
 
-    // Print the updated current song
+    // Print current song
     printf("\nUpdated Current Song:\n");
     PrintCurrentSong(current);
 
-    // Print the history stack
-    printf("\nHistory Stack after playing the next song:\n");
+    // Print history
+    printf("\nHistory setelah play next song:\n");
     printStackchar(History);
 
-    // Replace the next song
+    // Menghapus next song
     ReplaceNextSong(&next, &Q);
 
-    // Print the updated playlist
-    printf("\nUpdated Playlist after replacing next song:\n");
+    // Print playlist
+    printf("\nUpdated Playlist :\n");
     PrintCurrentPlaylist(playlist);
 
-    // Play the previous song
+    // Play previous song
     PlayPrevSong(&History, &current);
 
-    // Print the updated current song after playing the previous song
-    printf("\nUpdated Current Song after playing the previous song:\n");
+    // Print current song
+    printf("\nUpdated Current Song :\n");
     PrintCurrentSong(current);
 
     return 0;

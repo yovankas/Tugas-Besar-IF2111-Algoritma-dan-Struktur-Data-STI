@@ -74,9 +74,4 @@ void CopyMap(Map *m1, Map m2);
 /* F.S. elemen dari m berhasil disorting secara discending*/
 void SortMap(Map *m);
 
-/* Melakukan print isi map sesuai format scoreboard. */
-/* I.S. m1 terdefinisi
-/* F.S. menampilkan si map sesuai scoreboard */
-void PrintMap(Map m);
-
 #endif

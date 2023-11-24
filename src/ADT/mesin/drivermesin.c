@@ -4,9 +4,9 @@
 int main()
 {
     Word satu, dua;
-    printf("Tulis 2 kata kak: ");
+    printf("Input 2 kata: ");
     startInputWord();
-    printf("Panjang kata total: %d\n", currentWord.Length);
+    printf("Panjang total 2 kata : %d\n", currentWord.Length);
     akuisisiCommandWord(&satu, currentWord, 1);
     akuisisiCommandWord(&dua, currentWord, 2);
     printWord(satu);
@@ -14,13 +14,13 @@ int main()
     printWord(dua);
     printf("\nPanjang kata kedua: %d\n", dua.Length);
 
-    printf("\nCEK BERDASARKAN FILE\n");
+    printf("\nCEK FILE JALAN GA\n");
     STARTWORD("../data/default.txt");
     printWord(currentWord);
     while (!EOP)
     {
         ADVWORD();
-        printf("\nCetak Current Word\n");
+        printf("\nPrint Current Word\n");
         printWord(currentWord);
     }
 
