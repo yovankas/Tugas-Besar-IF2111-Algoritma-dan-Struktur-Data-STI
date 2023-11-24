@@ -922,7 +922,6 @@ void PlaylistAddAlbum(ListPlaylist *listPL, PlaylistManager* manager, Array arrP
     }
     else
     {
-        printf("Daftar Album oleh %s :\n", com);
         printf("Penyanyi %s tidak ada dalam daftar. Silakan coba lagi.\n", com);
         return;
     }
